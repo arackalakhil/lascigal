@@ -463,7 +463,8 @@
                                                             <div class="sc_call_to_action_info">
                                                                 <h2
                                                                     class="sc_call_to_action_title sc_item_title sc_item_title_without_descr">
-                                                                    Limited Time Offer: Book Now &amp; Get 5% discount!
+                                                        
+                                                                    “Exclusive Deal: Reserve your spot today &amp save big with our limited-time discount!”
                                                                 </h2>
                                                             </div>
                                                             <div class="sc_call_to_action_buttons sc_item_buttons">
@@ -1516,115 +1517,221 @@
                                             <div class="column_container column-1_1">
                                                 <div class="column-inner">
                                                     <div class="m_wrapper">
-                                                        <div class="sc_form_wrap">
-                                                            <div
-                                                                class="sc_form sc_form_style_form_1 aligncenter sc_home-param-type-g">
-                                                                <h3
-                                                                    class="sc_form_title sc_item_title sc_item_title_without_descr">
-                                                                    Book now</h3>
-                                                                <h6 class="sc_form_subtitle sc_item_subtitle">fill
-                                                                    form</h6>
-                                                                <form class="sc_input_hover_default"
-                                                                    data-formtype="form_1" method="post"
-                                                                    action="include/contact-form.php">
+                                                        <div class="">
+  <div class="sc_form sc_form_style_form_1 aligncenter sc_home-param-type-g">
+    <h3 class="sc_form_title sc_item_title sc_item_title_without_descr">Book now</h3>
+    <h6 class="sc_form_subtitle sc_item_subtitle">Fill the form</h6>
+    
+    <form class="google-sheets-form" data-formtype="form_1" method="post">
+      <div class="sc_form_info columns_wrap">
 
-                                                                    <div class="sc_form_info columns_wrap">
+        <!-- Name -->
+        <div class="sc_form_item sc_form_field label_over column-1_2">
+          <input id="sc_form_username" type="text" name="username" placeholder="Name *" aria-required="true">
+        </div>
 
-                                                                        <!-- Name -->
-                                                                        <div
-                                                                            class="sc_form_item sc_form_field label_over column-1_2">
-                                                                            <input id="sc_form_username" type="text"
-                                                                                name="username" placeholder="Name *"
-                                                                                aria-required="true">
-                                                                        </div>
+        <!-- Email -->
+        <div class="sc_form_item sc_form_field label_over column-1_2">
+          <input id="sc_form_email" type="email" name="email" placeholder="E-mail *" aria-required="true">
+        </div>
 
-                                                                        <!-- Email -->
-                                                                        <div
-                                                                            class="sc_form_item sc_form_field label_over column-1_2">
-                                                                            <input id="sc_form_email" type="email"
-                                                                                name="email" placeholder="E-mail *"
-                                                                                aria-required="true">
-                                                                        </div>
+        <!-- Phone Number -->
+        <div class="sc_form_item sc_form_field label_over column-1_2">
+          <input id="sc_form_phone" type="tel" name="phone" placeholder="Phone Number *" aria-required="true">
+        </div>
 
-                                                                        <!-- Phone Number -->
-                                                                        <div
-                                                                            class="sc_form_item sc_form_field label_over column-1_2">
-                                                                            <input id="sc_form_phone" type="tel"
-                                                                                name="phone"
-                                                                                placeholder="Phone Number *"
-                                                                                aria-required="true">
-                                                                        </div>
+        <!-- Event Date -->
+        <div class="sc_form_item sc_form_field label_over column-1_2">
+          <label for="sc_form_date">Event Date</label>
+          <input id="sc_form_date" type="date" name="event_date" placeholder="Select date" aria-required="true">
+        </div>
 
-                                                                        <!-- Event Date -->
-                                                                        <div
-                                                                            class="sc_form_item sc_form_field label_over column-1_2">
-                                                                            <label for="sc_form_date">Event Date</label>
-                                                                            <input id="sc_form_date" type="date"
-                                                                                name="event_date"
-                                                                                placeholder="setect date"
-                                                                                aria-required="true">
-                                                                        </div>
+        <!-- Event Type -->
+        <div class="sc_form_item sc_form_field label_over column-1_2">
+          <input id="sc_form_event" type="text" name="event_type" placeholder="Event Type (Wedding, Birthday...)" aria-required="true">
+        </div>
+
+        <!-- Event Time -->
+        <div class="sc_form_item sc_form_field label_over column-1_2">
+          <input id="sc_form_time" type="text" name="time" placeholder="Event Time" aria-required="true">
+        </div>
+
+        <!-- Coupon Code -->
+        <div class="sc_form_item sc_form_field label_over column-1_2">
+          <input id="sc_form_coupon" type="text" name="coupon" placeholder="Coupon Code" aria-required="true">
+        </div>
+
+        <!-- Message -->
+        <div class="sc_form_item sc_form_message column-1_1">
+          <textarea id="sc_form_message" name="message" placeholder="Message" aria-required="true"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Submit -->
+      <div class="sc_form_item sc_form_button">
+        <button type="submit">Send Message</button>
+      </div>
+
+      <div class="result sc_infobox"></div>
+    </form>
+
+    <!-- Optional Style -->
+    <style>
+      .custom-select select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        appearance: none;
+        background: #fff url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
+        background-size: 16px;
+      }
+      .custom-select option {
+        padding-left: 25px;
+      }
+    </style>
+  </div>
+</div>
+<style>
+/* Error Message */
+#error-message {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #dc3545;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 10000;
+  animation: fadeInOut 4s ease forwards;
+}
+
+/* Spinner */
+#loading-spinner {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #fff;
+  background: rgba(0,0,0,0.7);
+  padding: 15px 25px;
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+/* Success Message */
+#success-message {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 10000;
+  animation: fadeInOut 4s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+</style>
+
+<!-- Spinner -->
+<div id="loading-spinner">⏳ Submitting...</div>
+<!-- Success Message -->
+<div id="success-message">✅ Booking submitted successfully! We will contact you soon.</div>
+<!-- Error Message -->
+<div id="error-message">⚠️ Please check your input!</div>
+
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycby0t5QqFBwr06AkadliY10pMiOWUCaQ1qUQDwktcK297BWm4waBiKgrxsPNirqGq8EmCQ/exec';
+const form = document.querySelector('.google-sheets-form');
+const spinner = document.getElementById('loading-spinner');
+const successMessage = document.getElementById('success-message');
+const errorMessage = document.getElementById('error-message');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  // Get form values
+  const username = document.getElementById('sc_form_username').value.trim();
+  const email = document.getElementById('sc_form_email').value.trim();
+  const phone = document.getElementById('sc_form_phone').value.trim();
+  const event_date = document.getElementById('sc_form_date').value.trim();
+  const event_type = document.getElementById('sc_form_event').value.trim();
+  const time = document.getElementById('sc_form_time').value.trim();
+  const coupon = document.getElementById('sc_form_coupon').value.trim();
+  const message = document.getElementById('sc_form_message').value.trim();
+
+  // Validation checks
+  if (!username || !email || !phone || !event_date || !event_type || !time) {
+    showError("⚠️ All required fields must be filled!");
+    return;
+  }
+
+  // Email format
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    showError("⚠️ Please enter a valid email address!");
+    return;
+  }
+
+  // Phone number check (digits only, min 7 max 15 digits)
+  const phonePattern = /^[0-9]{7,15}$/;
+  if (!phonePattern.test(phone)) {
+    showError("⚠️ Please enter a valid phone number (7-15 digits)!");
+    return;
+  }
+
+  const data = { username, email, phone, event_date, event_type, time, coupon, message };
+
+  // Show spinner
+  spinner.style.display = 'block';
+
+  fetch(scriptURL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data)
+  })
+  .then(response => response.json())
+  .then(result => {
+    spinner.style.display = 'none'; // Hide spinner
+    if (result.result === 'success') {
+      successMessage.style.display = 'block';
+      form.reset();
+      setTimeout(() => successMessage.style.display = 'none', 4000);
+    } else {
+      showError("⚠️ Error submitting form, please try again.");
+    }
+  })
+  .catch(error => {
+    spinner.style.display = 'none';
+    showError("❌ Server error, please try again later.");
+    console.error(error);
+  });
+});
+
+// Function to show error
+function showError(msg) {
+  errorMessage.textContent = msg;
+  errorMessage.style.display = 'block';
+  setTimeout(() => errorMessage.style.display = 'none', 4000);
+}
+</script>
 
 
-                                                                        <!-- Event Type -->
-                                                                        <div
-                                                                            class="sc_form_item sc_form_field label_over column-1_2">
-                                                                            <input id="sc_form_event" type="text"
-                                                                                name="event_type"
-                                                                                placeholder="Event Type (Wedding, Birthday...)"
-                                                                                aria-required="true">
-                                                                        </div>
-                                                                        <!-- Event Type -->
-                                                                        <div
-                                                                            class="sc_form_item sc_form_field label_over column-1_2">
-                                                                            <input id="sc_form_event" type="text"
-                                                                                name="time " placeholder="Event Time"
-                                                                                aria-required="true">
-                                                                        </div>
-                                                                        <!-- Event Type -->
-                                                                        <div
-                                                                            class="sc_form_item sc_form_field label_over column-1_2">
-                                                                            <input id="sc_form_event" type="text"
-                                                                                name="time " placeholder="coupon code"
-                                                                                aria-required="true">
-                                                                        </div>
-                                                                        <!-- Message -->
-                                                                        <div
-                                                                            class="sc_form_item sc_form_message column-1_1">
-                                                                            <textarea id="sc_form_message"
-                                                                                name="message" placeholder="Message"
-                                                                                aria-required="true"></textarea>
-                                                                        </div>
-                                                                    </div>
 
-                                                                    <!-- Submit -->
-                                                                    <div class="sc_form_item sc_form_button">
-                                                                        <button type="submit">Send Message</button>
-                                                                    </div>
-
-                                                                    <div class="result sc_infobox"></div>
-                                                                </form>
-
-                                                                <style>
-                                                                    /* Style multiple select like dropdown */
-                                                                    .custom-select select {
-                                                                        width: 100%;
-                                                                        padding: 10px;
-                                                                        border: 1px solid #ccc;
-                                                                        border-radius: 5px;
-                                                                        appearance: none;
-                                                                        background: #fff url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
-                                                                        background-size: 16px;
-                                                                    }
-
-                                                                    /* Make it look like checkboxes */
-                                                                    .custom-select option {
-                                                                        padding-left: 25px;
-                                                                    }
-                                                                </style>
-
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
