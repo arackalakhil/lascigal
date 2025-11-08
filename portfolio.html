@@ -42,8 +42,137 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-   
+   <link rel="stylesheet" href="easter-carousel.css">
 
+<style>
+    @layer base, demo;
+@import url(https://fonts.bunny.net/css?family=abel:400);
+
+@layer demo {
+	.easter-carousel-section .easter-carousel {
+		--items: 5;
+		--carousel-duration: 30s;
+		--carousel-width: 100vw; /* full width */
+		--carousel-item-width: 320px;
+		--carousel-item-height: 380px;
+		--carousel-item-gap: 2rem;
+		--clr-cta: rgb(0, 132, 209);
+
+		position: relative;
+		width: var(--carousel-width);
+		height: var(--carousel-item-height);
+		overflow: hidden; /* remove fade clipping */
+		margin: 0;
+		padding: 0;
+	}
+
+	/* ✨ Removed fade mask */
+	.easter-carousel-section .easter-carousel[mask] {
+		mask-image: none;
+	}
+
+	/* Reverse animation support (unchanged) */
+	.easter-carousel-section .easter-carousel[reverse] > article {
+		animation-direction: reverse;
+	}
+
+	/* Pause on hover (optional) */
+	.easter-carousel-section .easter-carousel:hover > article {
+		animation-play-state: paused;
+	}
+
+	/* === Individual carousel items === */
+	.easter-carousel-section .easter-carousel > article {
+		position: absolute;
+		top: 0;
+		left: calc(100% + var(--carousel-item-gap));
+		width: var(--carousel-item-width);
+		height: var(--carousel-item-height);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		border-radius: 10px;
+		background: white;
+		color: rgb(49, 65, 88);
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+		overflow: hidden;
+		animation-name: easter-marquee;
+		animation-duration: var(--carousel-duration);
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-delay: calc(var(--carousel-duration) / var(--items) * 1 * var(--i) * -1);
+	}
+
+	/* index variables */
+	.easter-carousel-section .easter-carousel > article:nth-child(1) { --i: 0; }
+	.easter-carousel-section .easter-carousel > article:nth-child(2) { --i: 1; }
+	.easter-carousel-section .easter-carousel > article:nth-child(3) { --i: 2; }
+	.easter-carousel-section .easter-carousel > article:nth-child(4) { --i: 3; }
+	.easter-carousel-section .easter-carousel > article:nth-child(5) { --i: 4; }
+	.easter-carousel-section .easter-carousel > article:nth-child(6) { --i: 5; }
+	.easter-carousel-section .easter-carousel > article:nth-child(7) { --i: 6; }
+	.easter-carousel-section .easter-carousel > article:nth-child(8) { --i: 7; }
+
+	/* === Image styling === */
+	.easter-carousel-section .easter-carousel img {
+		width: 100%;
+		height: 80%;
+		object-fit: cover;
+		border-radius: 10px 10px 0 0;
+		display: block;
+	}
+
+	/* === Heading only === */
+	.easter-carousel-section .easter-carousel h2 {
+		font-size: 1.3rem;
+		font-weight: 500;
+		text-align: center;
+		margin: 10px 0;
+		padding: 0 1rem;
+		color: #444;
+	}
+
+	/* Remove div/p/link styling */
+	.easter-carousel-section .easter-carousel > article > div,
+	.easter-carousel-section .easter-carousel > article p,
+	.easter-carousel-section .easter-carousel > article a {
+		display: none !important;
+	}
+
+	/* === Animation === */
+	@keyframes easter-marquee {
+		100% {
+			transform: translateX(
+				calc(
+					(var(--items) * (var(--carousel-item-width) + var(--carousel-item-gap))) * -1
+				)
+			);
+		}
+	}
+}
+
+@layer base {
+	.easter-carousel-section * {
+		box-sizing: border-box;
+	}
+
+	.easter-carousel-section {
+		color-scheme: light dark;
+		--bg-dark: rgb(2, 6, 24);
+		-bg-light: rgb(239 242 239);
+		--txt-light: rgb(10, 10, 10);
+		--txt-dark: rgb(245, 245, 245);
+		background-color: light-dark(var(--bg-light), var(--bg-dark));
+		color: light-dark(var(--txt-light), var(--txt-dark));
+		padding: 1rem 0;
+		font-family: "Abel", sans-serif;
+		display: grid;
+		place-items: center;
+	}
+}
+
+</style>
 </head>
 
 <body class="home page  body_filled  scheme_original">
@@ -317,24 +446,83 @@
                 </div>
                 <div class="mask"></div>
             </div>
+    <h2 class="sc_section_title sc_item_title sc_item_title_without_descr " style="margin-top: 5px;">Life's Celebrations</h2>
 
-  <div class="top_panel_title title_present">
-                <div class="top_panel_title_inner title_present bg-breadcrumbs">
-                    <div class="content_wrap">
-                        <h1 class="page_title">Portfolio</h1>
-                        <div class="breadcrumbs">
-                            <a class="breadcrumbs_item home" href="index.html">Home</a><span class="breadcrumbs_delimiter"></span><span class="breadcrumbs_item current">portfolio</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<h2 class="sc_section_subtitle sc_item_subtitle"></h2>
+<div class="easter-carousel-section">
+  <div class="easter-carousel" mask> 
+    <article>
+<img src="images/gallery/portfolio/wedding.jpg" alt="Wedding">
+      <h2>Weddings & Receptions</h2>
+      
+    </article>
+
+    <article>
+<img src="images/gallery/portfolio/en.jpg" alt="Engagement & Betrothal">
+      <h2>Engagement & Betrothal</h2>
+     
+    </article>
+
+  <article>
+<img src="images/gallery/portfolio/bithday.jpg" alt="Birthdays & Anniversaries">
+      <h2>Birthdays & Anniversaries</h2>
+     
+    </article>
+
+    <article>
+      <img src="images/gallery/portfolio/child.jpg" alt="Baptisms & Naming">
+      <h2>Baptisms & Naming</h2>
+     
+    </article>
+
+    <article>
+<img src="images/gallery/portfolio/gathering.png" alt="Social & Family Gatherings">
+      <h2>Social & Family Gatherings</h2>
+      
+    </article>
+
+  </div>
+</div>
+  <h2 class="sc_section_title sc_item_title sc_item_title_without_descr " style="margin-top: 5px;">Conferences & Conventions</h2>
+
+                                                        <h2 class="sc_section_subtitle sc_item_subtitle" style="margin: 10px;"></h2>
 
 
 
+<div class="easter-carousel-section">
+  <div class="easter-carousel" mask> 
+    <article>
+<img src="images/gallery/portfolio/meeting.jpg" alt="Conferences & Summits">
+      <h2>Conferences & Summits</h2>
+      
+    </article>
 
+    <article>
+<img src="images/gallery/portfolio/show.jpg" alt="Trade Shows & Exhibitions">
+      <h2>Trade Shows & Exhibitions</h2>
+     
+    </article>
 
+  <article>
+<img src="images/gallery/portfolio/award.jpg" alt="Birthdays & Anniversaries">
+      <h2>Awards & Gala Dinners</h2>
+     
+    </article>
 
+    <article>
+      <img src="images/gallery/portfolio/Forums.jpg" alt="Political & Public Forums">
+      <h2>Political & Public Forums</h2>
+     
+    </article>
 
+    <article>
+<img src="images/gallery/portfolio/religion.jpg" alt="Religious & Cultural Summit">
+      <h2>Religious & Cultural Summit</h2>
+      
+    </article>
+
+  </div>
+</div>
 
 
 
