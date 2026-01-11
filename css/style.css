@@ -2648,7 +2648,7 @@ fieldset legend {
 }
 
 .columns-flex>[class*="container"]>.columns_wrap>.column_container,
-.columns-flex [class*="sc_parallax"]>[class*="container"]>.columns_wrap>.column_container {
+.columns-flex [class*="sc_parallax"]>[class*="container"]>.columns_wrap>.column_container { 
     // display: flex;
     // float: left;
     vertical-align: middle; // display: table-cell;
@@ -10618,14 +10618,14 @@ a.eg-henryharrison-element-2 {
 }
 
 .sc_home-bg-type-c {
-    background-image: url(../images/bg_4.jpg) !important;
+    background-image: url(../images/bg_4.png) !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
 }
 
 .sc_home-bg-type-d {
-    background-image: url(../images/bg3.jpg) !important;
+    background-image: url(../images/c3.jpg) !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
