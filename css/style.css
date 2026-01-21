@@ -8413,20 +8413,7 @@ footer.twitter_wrap .sc_section_overlay {
 }
 
 .hover_icon:after {
-    content: ' ';
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    -webkit-transition: opacity .3s ease;
-    -moz-transition: opacity .3s ease;
-    -ms-transition: opacity .3s ease;
-    -o-transition: opacity .3s ease;
-    transition: opacity .3s ease;
+  
 }
 
 .hover_icon:hover:after {
@@ -10618,14 +10605,14 @@ a.eg-henryharrison-element-2 {
 }
 
 .sc_home-bg-type-c {
-    background-image: url(../images/bg_4.png) !important;
+    background-image: url(../images/index_banner/Untitled\ design\ \(6\).png) !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
 }
 
 .sc_home-bg-type-d {
-    background-image: url(../images/c3.jpg) !important;
+    background-image: url(../images/index_banner/banner_3.jpeg) !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
