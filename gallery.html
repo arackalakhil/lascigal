@@ -340,12 +340,7 @@
                                                     <div class="sc_section_inner">
                                                         <h2 class="sc_section_title sc_item_title sc_item_title_without_descr">Our Latest Projects</h2>
                                                         <h6 class="sc_section_subtitle sc_item_subtitle">portfolio</h6>
-                                                        <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Responsive Image Gallery</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+                                                        
 
 <style>
 /* =====================
@@ -485,9 +480,7 @@ figcaption {
   cursor: pointer;
 }
 </style>
-</head>
 
-<body data-theme="dark">
 
 <!-- <button class="theme-toggle" aria-label="Toggle light or dark mode">
   🌗 Toggle Theme
@@ -593,7 +586,7 @@ figcaption {
 
 <script>
 /* =====================
-   JS LOGIC
+   FIXED BLUR-LOADING LOGIC
 ===================== */
 const images = document.querySelectorAll(".gallery-item img");
 const lightbox = document.querySelector(".lightbox");
@@ -601,10 +594,18 @@ const lightboxImg = lightbox.querySelector("img");
 const closeBtn = document.querySelector(".close-btn");
 const themeBtn = document.querySelector(".theme-toggle");
 
-/* Blur placeholder + open lightbox */
+/* ✅ FIX: Handle cached + fresh images */
 images.forEach(img => {
-  img.addEventListener("load", () => img.classList.add("loaded"));
+  if (img.complete) {
+    // Image already loaded (from cache)
+    img.classList.add("loaded");
+  } else {
+    img.addEventListener("load", () => {
+      img.classList.add("loaded");
+    });
+  }
 
+  // Open fullscreen
   img.addEventListener("click", () => openLightbox(img));
   img.addEventListener("keydown", e => {
     if (e.key === "Enter") openLightbox(img);
@@ -620,6 +621,7 @@ function openLightbox(img) {
 
 /* Close logic */
 closeBtn.addEventListener("click", closeLightbox);
+
 lightbox.addEventListener("click", e => {
   if (e.target === lightbox) closeLightbox();
 });
@@ -640,8 +642,8 @@ themeBtn.addEventListener("click", () => {
 });
 </script>
 
-</body>
-</html>
+
+
 
 <div class="sc_section_button sc_item_button">
   <a href="https://wa.me/917306107515?text=Hello%2C%20I%20am%20interested%20in%20booking%20a%20convention%20center%20for%20our%20event" 
