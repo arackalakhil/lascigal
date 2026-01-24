@@ -1702,7 +1702,7 @@ fieldset legend {
 
 .row>[class*="column-"].column_padding_bottom,
 .columns_wrap>[class*="column-"].column_padding_bottom {
-    padding-bottom: 30px;
+    padding-bottom: 5px;
 }
 
 .sc_blogger.no_margins .row,
