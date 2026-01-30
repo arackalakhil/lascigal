@@ -4457,7 +4457,7 @@ body.sidebar_hide .sc_recent_news_style_news-announce .post_size_small {
 
 .sc_services .post_featured .post_thumb:after {
     content: '';
-    border: 3px solid white;
+    /* border: 3px solid white; */
     position: absolute;
     top: 10px;
     left: 10px;
