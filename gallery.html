@@ -433,7 +433,7 @@ body {
   overflow: hidden;
 }
 
-.gallery-item img {
+/* .gallery-item img {
   width: 100%;
   display: block;
   cursor: pointer;
@@ -444,41 +444,30 @@ body {
 
 .gallery-item img.loaded {
   filter: blur(0);
+} */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
-/* Caption */
-figcaption {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 600;
-  background: var(--overlay);
-  opacity: 0;
-  transition: opacity 0.25s ease;
+.gallery-item img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
 }
+/* ===== LIGHTBOX CONTROLS ===== */
 
-.gallery-item:hover figcaption,
-.gallery-item img:focus + figcaption {
-  opacity: 1;
-}
-
-/* =====================
-   FULLSCREEN LIGHTBOX
-===================== */
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .lightbox.active {
@@ -486,22 +475,93 @@ figcaption {
 }
 
 .lightbox img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+  z-index: 1;
 }
 
-/* Close button */
+/* ===== ARROWS ===== */
+/* ===== ARROWS (NO BACKGROUND) ===== */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;   /* ❌ remove white bg */
+  color: #fff;        /* white arrow */
+  font-size: 42px;    /* large premium arrow */
+  cursor: pointer;
+  z-index: 2;
+  padding: 10px;
+  line-height: 1;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6); /* glow for visibility */
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav:hover {
+  transform: translateY(-50%) scale(1.15);
+  opacity: 0.9;
+}
+
+.nav.prev { left: 22px; }
+.nav.next { right: 22px; }
+
+
+/* ===== CLOSE (NO BACKGROUND) ===== */
 .close-btn {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  font-size: 2rem;
-  background: none;
+  top: 18px;
+  right: 22px;
   border: none;
-  color: white;
+  background: none;  /* ❌ remove circle */
+  color: #fff;
+  font-size: 42px;
   cursor: pointer;
+  z-index: 2;
+  line-height: 1;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
+
+.close-btn:hover {
+  transform: scale(1.15);
+  opacity: 0.9;
+}
+
+/* REMOVE ANY THEME BACKGROUND FROM LIGHTBOX CONTROLS */
+.lightbox .nav,
+.lightbox .close-btn {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 8px !important;
+}
+
+/* PURE ICON LOOK */
+.lightbox .nav,
+.lightbox .close-btn {
+  color: #fff;
+  font-size: 44px;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.7);
+}
+
+/* POSITIONS */
+.lightbox .close-btn {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+}
+
+.lightbox .nav.prev { left: 24px; }
+.lightbox .nav.next { right: 24px; }
+
+
+
 </style>
 
 
@@ -511,224 +571,211 @@ figcaption {
 
 <article class="gallery" role="list">
 
-<figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/3(1).png"
-         alt="parking"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>parking</figcaption>
-  </figure>
-   <figure class="gallery-item" role="listitem">
-    <img src="images/portfolio/wed1.jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Engagement</figcaption>
-  </figure>
-   <figure class="gallery-item" role="listitem">
-    <img src="images/gallery/8 (2).jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Dining</figcaption>
-  </figure>
-     <figure class="gallery-item" role="listitem">
-    <img src="images/gallery/screen.jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>screen</figcaption>
-  </figure>
-    <figure class="gallery-item" role="listitem">
-    <img src="images/gallery/8 (3).jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Engagement</figcaption>
-  </figure>
-     <figure class="gallery-item" role="listitem">
-    <img src="images/gallery/hall3.jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Wedding hall</figcaption>
-  </figure>
-   <figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/sequ.jpg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Security</figcaption>
-  </figure>
-   <figure class="gallery-item" role="listitem">
-    <img src="images/gallery/8 (5).jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Wedding</figcaption>
-  </figure>
   <figure class="gallery-item" role="listitem">
-    <img src="images/index_banner/1.png"
-         alt=" landscape"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>The view</figcaption>
-  </figure>
-    </figure>  <figure class="gallery-item" role="listitem">
-    <img src="images/index_banner/4.jpg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>love</figcaption>
-  </figure>
-  
-
-  <figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/hall.jpeg"
-         alt="Ocean sunset"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Hall</figcaption>
+    <img src="images/INDEX_ITEMS/3(1).png" alt="parking" loading="lazy">
+   
   </figure>
 
   <figure class="gallery-item" role="listitem">
-    <img src="images/index_banner/2.jpeg"
-         alt="City skyline"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>View</figcaption>
+    <img src="images/portfolio/wed1.jpeg" alt="Engagement" loading="lazy">
+   
   </figure>
 
   <figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/4.jpg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Dining</figcaption>
-</figure>
+    <img src="images/gallery/8 (2).jpeg" alt="Dining" loading="lazy">
+  </figure>
+
   <figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/hall_1.jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Hall</figcaption>
-  </figure>  
-<figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/dining.jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Dining</figcaption>
-  </figure>  
-<figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/3.png"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Parking</figcaption>
+    <img src="images/gallery/screen.jpeg" alt="Screen" loading="lazy">
+    
   </figure>
-<figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/lift.jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Amenities</figcaption>
-  </figure>
-<figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/2.jpg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>The Way</figcaption>
-  
-   </figure> 
- <figure class="gallery-item" role="listitem">
-    <img src="images/gallery/1.jpeg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>night</figcaption>
-  </figure>
-   <figure class="gallery-item" role="listitem">
-    <img src="images/gallery/7.jpg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Hall</figcaption>
-  </figure>
+
   <figure class="gallery-item" role="listitem">
-    <img src="images/INDEX_ITEMS/food.jpg"
-         alt="Desert road"
-         loading="lazy"
-         tabindex="0">
-    <figcaption>Dining</figcaption>
+    <img src="images/gallery/8 (3).jpeg" alt="Engagement" loading="lazy">
+    
   </figure>
- 
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/gallery/hall3.jpeg" alt="Wedding hall" loading="lazy">
+
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/sequ.jpg" alt="Security" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/gallery/8 (5).jpeg" alt="Wedding" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/index_banner/1.png" alt="View" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/index_banner/4.jpg" alt="Love" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/hall.jpeg" alt="Hall" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/index_banner/2.jpeg" alt="View" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/4.jpg" alt="Dining" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/hall_1.jpeg" alt="Hall" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/food.jpg" alt="Dining" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/3.png" alt="Parking" loading="lazy">
+    
+  </figure> 
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/lift.jpeg" alt="Amenities" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/2.jpg" alt="Way" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/gallery/1.jpeg" alt="Night" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/gallery/7.jpg" alt="Hall" loading="lazy">
+    
+  </figure>
+
+  <figure class="gallery-item" role="listitem">
+    <img src="images/INDEX_ITEMS/food.jpg" alt="Dining" loading="lazy">
+    
+  </figure>
+
 </article>
 
-<!-- Fullscreen viewer -->
-<div class="lightbox" aria-hidden="true">
-  <button class="close-btn" aria-label="Close image">&times;</button>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="close-btn">&times;</button>
+
+  <button class="nav prev">&#10094;</button>
   <img src="" alt="">
+  <button class="nav next">&#10095;</button>
 </div>
 
+</div>
 <script>
-/* =====================
-   FIXED BLUR-LOADING LOGIC
-===================== */
-const images = document.querySelectorAll(".gallery-item img");
-const lightbox = document.querySelector(".lightbox");
-const lightboxImg = lightbox.querySelector("img");
-const closeBtn = document.querySelector(".close-btn");
-const themeBtn = document.querySelector(".theme-toggle");
+const galleryImages = document.querySelectorAll('.gallery-item img');
+const lightbox = document.querySelector('.lightbox');
+const lightboxImg = lightbox.querySelector('img');
+const closeBtn = lightbox.querySelector('.close-btn');
+const nextBtn = lightbox.querySelector('.next');
+const prevBtn = lightbox.querySelector('.prev');
 
-/* ✅ FIX: Handle cached + fresh images */
-images.forEach(img => {
-  if (img.complete) {
-    // Image already loaded (from cache)
-    img.classList.add("loaded");
-  } else {
-    img.addEventListener("load", () => {
-      img.classList.add("loaded");
-    });
-  }
+let currentIndex = 0;
 
-  // Open fullscreen
-  img.addEventListener("click", () => openLightbox(img));
-  img.addEventListener("keydown", e => {
-    if (e.key === "Enter") openLightbox(img);
+/* OPEN */
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    currentIndex = index;
+    showImage();
+    lightbox.classList.add('active');
   });
 });
 
-function openLightbox(img) {
-  lightboxImg.src = img.src;
-  lightboxImg.alt = img.alt;
-  lightbox.classList.add("active");
-  lightbox.setAttribute("aria-hidden", "false");
+/* SHOW IMAGE */
+function showImage() {
+  lightboxImg.src = galleryImages[currentIndex].src;
 }
 
-/* Close logic */
-closeBtn.addEventListener("click", closeLightbox);
-
-lightbox.addEventListener("click", e => {
-  if (e.target === lightbox) closeLightbox();
+/* CLOSE */
+closeBtn.addEventListener('click', () => {
+  lightbox.classList.remove('active');
 });
 
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeLightbox();
+/* NEXT */
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  showImage();
 });
 
-function closeLightbox() {
-  lightbox.classList.remove("active");
-  lightbox.setAttribute("aria-hidden", "true");
-}
-
-/* Theme toggle */
-themeBtn.addEventListener("click", () => {
-  document.body.dataset.theme =
-    document.body.dataset.theme === "dark" ? "light" : "dark";
+/* PREV */
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  showImage();
 });
+
+/* CLICK OUTSIDE IMAGE CLOSE */
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove('active');
+  }
+});
+
+/* KEYBOARD SUPPORT */
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('active')) return;
+
+  if (e.key === 'ArrowRight') nextBtn.click();
+  if (e.key === 'ArrowLeft') prevBtn.click();
+  if (e.key === 'Escape') closeBtn.click();
+});
+
+/* SWIPE MOBILE */
+let startX = 0;
+
+lightbox.addEventListener('touchstart', e => {
+  startX = e.touches[0].clientX;
+});
+
+lightbox.addEventListener('touchend', e => {
+  let endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) nextBtn.click();
+    else prevBtn.click();
+  }
+});
+
+
 </script>
+
+
+
+
+<!-- Fullscreen viewer -->
+<div class="lightbox" aria-hidden="true">
+  <button class="close-btn" aria-label="Close">&times;</button>
+
+  <button class="nav prev" aria-label="Previous">&#10094;</button>
+  <img src="" alt="">
+  <button class="nav next" aria-label="Next">&#10095;</button>
+</div>
+
 
 
 
