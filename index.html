@@ -519,6 +519,104 @@
                 </div>
                 <!-- END REVOLUTION SLIDER -->
             </section>
+
+            <!-- OFFER BANNER SECTION -->
+            <section id="offer-banner" class="offer-banner-section">
+                <a href="https://wa.me/917306107515?text=Hello%2C%20I%20am%20interested%20in%20the%20Ramadan%20%26%20Easter%20Special%20Offer.%20Please%20share%20more%20details."
+                    target="_blank" rel="noopener" class="offer-banner-link">
+                    <img src="images/OFFER/OFFER1.jpeg"
+                        alt="Ramadan & Easter Special Offer - Book your event before 30th April 2026 and enjoy a FREE 1 Day Overnight Stay at Chandys Resort Munnar"
+                        class="offer-banner-img">
+                </a>
+                <button class="offer-close-btn" onclick="document.getElementById('offer-banner').style.display='none'"
+                    title="Close offer">&times;</button>
+            </section>
+            <style>
+                .offer-banner-section {
+                    position: relative;
+                    width: 100%;
+                    background: #1a1207;
+                    text-align: center;
+                    padding: 30px 15px;
+                    overflow: hidden;
+                }
+
+                .offer-banner-section::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+                    pointer-events: none;
+                }
+
+                .offer-banner-link {
+                    display: inline-block;
+                    position: relative;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 8px 32px rgba(0, 0, 0, 0.5);
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    animation: offerGlow 2.5s ease-in-out infinite alternate;
+                }
+
+                .offer-banner-link:hover {
+                    transform: scale(1.02);
+                    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6), 0 12px 40px rgba(0, 0, 0, 0.6);
+                }
+
+                .offer-banner-img {
+                    display: block;
+                    max-width: 600px;
+                    width: 100%;
+                    height: auto;
+                    border-radius: 12px;
+                }
+
+                .offer-close-btn {
+                    position: absolute;
+                    top: 10px;
+                    right: 15px;
+                    background: none;
+                    color: #fff;
+                    border: none;
+                    font-size: 28px;
+                    font-weight: 300;
+                    cursor: pointer;
+                    padding: 5px 10px;
+                    line-height: 1;
+                    z-index: 2;
+                    opacity: 0.7;
+                    transition: opacity 0.2s;
+                }
+
+                .offer-close-btn:hover {
+                    opacity: 1;
+                }
+
+                @keyframes offerGlow {
+                    0% {
+                        box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 8px 32px rgba(0, 0, 0, 0.5);
+                    }
+
+                    100% {
+                        box-shadow: 0 0 35px rgba(212, 175, 55, 0.6), 0 8px 32px rgba(0, 0, 0, 0.5);
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .offer-banner-section {
+                        padding: 20px 10px;
+                    }
+
+                    .offer-banner-img {
+                        max-width: 95%;
+                    }
+                }
+            </style>
+
             <div class="page_content_wrap page_paddings_no">
                 <div class="content">
                     <article class="post_item post_item_single page type-page">
