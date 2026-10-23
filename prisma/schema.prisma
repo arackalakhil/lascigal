@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model EventCategory {
+  id        String         @id @default(cuid())
+  name      String
+  slug      String         @unique
+  order     Int            @default(0)
+  events    EventService[]
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model EventService {
+  id            String           @id @default(cuid())
+  slug          String           @unique
+  title         String
+  categoryId    String?
+  category      EventCategory?   @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryName  String           @default("Life's Celebrations")
+  heroImage     String           // Relative R2 path e.g. "images/gallery/portfolio/wed1.jpeg"
+  summary       String?
+  description   String?
+  features      String[]
+  galleryImages String[]
+  order         Int              @default(0)
+  highlights    EventHighlight[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+}
+
+model EventHighlight {
+  id          String       @id @default(cuid())
+  eventId     String
+  event       EventService @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  order       Int          @default(0)
+  createdAt   DateTime     @default(now())
+}
+
+model VenueFacility {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  image       String   // Relative R2 path e.g. "images/INDEX_ITEMS/hall1.jpg"
+  icon        String?  // e.g. "fas fa-building-columns"
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model GalleryItem {
+  id        String   @id @default(cuid())
+  title     String?
+  altText   String?
+  category  String   @default("General")
+  image     String   // Relative R2 path e.g. "images/gallery/DSC01156.jpg.webp"
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BookingSubmission {
+  id        String   @id @default(cuid())
+  username  String
+  email     String
+  phone     String
+  eventDate String
+  eventType String
+  time      String
+  coupon    String?
+  message   String?
+  status    String   @default("NEW") // "NEW", "CONTACTED", "ARCHIVED"
+  createdAt DateTime @default(now())
+}
+
+model SiteSetting {
+  key   String @id
+  value String
+}
