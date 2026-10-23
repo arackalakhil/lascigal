@@ -12,9 +12,10 @@ export default function AdminNav({ sessionUser }: { sessionUser: string }) {
   const navLinks = [
     { name: 'Dashboard', href: '/admin' },
     { name: 'Events / Portfolio', href: '/admin/events' },
+    { name: 'Facilities', href: '/admin/facilities' },
     { name: 'Gallery', href: '/admin/gallery' },
     { name: 'Booking Inbox', href: '/admin/inbox' },
-    { name: 'Site Settings', href: '/admin/settings' },
+    { name: 'Site Settings & Banners', href: '/admin/settings' },
     { name: 'Media Uploads', href: '/admin/media' },
   ];
 
@@ -46,7 +47,7 @@ export default function AdminNav({ sessionUser }: { sessionUser: string }) {
             <span style={{ fontWeight: 600, fontSize: '17px', letterSpacing: '0.5px' }}>Lascigal Admin</span>
           </Link>
 
-          <nav style={{ display: 'flex', gap: '8px', marginLeft: '20px' }}>
+          <nav style={{ display: 'flex', gap: '8px', marginLeft: '10px', flexWrap: 'wrap' }}>
             {navLinks.map((link) => {
               const active = pathname === link.href || (link.href !== '/admin' && pathname.startsWith(link.href));
               return (
@@ -56,10 +57,10 @@ export default function AdminNav({ sessionUser }: { sessionUser: string }) {
                   style={{
                     color: active ? '#fff' : '#aaa',
                     backgroundColor: active ? '#333' : 'transparent',
-                    padding: '8px 14px',
+                    padding: '8px 12px',
                     borderRadius: '6px',
                     textDecoration: 'none',
-                    fontSize: '14px',
+                    fontSize: '13.5px',
                     fontWeight: 500,
                     transition: 'all 0.2s',
                   }}

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { mediaUrl } from '@/lib/media';
 
 interface EventData {
   id?: string;
@@ -37,11 +38,12 @@ export default function EventForm({ initialData }: { initialData?: EventData }) 
   const [newFeature, setNewFeature] = useState('');
   const [newGalleryImage, setNewGalleryImage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [uploadingHero, setUploadingHero] = useState(false);
+  const [uploadingGallery, setUploadingGallery] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;
-    // Auto-generate slug if creating new
     if (!isEditing) {
       const slug = title
         .toLowerCase()
@@ -50,6 +52,55 @@ export default function EventForm({ initialData }: { initialData?: EventData }) 
       setFormData((prev) => ({ ...prev, title, slug }));
     } else {
       setFormData((prev) => ({ ...prev, title }));
+    }
+  };
+
+  // Upload hero directly to Cloudflare R2
+  const handleHeroFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingHero(true);
+    try {
+      const form = new FormData();
+      form.append('file', file);
+      form.append('folder', 'events');
+
+      const res = await fetch('/api/upload', { method: 'POST', body: form });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload to R2 failed');
+
+      setFormData((prev) => ({ ...prev, heroImage: data.path }));
+    } catch (err: any) {
+      alert(err.message || 'Upload failed');
+    } finally {
+      setUploadingHero(false);
+    }
+  };
+
+  // Upload gallery photo directly to Cloudflare R2
+  const handleGalleryFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingGallery(true);
+    try {
+      const form = new FormData();
+      form.append('file', file);
+      form.append('folder', 'events');
+
+      const res = await fetch('/api/upload', { method: 'POST', body: form });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload to R2 failed');
+
+      setFormData((prev) => ({
+        ...prev,
+        galleryImages: [...prev.galleryImages, data.path],
+      }));
+    } catch (err: any) {
+      alert(err.message || 'Upload failed');
+    } finally {
+      setUploadingGallery(false);
     }
   };
 
@@ -160,15 +211,69 @@ export default function EventForm({ initialData }: { initialData?: EventData }) 
         </div>
 
         <div>
-          <label style={{ display: 'block', fontWeight: 600, fontSize: '14px', marginBottom: '6px' }}>Hero Image Path (R2 Relative) *</label>
+          <label style={{ display: 'block', fontWeight: 600, fontSize: '14px', marginBottom: '6px' }}>Display Order</label>
           <input
-            type="text"
-            value={formData.heroImage}
-            onChange={(e) => setFormData((prev) => ({ ...prev, heroImage: e.target.value }))}
-            required
-            placeholder="images/gallery/portfolio/wed1.jpeg"
+            type="number"
+            value={formData.order}
+            onChange={(e) => setFormData((prev) => ({ ...prev, order: Number(e.target.value) }))}
             style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #d1d5db' }}
           />
+        </div>
+      </div>
+
+      {/* Hero Image Field + Direct R2 Upload */}
+      <div style={{ marginBottom: '25px', backgroundColor: '#f9fafb', padding: '18px', borderRadius: '8px' }}>
+        <label style={{ display: 'block', fontWeight: 600, fontSize: '14px', marginBottom: '8px' }}>
+          Hero Banner Photo (Stored on Cloudflare R2)
+        </label>
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
+          {formData.heroImage && (
+            <div style={{ width: '140px', height: '90px', borderRadius: '6px', overflow: 'hidden', backgroundColor: '#e5e7eb' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={mediaUrl(formData.heroImage)}
+                alt="Hero Preview"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </div>
+          )}
+
+          <div style={{ flex: 1 }}>
+            <div style={{ marginBottom: '8px' }}>
+              <input
+                type="text"
+                value={formData.heroImage}
+                onChange={(e) => setFormData((prev) => ({ ...prev, heroImage: e.target.value }))}
+                placeholder="images/gallery/portfolio/wed1.jpeg"
+                style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid #d1d5db', fontSize: '13px' }}
+              />
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <label
+                style={{
+                  padding: '6px 14px',
+                  backgroundColor: '#c5a880',
+                  color: '#fff',
+                  borderRadius: '4px',
+                  fontSize: '12px',
+                  fontWeight: 600,
+                  cursor: uploadingHero ? 'not-allowed' : 'pointer',
+                  display: 'inline-block',
+                }}
+              >
+                {uploadingHero ? 'Uploading to R2...' : '↑ Upload New Photo to R2'}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleHeroFileUpload}
+                  disabled={uploadingHero}
+                  style={{ display: 'none' }}
+                />
+              </label>
+              <span style={{ fontSize: '12px', color: '#6b7280' }}>Select any JPG/PNG/WebP from your computer</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -244,52 +349,87 @@ export default function EventForm({ initialData }: { initialData?: EventData }) 
         </div>
       </div>
 
-      {/* Repeatable Gallery Image Paths */}
+      {/* Repeatable Gallery Image Paths + Direct Upload */}
       <div style={{ marginBottom: '30px', backgroundColor: '#f9fafb', padding: '18px', borderRadius: '8px' }}>
-        <label style={{ display: 'block', fontWeight: 600, fontSize: '14px', marginBottom: '8px' }}>
-          Related Gallery Photo Paths
-        </label>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+          <label style={{ fontWeight: 600, fontSize: '14px' }}>Related Gallery Photos</label>
+          <label
+            style={{
+              padding: '4px 12px',
+              backgroundColor: '#374151',
+              color: '#fff',
+              borderRadius: '4px',
+              fontSize: '12px',
+              cursor: uploadingGallery ? 'not-allowed' : 'pointer',
+            }}
+          >
+            {uploadingGallery ? 'Uploading to R2...' : '+ Upload Gallery Photo to R2'}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleGalleryFileUpload}
+              disabled={uploadingGallery}
+              style={{ display: 'none' }}
+            />
+          </label>
+        </div>
+
         <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
           <input
             type="text"
             value={newGalleryImage}
             onChange={(e) => setNewGalleryImage(e.target.value)}
-            placeholder="images/gallery/wed.png"
+            placeholder="Or enter path e.g. images/gallery/wed.png"
             style={{ flex: 1, padding: '8px 12px', borderRadius: '6px', border: '1px solid #d1d5db' }}
           />
           <button
             type="button"
             onClick={addGalleryImage}
-            style={{ padding: '8px 16px', backgroundColor: '#374151', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
+            style={{ padding: '8px 16px', backgroundColor: '#e5e7eb', color: '#374151', border: 'none', borderRadius: '6px', cursor: 'pointer' }}
           >
-            Add Image
+            Add
           </button>
         </div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))', gap: '12px' }}>
           {formData.galleryImages.map((img, i) => (
-            <span
+            <div
               key={i}
               style={{
                 backgroundColor: '#fff',
                 border: '1px solid #d1d5db',
-                padding: '4px 10px',
-                borderRadius: '16px',
-                fontSize: '13px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
+                borderRadius: '6px',
+                overflow: 'hidden',
+                position: 'relative',
               }}
             >
-              {img}
+              <div style={{ height: '80px', backgroundColor: '#eee' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={mediaUrl(img)} alt={`Gallery ${i}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
               <button
                 type="button"
                 onClick={() => removeGalleryImage(i)}
-                style={{ background: 'none', border: 'none', color: '#dc2626', cursor: 'pointer', fontWeight: 'bold' }}
+                style={{
+                  position: 'absolute',
+                  top: '4px',
+                  right: '4px',
+                  backgroundColor: 'rgba(220, 38, 38, 0.85)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '22px',
+                  height: '22px',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '13px',
+                }}
               >
                 ×
               </button>
-            </span>
+            </div>
           ))}
         </div>
       </div>
@@ -297,7 +437,7 @@ export default function EventForm({ initialData }: { initialData?: EventData }) 
       <div style={{ display: 'flex', gap: '12px' }}>
         <button
           type="submit"
-          disabled={loading}
+          disabled={loading || uploadingHero || uploadingGallery}
           style={{
             backgroundColor: '#c5a880',
             color: '#fff',

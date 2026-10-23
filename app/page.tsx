@@ -26,9 +26,18 @@ export default async function HomePage() {
   const phone2 = settings['phone_secondary'] || '9745897834';
   const whatsapp = settings['whatsapp_number'] || '917306107515';
   const mapsUrl = settings['google_maps_url'] || 'https://maps.app.goo.gl/X1bke7LUrKtm5tHe8';
+
+  const heroHeading = settings['hero_heading'] || 'Creating Unforgettable Moments for Every Occasion';
+  const heroSubheading = settings['hero_subheading'] || 'Welcome to Lascigal';
+  const heroImage = settings['hero_image'] || 'images/gallery/DSC01156.jpg.webp';
   const offerBannerText =
     settings['offer_banner_text'] ||
     '“Exclusive Deal: Reserve your spot today & save big with our limited-time discount!”';
+  const aboutHeading = settings['about_heading'] || 'Transforming Events Into Experiences Celebrating Life';
+  const aboutText =
+    settings['about_text'] ||
+    'At Lascigal Convention Center, we believe every event is more than just a gathering—it’s a memory in the making. Our vision has always been to create a space where elegance meets excellence, and where your special moments are celebrated with the care, warmth, and sophistication they truly deserve.';
+  const aboutImage = settings['about_image'] || 'images/gallery/FRONT_VIEW.jpeg';
 
   return (
     <>
@@ -38,7 +47,7 @@ export default async function HomePage() {
       <section className="hero_banner_section" style={{ position: 'relative', width: '100%', minHeight: '550px', background: '#1c1c1c' }}>
         <div style={{ position: 'relative', width: '100%', height: '550px', overflow: 'hidden' }}>
           <Image
-            src={mediaUrl('images/gallery/DSC01156.jpg.webp')}
+            src={mediaUrl(heroImage)}
             alt="Lascigal Convention Center Grand Hall"
             fill
             priority
@@ -67,7 +76,7 @@ export default async function HomePage() {
                 marginBottom: '10px',
               }}
             >
-              Welcome to Lascigal
+              {heroSubheading}
             </h6>
             <h1
               style={{
@@ -79,7 +88,7 @@ export default async function HomePage() {
                 lineHeight: 1.25,
               }}
             >
-              Creating Unforgettable Moments for Every Occasion
+              {heroHeading}
             </h1>
             <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <Link
@@ -200,12 +209,10 @@ export default async function HomePage() {
                 about us
               </h6>
               <h2 className="sc_title" style={{ fontSize: '2.1rem', lineHeight: 1.3, marginBottom: '20px' }}>
-                Transforming Events Into Experiences Celebrating Life
+                {aboutHeading}
               </h2>
               <p style={{ color: '#555', lineHeight: 1.8, fontSize: '16px', marginBottom: '24px' }}>
-                At Lascigal Convention Center, we believe every event is more than just a gathering—it’s a memory in the making.
-                Our vision has always been to create a space where elegance meets excellence, and where your special moments are
-                celebrated with the care, warmth, and sophistication they truly deserve.
+                {aboutText}
               </p>
               <Link
                 href="/aboutus"
@@ -226,7 +233,7 @@ export default async function HomePage() {
               <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.12)' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={mediaUrl('images/gallery/FRONT_VIEW.jpeg')}
+                  src={mediaUrl(aboutImage)}
                   alt="Lascigal Convention Center Architecture"
                   style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block' }}
                 />
