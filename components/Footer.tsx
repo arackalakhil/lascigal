@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { mediaUrl } from '@/lib/media';
 
 interface FooterProps {
   phone1?: string;
@@ -8,6 +9,7 @@ interface FooterProps {
   addressPincode?: string;
   mapsUrl?: string;
   mapsEmbed?: string;
+  logo?: string;
 }
 
 export default function Footer({
@@ -18,6 +20,7 @@ export default function Footer({
   addressPincode = '686673',
   mapsUrl = 'https://maps.app.goo.gl/X1bke7LUrKtm5tHe8',
   mapsEmbed = 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14223.02209307127!2d76.6284003!3d9.9972091!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07e79536923b0b%3A0x1d30fe64d311d295!2sLas%20Cigal%20Convention%20Centre%2C%20Kalampoor!5e1!3m2!1sen!2sin!4v1758356626772!5m2!1sen!2sin',
+  logo = 'images/laslogo1.png',
 }: FooterProps) {
   return (
     <>
@@ -85,10 +88,10 @@ export default function Footer({
                   <Link href="/">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/images/laslogo1.png"
+                      src={mediaUrl(logo)}
                       className="logo_main"
                       alt="Lascigal Logo"
-                      style={{ height: '70px', width: 'auto' }}
+                      style={{ height: '70px', width: 'auto', objectFit: 'contain' }}
                     />
                   </Link>
                 </div>

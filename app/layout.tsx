@@ -1,24 +1,62 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import ScrollToTop from '@/components/ScrollToTop';
+import prisma from '@/lib/prisma';
+import { mediaUrl } from '@/lib/media';
 
-export const metadata: Metadata = {
-  title: 'Lascigal Convention Centre | Kalampoor, Muvattupuzha',
-  description:
-    'Lascigal Convention Centre offers spacious air-conditioned halls, modern audio-visual amenities, dedicated dining, and ample car parking for weddings, corporate summits, and celebrations.',
-  icons: {
-    icon: '/images/favicons.png',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  let favicon = 'images/favicons.png';
+  let title = 'Lascigal Convention Centre | Kalampoor, Muvattupuzha';
+  let description =
+    'Lascigal Convention Centre offers spacious air-conditioned halls, modern audio-visual amenities, dedicated dining, and ample car parking for weddings, corporate summits, and celebrations.';
 
-export default function RootLayout({
+  try {
+    const settingsList = await prisma.siteSetting.findMany({
+      where: {
+        key: { in: ['site_favicon', 'site_title', 'site_description'] },
+      },
+    });
+    for (const s of settingsList) {
+      if (s.key === 'site_favicon' && s.value) favicon = s.value;
+      if (s.key === 'site_title' && s.value) title = s.value;
+      if (s.key === 'site_description' && s.value) description = s.value;
+    }
+  } catch (err) {
+    // Fallback gracefully during early build step if DB connection is unavailable
+  }
+
+  const faviconUrl = mediaUrl(favicon);
+
+  return {
+    title,
+    description,
+    icons: {
+      icon: faviconUrl,
+      shortcut: faviconUrl,
+      apple: faviconUrl,
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  let favicon = 'images/favicons.png';
+  try {
+    const favSetting = await prisma.siteSetting.findUnique({
+      where: { key: 'site_favicon' },
+    });
+    if (favSetting?.value) favicon = favSetting.value;
+  } catch (err) {}
+
   return (
     <html lang="en-US" className="scheme_original">
       <head>
+        <link rel="icon" href={mediaUrl(favicon)} />
+        <link rel="shortcut icon" href={mediaUrl(favicon)} />
+        <link rel="apple-touch-icon" href={mediaUrl(favicon)} />
         <link
           rel="preconnect"
           href={process.env.NEXT_PUBLIC_MEDIA_BASE || 'https://pub-fc1ea4fa629e4540a5972566a72a858c.r2.dev'}

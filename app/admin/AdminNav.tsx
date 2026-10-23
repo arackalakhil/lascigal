@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
+import { mediaUrl } from '@/lib/media';
 
 export default function AdminNav({ sessionUser }: { sessionUser: string }) {
   const pathname = usePathname();
@@ -43,7 +44,7 @@ export default function AdminNav({ sessionUser }: { sessionUser: string }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <Link href="/admin" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/laslogo1.png" alt="Logo" style={{ height: '40px', width: 'auto' }} />
+            <img src={mediaUrl('images/laslogo1.png')} alt="Logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
             <span style={{ fontWeight: 600, fontSize: '17px', letterSpacing: '0.5px' }}>Lascigal Admin</span>
           </Link>
 

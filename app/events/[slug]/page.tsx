@@ -37,10 +37,11 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
   const phone2 = settings['phone_secondary'] || '9745897834';
   const whatsapp = settings['whatsapp_number'] || '917306107515';
   const mapsUrl = settings['google_maps_url'] || 'https://maps.app.goo.gl/X1bke7LUrKtm5tHe8';
+  const logo = settings['site_logo'] || 'images/laslogo1.png';
 
   return (
     <>
-      <Header phone1={phone1} phone2={phone2} whatsapp={whatsapp} mapsUrl={mapsUrl} />
+      <Header phone1={phone1} phone2={phone2} whatsapp={whatsapp} mapsUrl={mapsUrl} logo={logo} />
 
       {/* Top Banner Breadcrumbs */}
       <div className="top_panel_title title_present">
@@ -234,6 +235,7 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
         addressPincode={settings['address_pincode']}
         mapsUrl={mapsUrl}
         mapsEmbed={settings['google_maps_embed']}
+        logo={logo}
       />
     </>
   );

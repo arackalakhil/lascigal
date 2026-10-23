@@ -26,6 +26,7 @@ export default async function HomePage() {
   const phone2 = settings['phone_secondary'] || '9745897834';
   const whatsapp = settings['whatsapp_number'] || '917306107515';
   const mapsUrl = settings['google_maps_url'] || 'https://maps.app.goo.gl/X1bke7LUrKtm5tHe8';
+  const logo = settings['site_logo'] || 'images/laslogo1.png';
 
   const heroHeading = settings['hero_heading'] || 'Creating Unforgettable Moments for Every Occasion';
   const heroSubheading = settings['hero_subheading'] || 'Welcome to Lascigal';
@@ -41,7 +42,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header phone1={phone1} phone2={phone2} whatsapp={whatsapp} mapsUrl={mapsUrl} />
+      <Header phone1={phone1} phone2={phone2} whatsapp={whatsapp} mapsUrl={mapsUrl} logo={logo} />
 
       {/* Hero Banner Section */}
       <section className="hero_banner_section" style={{ position: 'relative', width: '100%', minHeight: '550px', background: '#1c1c1c' }}>
@@ -356,6 +357,7 @@ export default async function HomePage() {
         addressPincode={settings['address_pincode']}
         mapsUrl={mapsUrl}
         mapsEmbed={settings['google_maps_embed']}
+        logo={logo}
       />
     </>
   );

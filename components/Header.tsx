@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import MobileNav from './MobileNav';
+import { mediaUrl } from '@/lib/media';
 
 interface HeaderProps {
   phone1?: string;
   phone2?: string;
   whatsapp?: string;
   mapsUrl?: string;
+  logo?: string;
 }
 
 export default function Header({
@@ -13,6 +15,7 @@ export default function Header({
   phone2 = '9745897834',
   whatsapp = '917306107515',
   mapsUrl = 'https://maps.app.goo.gl/X1bke7LUrKtm5tHe8',
+  logo = 'images/laslogo1.png',
 }: HeaderProps) {
   return (
     <>
@@ -47,10 +50,10 @@ export default function Header({
                     <Link href="/">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="/images/laslogo1.png"
+                        src={mediaUrl(logo)}
                         className="logo_main"
                         alt="Lascigal Logo"
-                        style={{ width: 'auto', height: '110px' }}
+                        style={{ width: 'auto', height: '110px', objectFit: 'contain' }}
                       />
                     </Link>
                   </div>
@@ -133,7 +136,7 @@ export default function Header({
       </header>
 
       {/* Mobile Header Drawer */}
-      <MobileNav phone1={phone1} phone2={phone2} whatsapp={whatsapp} />
+      <MobileNav phone1={phone1} phone2={phone2} whatsapp={whatsapp} logo={logo} />
     </>
   );
 }

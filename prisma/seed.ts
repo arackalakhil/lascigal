@@ -7,6 +7,10 @@ async function main() {
 
   // 1. Site Settings
   const settings = [
+    { key: 'site_logo', value: 'images/laslogo1.png' },
+    { key: 'site_favicon', value: 'images/favicons.png' },
+    { key: 'site_title', value: 'Lascigal Convention Centre | Kalampoor, Muvattupuzha' },
+    { key: 'site_description', value: 'Lascigal Convention Centre offers spacious air-conditioned halls, modern audio-visual amenities, dedicated dining, and ample car parking for weddings, corporate summits, and celebrations.' },
     { key: 'phone_primary', value: '7306107515' },
     { key: 'phone_secondary', value: '9745897834' },
     { key: 'whatsapp_number', value: '917306107515' },

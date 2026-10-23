@@ -8,6 +8,8 @@ export default function SettingsManager({ initialSettings }: { initialSettings: 
   const router = useRouter();
   const [settings, setSettings] = useState<Record<string, string>>(initialSettings);
   const [saving, setSaving] = useState(false);
+  const [uploadingLogo, setUploadingLogo] = useState(false);
+  const [uploadingFavicon, setUploadingFavicon] = useState(false);
   const [uploadingHero, setUploadingHero] = useState(false);
   const [uploadingAbout, setUploadingAbout] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -15,6 +17,52 @@ export default function SettingsManager({ initialSettings }: { initialSettings: 
   const handleChange = (key: string, value: string) => {
     setSettings((prev) => ({ ...prev, [key]: value }));
     setSaved(false);
+  };
+
+  const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingLogo(true);
+    try {
+      const form = new FormData();
+      form.append('file', file);
+      form.append('folder', 'branding');
+
+      const res = await fetch('/api/upload', { method: 'POST', body: form });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload to R2 failed');
+
+      setSettings((prev) => ({ ...prev, site_logo: data.path }));
+      setSaved(false);
+    } catch (err: any) {
+      alert(err.message || 'Upload failed');
+    } finally {
+      setUploadingLogo(false);
+    }
+  };
+
+  const handleFaviconUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingFavicon(true);
+    try {
+      const form = new FormData();
+      form.append('file', file);
+      form.append('folder', 'branding');
+
+      const res = await fetch('/api/upload', { method: 'POST', body: form });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload to R2 failed');
+
+      setSettings((prev) => ({ ...prev, site_favicon: data.path }));
+      setSaved(false);
+    } catch (err: any) {
+      alert(err.message || 'Upload failed');
+    } finally {
+      setUploadingFavicon(false);
+    }
   };
 
   const handleHeroUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,6 +139,205 @@ export default function SettingsManager({ initialSettings }: { initialSettings: 
           ✓ All changes saved and published! Public pages are instantly updated.
         </div>
       )}
+
+      {/* 0. BRAND IDENTITY: LOGO & FAVICON */}
+      <h3 style={{ fontSize: '18px', fontWeight: 700, borderBottom: '2px solid #c5a880', paddingBottom: '8px', marginBottom: '20px', color: '#1f2937' }}>
+        👑 Brand Identity (Logo, Favicon & Site Title)
+      </h3>
+
+      <div style={{ backgroundColor: '#f9fafb', padding: '24px', borderRadius: '8px', marginBottom: '35px', border: '1px solid #f0f0f0' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', marginBottom: '25px' }}>
+          
+          {/* Main Website Logo */}
+          <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+              <label style={{ fontSize: '14px', fontWeight: 700, color: '#111827' }}>
+                Primary Website Logo
+              </label>
+              <span style={{ fontSize: '11px', color: '#6b7280', backgroundColor: '#f3f4f6', padding: '3px 8px', borderRadius: '4px' }}>
+                Header & Footer
+              </span>
+            </div>
+
+            {/* Dark background preview card so white/gold logos are visible */}
+            <div
+              style={{
+                width: '100%',
+                height: '110px',
+                borderRadius: '6px',
+                backgroundColor: '#1f2937',
+                backgroundImage: 'radial-gradient(#374151 1px, transparent 1px)',
+                backgroundSize: '12px 12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '15px',
+                padding: '10px',
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={mediaUrl(settings['site_logo'] || 'images/laslogo1.png')}
+                alt="Brand Logo Preview"
+                style={{ maxHeight: '90px', maxWidth: '100%', objectFit: 'contain' }}
+              />
+            </div>
+
+            <div style={{ marginBottom: '12px' }}>
+              <label style={{ display: 'block', fontSize: '12px', color: '#4b5563', marginBottom: '4px' }}>R2 Relative Path</label>
+              <input
+                type="text"
+                value={settings['site_logo'] || ''}
+                onChange={(e) => handleChange('site_logo', e.target.value)}
+                placeholder="images/laslogo1.png"
+                style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid #d1d5db', fontSize: '13px' }}
+              />
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+              <label
+                style={{
+                  padding: '8px 16px',
+                  backgroundColor: '#c5a880',
+                  color: '#fff',
+                  borderRadius: '5px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  cursor: uploadingLogo ? 'not-allowed' : 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                }}
+              >
+                <span>{uploadingLogo ? 'Uploading to R2...' : '↑ Upload New Logo'}</span>
+                <input
+                  type="file"
+                  accept="image/png,image/webp,image/svg+xml,image/jpeg"
+                  onChange={handleLogoUpload}
+                  disabled={uploadingLogo}
+                  style={{ display: 'none' }}
+                />
+              </label>
+              <span style={{ fontSize: '11px', color: '#6b7280' }}>Transparent PNG/WebP recommended</span>
+            </div>
+          </div>
+
+          {/* Browser Favicon */}
+          <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+              <label style={{ fontSize: '14px', fontWeight: 700, color: '#111827' }}>
+                Browser Favicon & App Icon
+              </label>
+              <span style={{ fontSize: '11px', color: '#6b7280', backgroundColor: '#f3f4f6', padding: '3px 8px', borderRadius: '4px' }}>
+                Browser Tabs & Bookmarks
+              </span>
+            </div>
+
+            {/* Browser tab mockup preview */}
+            <div
+              style={{
+                width: '100%',
+                height: '110px',
+                borderRadius: '6px',
+                backgroundColor: '#0f172a',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginBottom: '15px',
+                padding: '12px',
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: '#1e293b',
+                  borderRadius: '6px 6px 0 0',
+                  border: '1px solid #334155',
+                  padding: '8px 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  maxWidth: '240px',
+                  width: '100%',
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={mediaUrl(settings['site_favicon'] || 'images/favicons.png')}
+                  alt="Favicon Preview"
+                  style={{ width: '22px', height: '22px', objectFit: 'contain' }}
+                />
+                <span style={{ color: '#e2e8f0', fontSize: '12px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {settings['site_title'] || 'Lascigal Convention Centre'}
+                </span>
+              </div>
+            </div>
+
+            <div style={{ marginBottom: '12px' }}>
+              <label style={{ display: 'block', fontSize: '12px', color: '#4b5563', marginBottom: '4px' }}>R2 Relative Path</label>
+              <input
+                type="text"
+                value={settings['site_favicon'] || ''}
+                onChange={(e) => handleChange('site_favicon', e.target.value)}
+                placeholder="images/favicons.png"
+                style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid #d1d5db', fontSize: '13px' }}
+              />
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+              <label
+                style={{
+                  padding: '8px 16px',
+                  backgroundColor: '#c5a880',
+                  color: '#fff',
+                  borderRadius: '5px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  cursor: uploadingFavicon ? 'not-allowed' : 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                }}
+              >
+                <span>{uploadingFavicon ? 'Uploading to R2...' : '↑ Upload New Favicon'}</span>
+                <input
+                  type="file"
+                  accept="image/png,image/x-icon,image/svg+xml,image/webp"
+                  onChange={handleFaviconUpload}
+                  disabled={uploadingFavicon}
+                  style={{ display: 'none' }}
+                />
+              </label>
+              <span style={{ fontSize: '11px', color: '#6b7280' }}>Square PNG or ICO (32x32 to 128x128)</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Global SEO Title & Description */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+          <div>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, marginBottom: '6px' }}>Site Title (Browser Tab & SEO)</label>
+            <input
+              type="text"
+              value={settings['site_title'] || ''}
+              onChange={(e) => handleChange('site_title', e.target.value)}
+              placeholder="e.g. Lascigal Convention Centre | Kalampoor, Muvattupuzha"
+              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #d1d5db' }}
+            />
+          </div>
+
+          <div>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, marginBottom: '6px' }}>Site Meta Description (Google Search Result)</label>
+            <input
+              type="text"
+              value={settings['site_description'] || ''}
+              onChange={(e) => handleChange('site_description', e.target.value)}
+              placeholder="e.g. Lascigal Convention Centre offers spacious halls..."
+              style={{ width: '100%', padding: '10px', borderRadius: '6px', border: '1px solid #d1d5db' }}
+            />
+          </div>
+        </div>
+      </div>
 
       {/* 1. HOMEPAGE HERO BANNER */}
       <h3 style={{ fontSize: '18px', fontWeight: 700, borderBottom: '2px solid #c5a880', paddingBottom: '8px', marginBottom: '20px', color: '#1f2937' }}>
@@ -399,7 +646,7 @@ export default function SettingsManager({ initialSettings }: { initialSettings: 
 
       <button
         type="submit"
-        disabled={saving || uploadingHero || uploadingAbout}
+        disabled={saving || uploadingHero || uploadingAbout || uploadingLogo || uploadingFavicon}
         style={{
           padding: '14px 40px',
           backgroundColor: '#c5a880',

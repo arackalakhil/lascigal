@@ -2,14 +2,21 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { mediaUrl } from '@/lib/media';
 
 interface MobileNavProps {
   phone1: string;
   phone2: string;
   whatsapp: string;
+  logo?: string;
 }
 
-export default function MobileNav({ phone1, phone2, whatsapp }: MobileNavProps) {
+export default function MobileNav({
+  phone1,
+  phone2,
+  whatsapp,
+  logo = 'images/laslogo1.png',
+}: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen((prev) => !prev);
@@ -28,7 +35,11 @@ export default function MobileNav({ phone1, phone2, whatsapp }: MobileNavProps) 
           <div className="logo">
             <Link href="/" onClick={close}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/laslogo1.png" alt="Lascigal Logo" style={{ height: '70px', width: 'auto' }} />
+              <img
+                src={mediaUrl(logo)}
+                alt="Lascigal Logo"
+                style={{ height: '70px', width: 'auto', objectFit: 'contain' }}
+              />
             </Link>
           </div>
 
