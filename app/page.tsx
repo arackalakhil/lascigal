@@ -6,6 +6,7 @@ import BookingForm from '@/components/BookingForm';
 import CouponGenerator from '@/components/CouponGenerator';
 import prisma from '@/lib/prisma';
 import { mediaUrl } from '@/lib/media';
+import './homepage.css';
 
 // Revalidate page data every 60 seconds
 export const revalidate = 60;
@@ -29,7 +30,7 @@ export default async function HomePage() {
   const logo = settings['site_logo'] || 'images/laslogo1.png';
 
   const heroHeading = settings['hero_heading'] || 'Creating Unforgettable Moments for Every Occasion';
-  const heroSubheading = settings['hero_subheading'] || 'Welcome to Lascigal';
+  const heroSubheading = settings['hero_subheading'] || 'Welcome to Lascigal Convention Centre';
   const heroImage = settings['hero_image'] || 'images/gallery/DSC01156.jpg.webp';
   const offerBannerText =
     settings['offer_banner_text'] ||
@@ -42,313 +43,287 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header phone1={phone1} phone2={phone2} whatsapp={whatsapp} mapsUrl={mapsUrl} logo={logo} />
+      {/* 1. MODERN RESPONSIVE NAVBAR */}
+      <Header
+        phone1={phone1}
+        phone2={phone2}
+        whatsapp={whatsapp}
+        mapsUrl={mapsUrl}
+        logo={logo}
+      />
 
-      {/* Hero Banner Section */}
-      <section className="hero_banner_section" style={{ position: 'relative', width: '100%', minHeight: '550px', background: '#1c1c1c' }}>
-        <div style={{ position: 'relative', width: '100%', height: '550px', overflow: 'hidden' }}>
+      {/* 2. HERO BANNER SECTION */}
+      <section className="las_hero_section">
+        <div className="las_hero_bg_wrap">
           <Image
             src={mediaUrl(heroImage)}
             alt="Lascigal Convention Center Grand Hall"
             fill
             priority
-            style={{ objectFit: 'cover', opacity: 0.8 }}
+            style={{ objectFit: 'cover' }}
           />
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              textAlign: 'center',
-              padding: '0 20px',
-            }}
-          >
-            <h6
-              style={{
-                color: '#c5a880',
-                letterSpacing: '4px',
-                textTransform: 'uppercase',
-                fontSize: '15px',
-                fontWeight: 600,
-                marginBottom: '10px',
-              }}
+          <div className="las_hero_overlay"></div>
+        </div>
+
+        <div className="las_hero_content">
+          <div className="las_hero_badge">
+            <span>✨</span>
+            <span>{heroSubheading}</span>
+          </div>
+
+          <h1 className="las_hero_title">
+            {heroHeading}
+          </h1>
+
+          <p className="las_hero_description">
+            Premier destination in Kalampoor, Muvattupuzha for grand weddings, formal conventions,
+            family celebrations, and milestone events with world-class hospitality.
+          </p>
+
+          <div className="las_hero_btn_group">
+            <a href="#book" className="las_hero_btn_primary">
+              <span>Reserve Your Date</span>
+              <i className="fas fa-arrow-down"></i>
+            </a>
+
+            <Link href="/gallery" className="las_hero_btn_secondary">
+              <i className="fas fa-images"></i>
+              <span>Explore Gallery</span>
+            </Link>
+
+            <a
+              href={`https://wa.me/${whatsapp}?text=Hello%20Lascigal%20Convention%20Centre,%20I%20would%20like%20to%20inquire%20about%20booking.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="las_hero_btn_wa"
             >
-              {heroSubheading}
-            </h6>
-            <h1
-              style={{
-                color: '#ffffff',
-                fontSize: 'clamp(28px, 5vw, 52px)',
-                fontFamily: 'PT Serif, serif',
-                maxWidth: '900px',
-                margin: '0 auto 24px',
-                lineHeight: 1.25,
-              }}
-            >
-              {heroHeading}
-            </h1>
-            <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <Link
-                href="/contactus"
-                className="sc_button sc_button_square sc_button_style_filled sc_button_size_large"
-                style={{
-                  backgroundColor: '#c5a880',
-                  color: '#fff',
-                  padding: '14px 34px',
-                  fontWeight: 600,
-                  borderRadius: '4px',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                }}
-              >
-                Book Now
-              </Link>
-              <Link
-                href="/gallery"
-                className="sc_button sc_button_square sc_button_style_hovered sc_button_size_large"
-                style={{
-                  border: '2px solid #fff',
-                  color: '#fff',
-                  padding: '12px 30px',
-                  fontWeight: 600,
-                  borderRadius: '4px',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                }}
-              >
-                Explore Gallery
-              </Link>
+              <i className="fab fa-whatsapp"></i>
+              <span>Quick WhatsApp</span>
+            </a>
+          </div>
+
+          {/* Quick Highlight Feature Pills */}
+          <div className="las_hero_pills_strip">
+            <div className="las_hero_pill_item">
+              <i className="fas fa-users"></i>
+              <span>1000+ Guests Capacity</span>
+            </div>
+            <div className="las_hero_pill_item">
+              <i className="fas fa-snowflake"></i>
+              <span>100% Central AC</span>
+            </div>
+            <div className="las_hero_pill_item">
+              <i className="fas fa-square-parking"></i>
+              <span>Ample Dedicated Parking</span>
+            </div>
+            <div className="las_hero_pill_item">
+              <i className="fas fa-utensils"></i>
+              <span>Luxury Banquet Dining</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Offer Banner */}
-      <section className="no-col-padding" style={{ backgroundColor: '#c5a880', padding: '24px 15px', textAlign: 'center' }}>
-        <div className="content_wrap">
-          <h2 style={{ color: '#fff', margin: 0, fontSize: 'clamp(17px, 2.5vw, 24px)', fontWeight: 500 }}>
-            {offerBannerText}
-          </h2>
+      {/* 3. GOLD DISCOUNT & ANNOUNCEMENT RIBBON */}
+      <section id="offer" className="las_offer_ribbon">
+        <div className="las_container las_offer_inner">
+          <div className="las_offer_icon_badge">
+            <i className="fas fa-tag"></i>
+          </div>
+          <div className="las_offer_text_wrap">
+            <h2 className="las_offer_text">{offerBannerText}</h2>
+          </div>
+          <a href="#coupon" className="las_offer_btn">
+            Claim Discount Code →
+          </a>
         </div>
       </section>
 
-      {/* 6 Core Facilities / Services Section */}
-      <section className="no-col-padding" style={{ padding: '60px 0 30px' }}>
-        <div className="content_container">
-          <div className="sc_services_wrap">
-            <div className="sc_services sc_services_style_services-1 sc_services_type_images margin_bottom_medium sc_home-param-type-a">
-              <h6 className="sc_services_subtitle sc_item_subtitle" style={{ textAlign: 'center' }}>
-                welcome
-              </h6>
-              <h2
-                className="sc_services_title sc_item_title sc_item_title_without_descr"
-                style={{ textAlign: 'center', marginBottom: '40px' }}
-              >
-                Premier Convention & Event Facilities
-              </h2>
+      {/* 4. PREMIER 6 VENUE FACILITIES */}
+      <section id="facilities" className="las_section las_section_facilities">
+        <div className="las_container">
+          <div className="las_section_header">
+            <span className="las_eyebrow">WORLD-CLASS INFRASTRUCTURE</span>
+            <h2 className="las_section_title">Premier Convention & Event Facilities</h2>
+            <p className="las_section_subtitle">
+              Every detail engineered to ensure seamless grandeur, exceptional comfort, and peace of mind.
+            </p>
+          </div>
 
-              <div
-                className="columns_wrap"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                  gap: '30px',
-                  padding: '0 20px',
-                }}
-              >
-                {facilities.map((fac) => (
-                  <div
-                    key={fac.id}
-                    className="sc_services_item"
-                    style={{
-                      backgroundColor: '#fff',
-                      borderRadius: '8px',
-                      overflow: 'hidden',
-                      boxShadow: '0 6px 20px rgba(0,0,0,0.06)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                    }}
-                  >
-                    <div style={{ position: 'relative', height: '220px', width: '100%' }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={mediaUrl(fac.image)}
-                        alt={fac.title}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="sc_services_item_content" style={{ padding: '24px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                        {fac.icon && <i className={fac.icon} style={{ color: '#c5a880', fontSize: '20px' }}></i>}
-                        <h4 className="sc_services_item_title" style={{ margin: 0, fontSize: '1.25rem' }}>
-                          {fac.title}
-                        </h4>
+          <div className="las_facilities_grid">
+            {facilities.map((fac, idx) => (
+              <div key={fac.id} className="las_facility_card">
+                <div className="las_facility_img_wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={mediaUrl(fac.image)}
+                    alt={fac.title}
+                    className="las_facility_img"
+                    loading="lazy"
+                  />
+                  <div className="las_facility_num_badge">0{idx + 1}</div>
+                </div>
+
+                <div className="las_facility_content">
+                  <div className="las_facility_title_row">
+                    {fac.icon && (
+                      <div className="las_facility_icon_circle">
+                        <i className={fac.icon}></i>
                       </div>
-                      <p style={{ color: '#666', lineHeight: 1.6, fontSize: '14.5px', margin: 0 }}>
-                        {fac.description}
-                      </p>
-                    </div>
+                    )}
+                    <h3 className="las_facility_title">{fac.title}</h3>
                   </div>
-                ))}
+                  <p className="las_facility_desc">{fac.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. ABOUT LAS CIGAL TEASER */}
+      <section id="about" className="las_section las_section_about">
+        <div className="las_container">
+          <div className="las_about_grid">
+            <div className="las_about_text_col">
+              <span className="las_eyebrow">ABOUT LAS CIGAL CONVENTION CENTRE</span>
+              <h2 className="las_about_title">{aboutHeading}</h2>
+              <p className="las_about_p">{aboutText}</p>
+
+              {/* Key Amenities Checkpoints */}
+              <div className="las_about_checks">
+                <div className="las_check_item">
+                  <i className="fas fa-circle-check"></i>
+                  <span>Multi-tier Stage & Dynamic Audio-Visual Systems</span>
+                </div>
+                <div className="las_check_item">
+                  <i className="fas fa-circle-check"></i>
+                  <span>Dedicated Bride & Groom VIP Green Rooms</span>
+                </div>
+                <div className="las_check_item">
+                  <i className="fas fa-circle-check"></i>
+                  <span>Comprehensive CCTV Surveillance & Valet Management</span>
+                </div>
+              </div>
+
+              <div className="las_about_actions">
+                <Link href="/aboutus" className="las_btn_gold">
+                  <span>Read Director&apos;s Message</span>
+                  <i className="fas fa-arrow-right"></i>
+                </Link>
+                <a href="#book" className="las_btn_outline">
+                  Inquire Venue
+                </a>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* About Section Teaser */}
-      <section className="no-col-padding" style={{ padding: '50px 0', backgroundColor: '#f9f9f9' }}>
-        <div className="content_container" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
-          <div className="columns_wrap" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '40px' }}>
-            <div style={{ flex: '1 1 450px' }}>
-              <h6 className="sc_title sc_title_regular margin_top_null" style={{ color: '#c5a880', textTransform: 'uppercase' }}>
-                about us
-              </h6>
-              <h2 className="sc_title" style={{ fontSize: '2.1rem', lineHeight: 1.3, marginBottom: '20px' }}>
-                {aboutHeading}
-              </h2>
-              <p style={{ color: '#555', lineHeight: 1.8, fontSize: '16px', marginBottom: '24px' }}>
-                {aboutText}
-              </p>
-              <Link
-                href="/aboutus"
-                className="sc_button sc_button_square sc_button_style_filled sc_button_size_medium"
-                style={{
-                  backgroundColor: '#c5a880',
-                  color: '#fff',
-                  padding: '12px 28px',
-                  borderRadius: '4px',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                }}
-              >
-                Read Director&apos;s Message
-              </Link>
-            </div>
-            <div style={{ flex: '1 1 450px', position: 'relative', minHeight: '340px' }}>
-              <div style={{ borderRadius: '12px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.12)' }}>
+            <div className="las_about_img_col">
+              <div className="las_about_img_card">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={mediaUrl(aboutImage)}
                   alt="Lascigal Convention Center Architecture"
-                  style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block' }}
+                  className="las_about_img"
                 />
+                <div className="las_about_img_badge">
+                  <span className="las_badge_num">1000+</span>
+                  <span className="las_badge_text">Guest Capacity Auditorium</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Event Portfolio Teaser */}
-      <section className="no-col-padding" style={{ padding: '60px 0' }}>
-        <div className="content_container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <h6 style={{ textAlign: 'center', color: '#c5a880', textTransform: 'uppercase', letterSpacing: '2px', margin: 0 }}>
-            our events & portfolio
-          </h6>
-          <h2 style={{ textAlign: 'center', fontSize: '2.2rem', margin: '10px 0 40px' }}>
-            Elegance, Space, and Facilities Perfectly Crafted for Every Event
-          </h2>
+      {/* 6. FEATURED EVENTS & PORTFOLIO */}
+      <section id="events" className="las_section las_section_events">
+        <div className="las_container">
+          <div className="las_section_header">
+            <span className="las_eyebrow">EXCEPTIONAL EXPERIENCES</span>
+            <h2 className="las_section_title">Crafted for Every Milestone & Celebration</h2>
+            <p className="las_section_subtitle">
+              From lavish traditional weddings to high-profile business symposiums, our versatile venues adapt to your aspirations.
+            </p>
+          </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '24px',
-              marginBottom: '35px',
-            }}
-          >
+          <div className="las_events_grid">
             {featuredEvents.map((evt) => (
               <Link
                 key={evt.id}
                 href={`/events/${evt.slug}`}
-                style={{
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  backgroundColor: '#fff',
-                  borderRadius: '10px',
-                  overflow: 'hidden',
-                  boxShadow: '0 5px 15px rgba(0,0,0,0.07)',
-                  transition: 'transform 0.2s',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}
+                className="las_event_card"
               >
-                <div style={{ height: '200px', position: 'relative', overflow: 'hidden' }}>
+                <div className="las_event_img_wrap">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={mediaUrl(evt.heroImage)}
                     alt={evt.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    className="las_event_img"
                     loading="lazy"
                   />
+                  <span className="las_event_cat_badge">{evt.categoryName}</span>
                 </div>
-                <div style={{ padding: '16px' }}>
-                  <span style={{ fontSize: '12px', color: '#c5a880', fontWeight: 600, textTransform: 'uppercase' }}>
-                    {evt.categoryName}
-                  </span>
-                  <h4 style={{ margin: '6px 0 8px', fontSize: '1.1rem' }}>{evt.title}</h4>
-                  <p style={{ fontSize: '13.5px', color: '#777', margin: 0, lineHeight: 1.5 }}>
-                    {evt.summary ? evt.summary.slice(0, 85) + '...' : 'Explore features and hall layouts.'}
+
+                <div className="las_event_body">
+                  <h3 className="las_event_title">{evt.title}</h3>
+                  <p className="las_event_summary">
+                    {evt.summary ? evt.summary.slice(0, 85) + '...' : 'Explore seating arrangements and hall configurations.'}
                   </p>
+                  <span className="las_event_link_arrow">
+                    <span>View Event Inclusions</span>
+                    <i className="fas fa-arrow-right"></i>
+                  </span>
                 </div>
               </Link>
             ))}
           </div>
 
-          <div style={{ textAlign: 'center' }}>
-            <Link
-              href="/portfolio"
-              style={{
-                backgroundColor: '#2c2c2c',
-                color: '#fff',
-                padding: '12px 32px',
-                borderRadius: '4px',
-                textDecoration: 'none',
-                fontWeight: 600,
-                display: 'inline-block',
-              }}
-            >
-              View All Event Categories
+          <div className="las_events_footer_btn">
+            <Link href="/portfolio" className="las_btn_dark_lg">
+              <span>View All Event Categories & Details</span>
+              <i className="fas fa-layer-group"></i>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Coupon Generator Banner */}
-      <section className="no-col-padding" style={{ backgroundColor: '#222', padding: '50px 20px', color: '#fff' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '2rem', color: '#fff', marginBottom: '10px' }}>
-            Book now! Click below to claim your discount coupon:
-          </h3>
-          <p style={{ color: '#aaa', marginBottom: '25px', fontSize: '15px' }}>
-            Generate your exclusive promo code and apply it in your reservation form below to receive special pricing on venue bookings.
-          </p>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <CouponGenerator />
+      {/* 7. COUPON GENERATOR BANNER */}
+      <section id="coupon" className="las_section las_section_coupon">
+        <div className="las_container">
+          <div className="las_coupon_card">
+            <div className="las_coupon_badge">
+              <i className="fas fa-sparkles"></i>
+              <span>SPECIAL PROMOTIONAL OFFER</span>
+            </div>
+            <h3 className="las_coupon_title">Claim Your Exclusive Venue Discount Coupon</h3>
+            <p className="las_coupon_desc">
+              Generate your unique promo code below and mention it during reservation to receive special pricing on wedding and corporate dates.
+            </p>
+            <div className="las_coupon_generator_box">
+              <CouponGenerator />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Booking Form Section */}
-      <section className="no-col-padding" style={{ padding: '60px 20px', backgroundColor: '#fcfcfc' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-          <div className="sc_form sc_form_style_form_1 aligncenter">
-            <h3 className="sc_form_title sc_item_title sc_item_title_without_descr" style={{ fontSize: '2.2rem', marginBottom: '8px' }}>
-              Book Now
-            </h3>
-            <h6 className="sc_form_subtitle sc_item_subtitle" style={{ color: '#888', marginBottom: '35px' }}>
-              Fill out the form below to reserve your date
-            </h6>
+      {/* 8. INSTANT BOOKING RESERVATION FORM */}
+      <section id="book" className="las_section las_section_booking">
+        <div className="las_container">
+          <div className="las_booking_card">
+            <div className="las_section_header" style={{ marginBottom: '30px' }}>
+              <span className="las_eyebrow">RESERVE YOUR DATE</span>
+              <h2 className="las_section_title">Book Lascigal Convention Centre</h2>
+              <p className="las_section_subtitle">
+                Fill out the quick inquiry form below. Our venue coordinators will get back to you with availability and customized packages.
+              </p>
+            </div>
+
             <BookingForm />
           </div>
         </div>
       </section>
 
+      {/* 9. MODERN RESPONSIVE FOOTER */}
       <Footer
         phone1={phone1}
         phone2={phone2}

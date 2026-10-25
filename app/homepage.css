@@ -1,0 +1,1341 @@
+/* ==========================================================================
+   Lascigal Convention Centre - Modern Responsive Theme & Layout
+   ========================================================================== */
+
+/* Container */
+.las_container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Global Section Styles */
+.las_section {
+  padding: 80px 0;
+}
+
+.las_eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #c5a880;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.las_section_header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 50px;
+}
+
+.las_section_title {
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 14px;
+  line-height: 1.25;
+  font-family: 'PT Serif', serif;
+}
+
+.las_section_subtitle {
+  color: #64748b;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 1. TOP UTILITY BAR */
+.las_top_utility_bar {
+  background-color: #12141a;
+  color: #94a3b8;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 0;
+}
+
+.las_utility_inner {
+  display: flex;
+  align-items: center;
+  justifyContent: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.las_utility_left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.las_utility_item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.las_utility_item a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.las_utility_item a:hover {
+  color: #c5a880;
+}
+
+.las_sep {
+  margin: 0 4px;
+  color: #475569;
+}
+
+.las_utility_right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.las_utility_whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #25D366;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 12.5px;
+}
+
+.las_utility_admin_pill {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 11px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.las_utility_admin_pill:hover {
+  opacity: 1;
+  color: #c5a880;
+}
+
+/* 2. STICKY NAVBAR */
+.las_navbar_wrap {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(22, 24, 30, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.25);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.las_navbar_scrolled {
+  background: rgba(15, 17, 21, 0.98);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.las_navbar_inner {
+  display: flex;
+  align-items: center;
+  justifyContent: space-between;
+  height: 80px;
+  transition: height 0.3s ease;
+}
+
+.las_navbar_scrolled .las_navbar_inner {
+  height: 68px;
+}
+
+.las_brand_logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.las_logo_img {
+  height: 62px;
+  width: auto;
+  object-fit: contain;
+  transition: height 0.3s ease;
+}
+
+.las_navbar_scrolled .las_logo_img {
+  height: 52px;
+}
+
+.las_desktop_nav {
+  display: flex;
+  align-items: center;
+}
+
+.las_nav_list {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.las_nav_link {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.2s;
+}
+
+.las_nav_link:hover,
+.las_nav_active {
+  color: #c5a880;
+}
+
+.las_nav_link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #c5a880;
+  transition: width 0.25s ease;
+}
+
+.las_nav_link:hover::after,
+.las_nav_active::after {
+  width: 100%;
+}
+
+.las_nav_actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.las_btn_book_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #c5a880;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.las_btn_book_cta:hover {
+  background-color: #b09166;
+  transform: translateY(-1px);
+}
+
+.las_mobile_action_btn {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.las_mobile_whatsapp {
+  color: #25D366;
+}
+
+.las_hamburger_btn {
+  display: none;
+  flex-direction: column;
+  justifyContent: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.las_bar {
+  width: 100%;
+  height: 2.5px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+/* 3. MOBILE DRAWER */
+.las_mobile_drawer_backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.las_mobile_drawer_content {
+  width: 300px;
+  max-width: 85vw;
+  height: 100%;
+  background-color: #15171e;
+  display: flex;
+  flex-direction: column;
+  justifyContent: space-between;
+  padding: 24px;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.las_drawer_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+}
+
+.las_drawer_close_btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.las_drawer_nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.las_drawer_nav li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.las_drawer_nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  color: #f1f5f9;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.las_drawer_nav a.active,
+.las_drawer_nav a:hover {
+  color: #c5a880;
+}
+
+.las_drawer_nav i {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.las_drawer_footer {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.las_drawer_cta {
+  display: block;
+  text-align: center;
+  background-color: #c5a880;
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.las_drawer_contact_box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13.5px;
+}
+
+.las_drawer_contact_row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #cbd5e1;
+}
+
+.las_drawer_contact_row a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+/* 4. HERO SECTION */
+.las_hero_section {
+  position: relative;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111318;
+  color: #fff;
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+.las_hero_bg_wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.las_hero_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(17, 19, 24, 0.45) 0%, rgba(17, 19, 24, 0.82) 80%, rgba(17, 19, 24, 0.95) 100%);
+}
+
+.las_hero_content {
+  position: relative;
+  z-index: 2;
+  max-width: 950px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.las_hero_badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(197, 168, 128, 0.18);
+  border: 1px solid rgba(197, 168, 128, 0.45);
+  color: #dfc6a3;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.las_hero_title {
+  font-size: clamp(30px, 5.5vw, 56px);
+  font-family: 'PT Serif', serif;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 20px;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.6);
+}
+
+.las_hero_description {
+  font-size: clamp(15px, 2vw, 18px);
+  color: #e2e8f0;
+  line-height: 1.6;
+  max-width: 760px;
+  margin: 0 auto 35px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.las_hero_btn_group {
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 45px;
+}
+
+.las_hero_btn_primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #c5a880;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 34px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(197, 168, 128, 0.4);
+  transition: all 0.25s ease;
+}
+
+.las_hero_btn_primary:hover {
+  background-color: #b09166;
+  transform: translateY(-2px);
+}
+
+.las_hero_btn_secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.las_hero_btn_secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.las_hero_btn_wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 26px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  transition: all 0.25s ease;
+}
+
+.las_hero_btn_wa:hover {
+  background: #20ba59;
+  transform: translateY(-2px);
+}
+
+.las_hero_pills_strip {
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.las_hero_pill_item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(17, 19, 24, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.las_hero_pill_item i {
+  color: #c5a880;
+}
+
+/* 5. OFFER RIBBON */
+.las_offer_ribbon {
+  background: linear-gradient(135deg, #c5a880 0%, #d4bb98 50%, #b39166 100%);
+  padding: 20px 0;
+  color: #fff;
+}
+
+.las_offer_inner {
+  display: flex;
+  align-items: center;
+  justifyContent: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.las_offer_icon_badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.las_offer_text_wrap {
+  flex: 1;
+  min-width: 260px;
+}
+
+.las_offer_text {
+  margin: 0;
+  font-size: clamp(16px, 2.2vw, 21px);
+  font-weight: 600;
+  color: #1a150e;
+  line-height: 1.4;
+}
+
+.las_offer_btn {
+  background-color: #111318;
+  color: #dfc6a3;
+  padding: 10px 22px;
+  border-radius: 5px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.las_offer_btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* 6. FACILITIES GRID */
+.las_section_facilities {
+  background-color: #f8fafc;
+}
+
+.las_facilities_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.las_facility_card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.las_facility_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.las_facility_img_wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.las_facility_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.las_facility_card:hover .las_facility_img {
+  transform: scale(1.05);
+}
+
+.las_facility_num_badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(17, 19, 24, 0.75);
+  backdrop-filter: blur(4px);
+  color: #dfc6a3;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.las_facility_content {
+  padding: 26px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.las_facility_title_row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.las_facility_icon_circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background-color: rgba(197, 168, 128, 0.15);
+  color: #c5a880;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.las_facility_title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.las_facility_desc {
+  color: #64748b;
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 7. ABOUT SECTION */
+.las_section_about {
+  background-color: #ffffff;
+}
+
+.las_about_grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.las_about_title {
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0 0 20px;
+  font-family: 'PT Serif', serif;
+}
+
+.las_about_p {
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0 0 25px;
+}
+
+.las_about_checks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.las_check_item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.las_check_item i {
+  color: #c5a880;
+  font-size: 16px;
+}
+
+.las_about_actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.las_btn_gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #c5a880;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px 26px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.las_btn_gold:hover {
+  background-color: #b09166;
+  transform: translateY(-2px);
+}
+
+.las_btn_outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 24px;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-weight: 600;
+  font-size: 14.5px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.las_btn_outline:hover {
+  border-color: #0f172a;
+  color: #0f172a;
+}
+
+.las_about_img_card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e2e8f0;
+}
+
+.las_about_img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.las_about_img_badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(17, 19, 24, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 168, 128, 0.4);
+  border-radius: 10px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+}
+
+.las_badge_num {
+  font-size: 24px;
+  font-weight: 800;
+  color: #c5a880;
+  font-family: 'PT Serif', serif;
+}
+
+.las_badge_text {
+  font-size: 13.5px;
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+/* 8. EVENTS GRID */
+.las_section_events {
+  background-color: #f8fafc;
+}
+
+.las_events_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.las_event_card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.las_event_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+}
+
+.las_event_img_wrap {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.las_event_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.las_event_card:hover .las_event_img {
+  transform: scale(1.05);
+}
+
+.las_event_cat_badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(17, 19, 24, 0.85);
+  backdrop-filter: blur(4px);
+  color: #c5a880;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.las_event_body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justifyContent: space-between;
+}
+
+.las_event_title {
+  font-size: 1.15rem;
+  color: #0f172a;
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.las_event_summary {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
+
+.las_event_link_arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #c5a880;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.las_events_footer_btn {
+  text-align: center;
+}
+
+.las_btn_dark_lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #0f172a;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 34px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.las_btn_dark_lg:hover {
+  background-color: #1e293b;
+  transform: translateY(-2px);
+}
+
+/* 9. COUPON SECTION */
+.las_section_coupon {
+  background-color: #111318;
+  color: #fff;
+  padding: 70px 0;
+}
+
+.las_coupon_card {
+  max-width: 840px;
+  margin: 0 auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  border-radius: 16px;
+  padding: 45px 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.las_coupon_badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #c5a880;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.las_coupon_title {
+  font-size: clamp(22px, 3vw, 32px);
+  color: #ffffff;
+  margin: 0 0 12px;
+  font-family: 'PT Serif', serif;
+}
+
+.las_coupon_desc {
+  color: #94a3b8;
+  font-size: 15px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.las_coupon_generator_box {
+  display: flex;
+  justify-content: center;
+}
+
+/* 10. BOOKING FORM SECTION */
+.las_section_booking {
+  background-color: #f1f5f9;
+}
+
+.las_booking_card {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 45px 35px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+/* 11. FOOTER STYLES */
+.las_main_footer {
+  background-color: #12141a;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.las_footer_map_section {
+  padding: 40px 0 20px;
+  background-color: #171922;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.las_footer_map_container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.las_footer_map_header {
+  display: flex;
+  align-items: center;
+  justifyContent: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.las_map_badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #c5a880;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.las_map_title {
+  font-size: 1.3rem;
+  color: #fff;
+  margin: 0;
+  font-weight: 600;
+}
+
+.las_map_directions_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #c5a880;
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.las_map_directions_btn:hover {
+  background-color: #b09166;
+}
+
+.las_footer_iframe_wrap {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.las_footer_grid_wrap {
+  padding: 60px 0 40px;
+}
+
+.las_footer_columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1.8fr;
+  gap: 40px;
+}
+
+.las_footer_col {
+  display: flex;
+  flex-direction: column;
+}
+
+.las_footer_logo {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.las_footer_about {
+  line-height: 1.6;
+  color: #94a3b8;
+  font-size: 13.5px;
+  margin: 0 0 20px;
+}
+
+.las_footer_socials {
+  display: flex;
+  gap: 10px;
+}
+
+.las_social_btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.las_social_btn:hover {
+  background-color: #c5a880;
+  transform: translateY(-2px);
+}
+
+.las_social_wa:hover {
+  background-color: #25D366;
+}
+
+.las_footer_heading {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin: 0 0 18px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.las_footer_heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  height: 2px;
+  background-color: #c5a880;
+}
+
+.las_footer_links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.las_footer_links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+
+.las_footer_links a:hover {
+  color: #c5a880;
+  transform: translateX(4px);
+}
+
+.las_footer_contact_list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.las_footer_contact_item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.las_footer_contact_item a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.las_footer_contact_item a:hover {
+  color: #c5a880;
+}
+
+.las_footer_bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px 0;
+  background-color: #0d0f14;
+}
+
+.las_footer_bottom_inner {
+  display: flex;
+  align-items: center;
+  justifyContent: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.las_copyright_text {
+  margin: 0;
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.las_admin_link {
+  color: #475569;
+  font-size: 12px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.las_admin_link:hover {
+  color: #c5a880;
+}
+
+/* 12. RESPONSIVE BREAKPOINTS */
+@media (max-width: 1024px) {
+  .las_desktop_nav {
+    display: none !important;
+  }
+  .las_btn_book_cta {
+    display: none !important;
+  }
+  .las_hamburger_btn {
+    display: flex !important;
+  }
+  .las_mobile_action_btn {
+    display: flex !important;
+  }
+  .las_about_grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .las_about_img {
+    height: 340px;
+  }
+  .las_footer_columns {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .las_section {
+    padding: 60px 0;
+  }
+  .las_hero_section {
+    min-height: 70vh;
+    padding: 60px 15px;
+  }
+  .las_hero_btn_group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .las_hero_btn_primary,
+  .las_hero_btn_secondary,
+  .las_hero_btn_wa {
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+  }
+  .las_offer_inner {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  .las_facilities_grid {
+    grid-template-columns: 1fr;
+  }
+  .las_events_grid {
+    grid-template-columns: 1fr;
+  }
+  .las_booking_card {
+    padding: 30px 20px;
+  }
+  .las_coupon_card {
+    padding: 30px 20px;
+  }
+  .las_footer_columns {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .las_footer_map_header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .las_hide_sm {
+    display: none !important;
+  }
+  .las_navbar_inner {
+    height: 68px;
+  }
+  .las_logo_img {
+    height: 48px;
+  }
+}

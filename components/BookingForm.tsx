@@ -76,50 +76,70 @@ export default function BookingForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="google-sheets-form" data-formtype="form_1">
-      <div className="sc_form_info columns_wrap">
+    <form onSubmit={handleSubmit} className="las_booking_form">
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))',
+          gap: '20px',
+          textAlign: 'left',
+          marginBottom: '20px',
+        }}
+      >
         {/* Name */}
-        <div className="sc_form_item sc_form_field label_over column-1_2">
+        <div>
+          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
+            Full Name *
+          </label>
           <input
             id="sc_form_username"
             type="text"
             name="username"
             value={formData.username}
             onChange={handleChange}
-            placeholder="Name *"
+            placeholder="Your Name"
             required
+            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
           />
         </div>
 
         {/* Email */}
-        <div className="sc_form_item sc_form_field label_over column-1_2">
+        <div>
+          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
+            Email Address *
+          </label>
           <input
             id="sc_form_email"
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="E-mail *"
+            placeholder="your.email@example.com"
             required
+            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
           />
         </div>
 
         {/* Phone Number */}
-        <div className="sc_form_item sc_form_field label_over column-1_2">
+        <div>
+          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
+            Phone Number *
+          </label>
           <input
             id="sc_form_phone"
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="Phone Number *"
+            placeholder="Phone / Mobile Number"
             required
+            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
           />
         </div>
 
         {/* Event Date */}
-        <div className="sc_form_item sc_form_field label_over column-1_2">
-          <label htmlFor="sc_form_date" style={{ display: 'block', fontSize: '13px', marginBottom: '4px', textAlign: 'left' }}>
+        <div>
+          <label htmlFor="sc_form_date" style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
             Event Date *
           </label>
           <input
@@ -129,56 +149,73 @@ export default function BookingForm() {
             value={formData.event_date}
             onChange={handleChange}
             required
+            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
           />
         </div>
 
         {/* Event Type */}
-        <div className="sc_form_item sc_form_field label_over column-1_2">
+        <div>
+          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
+            Event Type *
+          </label>
           <input
             id="sc_form_event"
             type="text"
             name="event_type"
             value={formData.event_type}
             onChange={handleChange}
-            placeholder="Event Type (Wedding, Birthday, Conference...)"
+            placeholder="Wedding, Conference, Birthday..."
             required
+            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
           />
         </div>
 
         {/* Event Time */}
-        <div className="sc_form_item sc_form_field label_over column-1_2">
+        <div>
+          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
+            Event Timing *
+          </label>
           <input
             id="sc_form_time"
             type="text"
             name="time"
             value={formData.time}
             onChange={handleChange}
-            placeholder="Event Time (e.g. 10:00 AM - 4:00 PM)"
+            placeholder="e.g. 10:00 AM - 4:00 PM"
             required
+            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
           />
         </div>
 
         {/* Coupon Code */}
-        <div className="sc_form_item sc_form_field label_over column-1_2">
+        <div style={{ gridColumn: '1 / -1' }}>
+          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
+            Promo / Coupon Code (Optional)
+          </label>
           <input
             id="sc_form_coupon"
             type="text"
             name="coupon"
             value={formData.coupon}
             onChange={handleChange}
-            placeholder="Coupon Code (Optional)"
+            placeholder="Enter coupon code if you have one"
+            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
           />
         </div>
 
         {/* Message */}
-        <div className="sc_form_item sc_form_message column-1_1">
+        <div style={{ gridColumn: '1 / -1' }}>
+          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
+            Special Notes or Additional Inquiries
+          </label>
           <textarea
             id="sc_form_message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Additional requirements or special notes..."
+            placeholder="Tell us about expected guest count, stage preferences, or catering questions..."
             rows={4}
+            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', lineHeight: 1.5, boxSizing: 'border-box' }}
           ></textarea>
         </div>
       </div>
@@ -187,13 +224,14 @@ export default function BookingForm() {
         <div
           style={{
             margin: '20px auto',
-            padding: '12px 20px',
+            padding: '14px 20px',
             borderRadius: '6px',
-            backgroundColor: status.type === 'success' ? '#e6f4ea' : '#fce8e6',
-            color: status.type === 'success' ? '#137333' : '#c5221f',
-            border: `1px solid ${status.type === 'success' ? '#ceead6' : '#fad2cf'}`,
+            backgroundColor: status.type === 'success' ? '#dcfce7' : '#fee2e2',
+            color: status.type === 'success' ? '#166534' : '#991b1b',
+            border: `1px solid ${status.type === 'success' ? '#bbf7d0' : '#fecaca'}`,
             fontSize: '15px',
-            maxWidth: '600px',
+            fontWeight: 500,
+            maxWidth: '650px',
           }}
         >
           {status.message}
@@ -201,18 +239,25 @@ export default function BookingForm() {
       )}
 
       {/* Submit Button */}
-      <div className="sc_form_item sc_form_button" style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '24px', textAlign: 'center' }}>
         <button
           type="submit"
           disabled={loading}
           style={{
             cursor: loading ? 'not-allowed' : 'pointer',
             opacity: loading ? 0.7 : 1,
-            padding: '12px 36px',
+            padding: '14px 44px',
             fontSize: '16px',
+            fontWeight: 700,
+            backgroundColor: '#c5a880',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '6px',
+            boxShadow: '0 4px 15px rgba(197, 168, 128, 0.4)',
+            transition: 'all 0.2s',
           }}
         >
-          {loading ? 'Submitting Reservation...' : 'Send Message'}
+          {loading ? 'Submitting Reservation...' : 'Submit Booking Inquiry'}
         </button>
       </div>
     </form>

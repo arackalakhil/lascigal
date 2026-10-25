@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './homepage.css';
 import ScrollToTop from '@/components/ScrollToTop';
 import prisma from '@/lib/prisma';
 import { mediaUrl } from '@/lib/media';

@@ -23,121 +23,166 @@ export default function Footer({
   logo = 'images/laslogo1.png',
 }: FooterProps) {
   return (
-    <>
-      {/* Contact Cards Section */}
-      <footer className="contacts_wrap scheme_original">
-        <div className="contacts_wrap_inner">
-          <div className="content_wrap">
-            <div className="contacts_address">
-              <address className="address_right address_block">
-                <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
-                  <span className="sc_icon fa-solid fa-location-dot"></span>
-                </a>
-                <p className="address_title">Address</p>
-                <p>
-                  {addressLine1} <br />
-                  {addressPincode}
-                  <br />
-                </p>
-              </address>
+    <footer className="las_main_footer">
+      {/* 1. INTERACTIVE GOOGLE MAPS SECTION */}
+      {mapsEmbed && (
+        <div className="las_footer_map_section">
+          <div className="las_footer_map_container">
+            <div className="las_footer_map_header">
+              <div>
+                <span className="las_map_badge">VISIT US</span>
+                <h3 className="las_map_title">Prime Location in Kalampoor, Muvattupuzha</h3>
+              </div>
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="las_map_directions_btn"
+              >
+                <i className="fa-solid fa-location-dot"></i>
+                <span>Get Directions on Google Maps</span>
+              </a>
+            </div>
 
-              <address className="address_center phone_block">
-                <span className="sc_icon fas fa-phone"></span>
-                <p className="address_title">Phone</p>
-                <p>
-                  <a href={`tel:${phone1}`}>{phone1}</a>
-                </p>
-                <p>
-                  <a href={`tel:${phone2}`}>{phone2}</a>
-                </p>
-              </address>
-
-              <address className="address_left email_block">
-                <span className="sc_icon fas fa-envelope"></span>
-                <p className="address_title">Email address</p>
-                <p>
-                  <a href={`mailto:${email}`}>{email}</a>
-                </p>
-              </address>
+            <div className="las_footer_iframe_wrap">
+              <iframe
+                src={mapsEmbed}
+                width="100%"
+                height="380"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Lascigal Convention Centre Location Map"
+              ></iframe>
             </div>
           </div>
         </div>
-      </footer>
+      )}
 
-      {/* Google Maps Embed */}
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '20px 0' }}>
-        <iframe
-          src={mapsEmbed}
-          width="100%"
-          height="450"
-          style={{ border: 0, maxWidth: '1200px' }}
-          allowFullScreen={true}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Lascigal Convention Centre Location Map"
-        ></iframe>
-      </div>
+      {/* 2. FOOTER CONTENT GRID */}
+      <div className="las_footer_grid_wrap">
+        <div className="las_footer_container">
+          <div className="las_footer_columns">
+            {/* Column 1: Brand Info */}
+            <div className="las_footer_col las_footer_brand_col">
+              <Link href="/" className="las_footer_logo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={mediaUrl(logo)}
+                  alt="Lascigal Convention Centre Logo"
+                  style={{ height: '75px', width: 'auto', objectFit: 'contain' }}
+                />
+              </Link>
+              <p className="las_footer_about">
+                Lascigal Convention Centre provides world-class air-conditioned event halls,
+                luxury banquet dining, and generous parking for weddings, conferences, and celebrations.
+              </p>
+              <div className="las_footer_socials">
+                <a href="#" aria-label="Facebook" className="las_social_btn">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" aria-label="Instagram" className="las_social_btn">
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="YouTube" className="las_social_btn">
+                  <i className="fab fa-youtube"></i>
+                </a>
+                <a
+                  href={`https://wa.me/91${phone1}?text=Hello%20Lascigal`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="las_social_btn las_social_wa"
+                >
+                  <i className="fab fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
 
-      {/* Socials & Logo */}
-      <footer className="footer_wrap widget_area scheme_original">
-        <div className="footer_wrap_inner widget_area_inner">
-          <div className="content_wrap">
-            <aside id="lovestory_widget_socials-2" className="widget_number_1 widget widget_socials">
-              <div className="widget_inner">
-                <div className="logo" style={{ marginBottom: '20px' }}>
-                  <Link href="/">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={mediaUrl(logo)}
-                      className="logo_main"
-                      alt="Lascigal Logo"
-                      style={{ height: '70px', width: 'auto', objectFit: 'contain' }}
-                    />
-                  </Link>
+            {/* Column 2: Navigation Links */}
+            <div className="las_footer_col">
+              <h4 className="las_footer_heading">Explore</h4>
+              <ul className="las_footer_links">
+                <li><Link href="/">Home Page</Link></li>
+                <li><Link href="/aboutus">About Our Venue</Link></li>
+                <li><Link href="/#facilities">Venue Facilities</Link></li>
+                <li><Link href="/portfolio">Events & Portfolios</Link></li>
+                <li><Link href="/gallery">Photo Gallery</Link></li>
+                <li><Link href="/contactus">Contact & Reservations</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 3: Event Types */}
+            <div className="las_footer_col">
+              <h4 className="las_footer_heading">Celebrations</h4>
+              <ul className="las_footer_links">
+                <li><Link href="/events/weddings-receptions">Grand Weddings</Link></li>
+                <li><Link href="/events/engagement-betrothal">Engagements & Betrothals</Link></li>
+                <li><Link href="/events/corporate-conferences">Corporate Conferences</Link></li>
+                <li><Link href="/events/birthdays-anniversaries">Birthdays & Anniversaries</Link></li>
+                <li><Link href="/events/exhibitions-trade-fairs">Trade Expos & Exhibitions</Link></li>
+                <li><Link href="/events/award-ceremonies-galas">Award Shows & Galas</Link></li>
+              </ul>
+            </div>
+
+            {/* Column 4: Direct Contact */}
+            <div className="las_footer_col">
+              <h4 className="las_footer_heading">Contact & Booking</h4>
+              <div className="las_footer_contact_list">
+                <div className="las_footer_contact_item">
+                  <i className="fa-solid fa-location-dot" style={{ color: '#c5a880' }}></i>
+                  <div>
+                    <span>{addressLine1}</span>
+                    <br />
+                    <span>PIN: {addressPincode}</span>
+                  </div>
                 </div>
-                <div className="sc_socials sc_socials_type_icons sc_socials_shape_round sc_socials_size_tiny">
-                  <div className="sc_socials_item">
-                    <a href="#" className="social_icons" aria-label="Facebook">
-                      <span className="fa-brands fa-facebook"></span>
-                    </a>
+
+                <div className="las_footer_contact_item">
+                  <i className="fas fa-phone" style={{ color: '#c5a880' }}></i>
+                  <div>
+                    <a href={`tel:${phone1}`}>{phone1}</a>
+                    <span style={{ margin: '0 6px', color: '#666' }}>/</span>
+                    <a href={`tel:${phone2}`}>{phone2}</a>
                   </div>
-                  <div className="sc_socials_item">
-                    <a href="#" className="social_icons social_twitter" aria-label="Twitter">
-                      <span className="fa-brands fa-x-twitter"></span>
-                    </a>
-                  </div>
-                  <div className="sc_socials_item">
-                    <a href="#" className="social_icons social_instagramm" aria-label="Instagram">
-                      <span className="fa-brands fa-instagram"></span>
-                    </a>
-                  </div>
-                  <div className="sc_socials_item">
-                    <a href="#" className="social_icons social_gplus" aria-label="YouTube">
-                      <span className="fa-brands fa-youtube"></span>
-                    </a>
-                  </div>
+                </div>
+
+                <div className="las_footer_contact_item">
+                  <i className="fas fa-envelope" style={{ color: '#c5a880' }}></i>
+                  <a href={`mailto:${email}`}>{email}</a>
+                </div>
+
+                <div className="las_footer_contact_item">
+                  <i className="fab fa-whatsapp" style={{ color: '#25D366' }}></i>
+                  <a
+                    href={`https://wa.me/91${phone1}?text=Hello%20Lascigal%20Convention%20Centre`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: '#25D366', fontWeight: 600 }}
+                  >
+                    Direct WhatsApp Support
+                  </a>
                 </div>
               </div>
-            </aside>
-          </div>
-        </div>
-      </footer>
-
-      {/* Copyright */}
-      <div className="copyright_wrap copyright_style_text scheme_original">
-        <div className="copyright_wrap_inner">
-          <div className="content_wrap">
-            <div className="copyright_text">
-              <p>
-                lascigal &copy; {new Date().getFullYear()} All Rights Reserved.{' '}
-                <Link href="/admin" style={{ opacity: 0.2, fontSize: '11px', textDecoration: 'none' }}>
-                  Admin
-                </Link>
-              </p>
             </div>
           </div>
         </div>
       </div>
-    </>
+
+      {/* 3. COPYRIGHT BAR */}
+      <div className="las_footer_bottom">
+        <div className="las_footer_container las_footer_bottom_inner">
+          <p className="las_copyright_text">
+            &copy; {new Date().getFullYear()} Lascigal Convention Centre. All rights reserved.
+          </p>
+          <div className="las_footer_bottom_links">
+            <Link href="/admin" className="las_admin_link">
+              Admin Portal
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
