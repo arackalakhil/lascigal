@@ -1,11 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap');
-@import '/css/fontello/css/fontello.css';
-@import '/css/entypo/entypo.min.css';
-@import '/css/style.css';
-@import '/css/template.shortcodes.css';
-@import '/css/template.css';
-@import '/css/core.animation.css';
-@import '/css/responsive.css';
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Raleway:wght@300;400;500;600;700&display=swap');
 
 /* Next.js & modern browser compatibility fixes */
 html {

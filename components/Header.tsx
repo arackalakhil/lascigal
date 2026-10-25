@@ -25,17 +25,25 @@ export default function Header({
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile drawer on route navigation
+  // Close mobile drawer on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
+
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileMenuOpen]);
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -48,18 +56,18 @@ export default function Header({
 
   return (
     <>
-      {/* 1. TOP UTILITY BAR (Desktop & Tablet) */}
+      {/* ─── TOP UTILITY BAR ─── */}
       <div className="las_top_utility_bar">
         <div className="las_container las_utility_inner">
           <div className="las_utility_left">
             <span className="las_utility_item">
-              <i className="fas fa-phone"></i>
+              <i className="fas fa-phone-alt" />
               <a href={`tel:${phone1}`}>{phone1}</a>
-              <span className="las_sep">/</span>
+              <span className="las_sep">|</span>
               <a href={`tel:${phone2}`}>{phone2}</a>
             </span>
             <span className="las_utility_item las_hide_sm">
-              <i className="fa-solid fa-location-dot" style={{ color: '#c5a880' }}></i>
+              <i className="fas fa-map-marker-alt" style={{ color: '#c5a880' }} />
               <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
                 Kalampoor, Muvattupuzha
               </a>
@@ -73,7 +81,7 @@ export default function Header({
               rel="noopener noreferrer"
               className="las_utility_whatsapp"
             >
-              <i className="fab fa-whatsapp"></i>
+              <i className="fab fa-whatsapp" />
               <span>WhatsApp Us</span>
             </a>
             <Link href="/admin" className="las_utility_admin_pill">
@@ -83,8 +91,8 @@ export default function Header({
         </div>
       </div>
 
-      {/* 2. MAIN STICKY NAVIGATION BAR */}
-      <header className={`las_navbar_wrap ${scrolled ? 'las_navbar_scrolled' : ''}`}>
+      {/* ─── MAIN STICKY NAVIGATION BAR ─── */}
+      <header className={`las_navbar_wrap${scrolled ? ' las_navbar_scrolled' : ''}`}>
         <div className="las_container las_navbar_inner">
           {/* Brand Logo */}
           <Link href="/" className="las_brand_logo" aria-label="Lascigal Home">
@@ -102,12 +110,12 @@ export default function Header({
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
-                  <li key={link.name} className="las_nav_item">
+                  <li key={link.name}>
                     <Link
                       href={link.href}
-                      className={`las_nav_link ${isActive ? 'las_nav_active' : ''}`}
+                      className={`las_nav_link${isActive ? ' las_nav_active' : ''}`}
                     >
-                      <span>{link.name}</span>
+                      {link.name}
                     </Link>
                   </li>
                 );
@@ -115,20 +123,20 @@ export default function Header({
             </ul>
           </nav>
 
-          {/* Right Action & Mobile Toggle */}
+          {/* Right Actions */}
           <div className="las_nav_actions">
             <Link href="/contactus" className="las_btn_book_cta">
               <span>Book Venue</span>
-              <i className="fas fa-calendar-check"></i>
+              <i className="fas fa-calendar-check" />
             </Link>
 
-            {/* Mobile Action Icons */}
+            {/* Mobile-only Quick Action Icons */}
             <a
               href={`tel:${phone1}`}
               className="las_mobile_action_btn"
               aria-label="Call Lascigal"
             >
-              <i className="fas fa-phone"></i>
+              <i className="fas fa-phone-alt" />
             </a>
 
             <a
@@ -138,35 +146,35 @@ export default function Header({
               className="las_mobile_action_btn las_mobile_whatsapp"
               aria-label="WhatsApp Chat"
             >
-              <i className="fab fa-whatsapp"></i>
+              <i className="fab fa-whatsapp" />
             </a>
 
-            {/* Hamburger Button */}
+            {/* Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(true)}
               className="las_hamburger_btn"
-              aria-label="Open Navigation Menu"
+              aria-label="Open Menu"
             >
-              <span className="las_bar"></span>
-              <span className="las_bar"></span>
-              <span className="las_bar"></span>
+              <span className="las_bar" />
+              <span className="las_bar" />
+              <span className="las_bar" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* 3. MOBILE SLIDING DRAWER MENU */}
+      {/* ─── MOBILE DRAWER ─── */}
       {mobileMenuOpen && (
         <div className="las_mobile_drawer_backdrop" onClick={() => setMobileMenuOpen(false)}>
           <div
             className="las_mobile_drawer_content"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Drawer Top Header */}
+            {/* Drawer Header */}
             <div className="las_drawer_header">
               <Link href="/" onClick={() => setMobileMenuOpen(false)} className="las_drawer_logo">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={mediaUrl(logo)} alt="Lascigal Logo" style={{ height: '50px', width: 'auto' }} />
+                <img src={mediaUrl(logo)} alt="Lascigal Logo" style={{ height: '46px', width: 'auto' }} />
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
@@ -177,7 +185,7 @@ export default function Header({
               </button>
             </div>
 
-            {/* Navigation Links */}
+            {/* Navigation */}
             <nav className="las_drawer_nav">
               <ul>
                 {navLinks.map((link) => (
@@ -188,14 +196,14 @@ export default function Header({
                       className={pathname === link.href ? 'active' : ''}
                     >
                       <span>{link.name}</span>
-                      <i className="fas fa-chevron-right"></i>
+                      <i className="fas fa-chevron-right" />
                     </Link>
                   </li>
                 ))}
               </ul>
             </nav>
 
-            {/* Drawer Bottom Actions */}
+            {/* Drawer Footer */}
             <div className="las_drawer_footer">
               <Link
                 href="/contactus"
@@ -207,14 +215,14 @@ export default function Header({
 
               <div className="las_drawer_contact_box">
                 <div className="las_drawer_contact_row">
-                  <i className="fas fa-phone" style={{ color: '#c5a880' }}></i>
+                  <i className="fas fa-phone-alt" style={{ color: '#c5a880' }} />
                   <a href={`tel:${phone1}`}>{phone1}</a>
-                  <span>/</span>
+                  <span style={{ color: '#475569' }}>/</span>
                   <a href={`tel:${phone2}`}>{phone2}</a>
                 </div>
 
                 <div className="las_drawer_contact_row">
-                  <i className="fab fa-whatsapp" style={{ color: '#25D366' }}></i>
+                  <i className="fab fa-whatsapp" style={{ color: '#25D366' }} />
                   <a
                     href={`https://wa.me/${whatsapp}?text=We%20are%20looking%20for%20convention%20center`}
                     target="_blank"
@@ -225,7 +233,7 @@ export default function Header({
                 </div>
 
                 <div className="las_drawer_contact_row">
-                  <i className="fa-solid fa-location-dot" style={{ color: '#c5a880' }}></i>
+                  <i className="fas fa-map-marker-alt" style={{ color: '#c5a880' }} />
                   <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
                     Kalampoor, Muvattupuzha
                   </a>
@@ -235,8 +243,6 @@ export default function Header({
           </div>
         </div>
       )}
-
-      
-      </>
+    </>
   );
 }

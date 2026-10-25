@@ -34,16 +34,16 @@ export default async function HomePage() {
   const heroImage = settings['hero_image'] || 'images/gallery/DSC01156.jpg.webp';
   const offerBannerText =
     settings['offer_banner_text'] ||
-    '“Exclusive Deal: Reserve your spot today & save big with our limited-time discount!”';
+    'Exclusive Deal: Reserve your spot today & save big with our limited-time discount!';
   const aboutHeading = settings['about_heading'] || 'Transforming Events Into Experiences Celebrating Life';
   const aboutText =
     settings['about_text'] ||
-    'At Lascigal Convention Center, we believe every event is more than just a gathering—it’s a memory in the making. Our vision has always been to create a space where elegance meets excellence, and where your special moments are celebrated with the care, warmth, and sophistication they truly deserve.';
+    'At Lascigal Convention Center, we believe every event is more than just a gathering—it\u2019s a memory in the making. Our vision has always been to create a space where elegance meets excellence, and where your special moments are celebrated with the care, warmth, and sophistication they truly deserve.';
   const aboutImage = settings['about_image'] || 'images/gallery/FRONT_VIEW.jpeg';
 
   return (
     <>
-      {/* 1. MODERN RESPONSIVE NAVBAR */}
+      {/* ─── NAVBAR ─── */}
       <Header
         phone1={phone1}
         phone2={phone2}
@@ -52,7 +52,7 @@ export default async function HomePage() {
         logo={logo}
       />
 
-      {/* 2. HERO BANNER SECTION */}
+      {/* ─── HERO BANNER ─── */}
       <section className="las_hero_section">
         <div className="las_hero_bg_wrap">
           <Image
@@ -62,18 +62,16 @@ export default async function HomePage() {
             priority
             style={{ objectFit: 'cover' }}
           />
-          <div className="las_hero_overlay"></div>
+          <div className="las_hero_overlay" />
         </div>
 
         <div className="las_hero_content">
           <div className="las_hero_badge">
-            <span>✨</span>
+            <span>✦</span>
             <span>{heroSubheading}</span>
           </div>
 
-          <h1 className="las_hero_title">
-            {heroHeading}
-          </h1>
+          <h1 className="las_hero_title">{heroHeading}</h1>
 
           <p className="las_hero_description">
             Premier destination in Kalampoor, Muvattupuzha for grand weddings, formal conventions,
@@ -83,11 +81,11 @@ export default async function HomePage() {
           <div className="las_hero_btn_group">
             <a href="#book" className="las_hero_btn_primary">
               <span>Reserve Your Date</span>
-              <i className="fas fa-arrow-down"></i>
+              <i className="fas fa-arrow-right" />
             </a>
 
             <Link href="/gallery" className="las_hero_btn_secondary">
-              <i className="fas fa-images"></i>
+              <i className="fas fa-images" />
               <span>Explore Gallery</span>
             </Link>
 
@@ -97,54 +95,54 @@ export default async function HomePage() {
               rel="noopener noreferrer"
               className="las_hero_btn_wa"
             >
-              <i className="fab fa-whatsapp"></i>
-              <span>Quick WhatsApp</span>
+              <i className="fab fa-whatsapp" />
+              <span>WhatsApp</span>
             </a>
           </div>
 
-          {/* Quick Highlight Feature Pills */}
+          {/* Trust Highlight Pills */}
           <div className="las_hero_pills_strip">
             <div className="las_hero_pill_item">
-              <i className="fas fa-users"></i>
-              <span>1000+ Guests Capacity</span>
+              <i className="fas fa-users" />
+              <span>1000+ Guests</span>
             </div>
             <div className="las_hero_pill_item">
-              <i className="fas fa-snowflake"></i>
-              <span>100% Central AC</span>
+              <i className="fas fa-snowflake" />
+              <span>Central AC</span>
             </div>
             <div className="las_hero_pill_item">
-              <i className="fas fa-square-parking"></i>
-              <span>Ample Dedicated Parking</span>
+              <i className="fas fa-square-parking" />
+              <span>Ample Parking</span>
             </div>
             <div className="las_hero_pill_item">
-              <i className="fas fa-utensils"></i>
-              <span>Luxury Banquet Dining</span>
+              <i className="fas fa-utensils" />
+              <span>Banquet Dining</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. GOLD DISCOUNT & ANNOUNCEMENT RIBBON */}
+      {/* ─── OFFER RIBBON ─── */}
       <section id="offer" className="las_offer_ribbon">
         <div className="las_container las_offer_inner">
           <div className="las_offer_icon_badge">
-            <i className="fas fa-tag"></i>
+            <i className="fas fa-tag" />
           </div>
           <div className="las_offer_text_wrap">
             <h2 className="las_offer_text">{offerBannerText}</h2>
           </div>
           <a href="#coupon" className="las_offer_btn">
-            Claim Discount Code →
+            Claim Discount →
           </a>
         </div>
       </section>
 
-      {/* 4. PREMIER 6 VENUE FACILITIES */}
+      {/* ─── FACILITIES ─── */}
       <section id="facilities" className="las_section las_section_facilities">
         <div className="las_container">
           <div className="las_section_header">
-            <span className="las_eyebrow">WORLD-CLASS INFRASTRUCTURE</span>
-            <h2 className="las_section_title">Premier Convention & Event Facilities</h2>
+            <span className="las_eyebrow">World-Class Infrastructure</span>
+            <h2 className="las_section_title">Premier Convention &amp; Event Facilities</h2>
             <p className="las_section_subtitle">
               Every detail engineered to ensure seamless grandeur, exceptional comfort, and peace of mind.
             </p>
@@ -168,7 +166,7 @@ export default async function HomePage() {
                   <div className="las_facility_title_row">
                     {fac.icon && (
                       <div className="las_facility_icon_circle">
-                        <i className={fac.icon}></i>
+                        <i className={fac.icon} />
                       </div>
                     )}
                     <h3 className="las_facility_title">{fac.title}</h3>
@@ -181,35 +179,34 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 5. ABOUT LAS CIGAL TEASER */}
+      {/* ─── ABOUT SECTION ─── */}
       <section id="about" className="las_section las_section_about">
         <div className="las_container">
           <div className="las_about_grid">
             <div className="las_about_text_col">
-              <span className="las_eyebrow">ABOUT LAS CIGAL CONVENTION CENTRE</span>
+              <span className="las_eyebrow">About Lascigal Convention Centre</span>
               <h2 className="las_about_title">{aboutHeading}</h2>
               <p className="las_about_p">{aboutText}</p>
 
-              {/* Key Amenities Checkpoints */}
               <div className="las_about_checks">
                 <div className="las_check_item">
-                  <i className="fas fa-circle-check"></i>
-                  <span>Multi-tier Stage & Dynamic Audio-Visual Systems</span>
+                  <i className="fas fa-check-circle" />
+                  <span>Multi-tier Stage &amp; Dynamic Audio-Visual Systems</span>
                 </div>
                 <div className="las_check_item">
-                  <i className="fas fa-circle-check"></i>
-                  <span>Dedicated Bride & Groom VIP Green Rooms</span>
+                  <i className="fas fa-check-circle" />
+                  <span>Dedicated Bride &amp; Groom VIP Green Rooms</span>
                 </div>
                 <div className="las_check_item">
-                  <i className="fas fa-circle-check"></i>
-                  <span>Comprehensive CCTV Surveillance & Valet Management</span>
+                  <i className="fas fa-check-circle" />
+                  <span>CCTV Surveillance &amp; Professional Valet Management</span>
                 </div>
               </div>
 
               <div className="las_about_actions">
                 <Link href="/aboutus" className="las_btn_gold">
-                  <span>Read Director&apos;s Message</span>
-                  <i className="fas fa-arrow-right"></i>
+                  <span>Director&apos;s Message</span>
+                  <i className="fas fa-arrow-right" />
                 </Link>
                 <a href="#book" className="las_btn_outline">
                   Inquire Venue
@@ -227,7 +224,7 @@ export default async function HomePage() {
                 />
                 <div className="las_about_img_badge">
                   <span className="las_badge_num">1000+</span>
-                  <span className="las_badge_text">Guest Capacity Auditorium</span>
+                  <span className="las_badge_text">Guest Capacity</span>
                 </div>
               </div>
             </div>
@@ -235,14 +232,14 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 6. FEATURED EVENTS & PORTFOLIO */}
+      {/* ─── EVENTS SHOWCASE ─── */}
       <section id="events" className="las_section las_section_events">
         <div className="las_container">
           <div className="las_section_header">
-            <span className="las_eyebrow">EXCEPTIONAL EXPERIENCES</span>
-            <h2 className="las_section_title">Crafted for Every Milestone & Celebration</h2>
+            <span className="las_eyebrow">Exceptional Experiences</span>
+            <h2 className="las_section_title">Crafted for Every Milestone &amp; Celebration</h2>
             <p className="las_section_subtitle">
-              From lavish traditional weddings to high-profile business symposiums, our versatile venues adapt to your aspirations.
+              From lavish traditional weddings to high-profile business conferences, our versatile venues adapt to your aspirations.
             </p>
           </div>
 
@@ -267,11 +264,11 @@ export default async function HomePage() {
                 <div className="las_event_body">
                   <h3 className="las_event_title">{evt.title}</h3>
                   <p className="las_event_summary">
-                    {evt.summary ? evt.summary.slice(0, 85) + '...' : 'Explore seating arrangements and hall configurations.'}
+                    {evt.summary ? evt.summary.slice(0, 90) + '...' : 'Explore seating arrangements and hall configurations.'}
                   </p>
                   <span className="las_event_link_arrow">
-                    <span>View Event Inclusions</span>
-                    <i className="fas fa-arrow-right"></i>
+                    <span>View Details</span>
+                    <i className="fas fa-arrow-right" />
                   </span>
                 </div>
               </Link>
@@ -280,22 +277,22 @@ export default async function HomePage() {
 
           <div className="las_events_footer_btn">
             <Link href="/portfolio" className="las_btn_dark_lg">
-              <span>View All Event Categories & Details</span>
-              <i className="fas fa-layer-group"></i>
+              <span>View All Events</span>
+              <i className="fas fa-layer-group" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 7. COUPON GENERATOR BANNER */}
+      {/* ─── COUPON GENERATOR ─── */}
       <section id="coupon" className="las_section las_section_coupon">
         <div className="las_container">
           <div className="las_coupon_card">
             <div className="las_coupon_badge">
-              <i className="fas fa-sparkles"></i>
-              <span>SPECIAL PROMOTIONAL OFFER</span>
+              <i className="fas fa-gift" />
+              <span>Special Promotional Offer</span>
             </div>
-            <h3 className="las_coupon_title">Claim Your Exclusive Venue Discount Coupon</h3>
+            <h3 className="las_coupon_title">Claim Your Exclusive Venue Discount</h3>
             <p className="las_coupon_desc">
               Generate your unique promo code below and mention it during reservation to receive special pricing on wedding and corporate dates.
             </p>
@@ -306,15 +303,15 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 8. INSTANT BOOKING RESERVATION FORM */}
+      {/* ─── BOOKING FORM ─── */}
       <section id="book" className="las_section las_section_booking">
         <div className="las_container">
           <div className="las_booking_card">
-            <div className="las_section_header" style={{ marginBottom: '30px' }}>
-              <span className="las_eyebrow">RESERVE YOUR DATE</span>
+            <div className="las_section_header" style={{ marginBottom: '32px' }}>
+              <span className="las_eyebrow">Reserve Your Date</span>
               <h2 className="las_section_title">Book Lascigal Convention Centre</h2>
               <p className="las_section_subtitle">
-                Fill out the quick inquiry form below. Our venue coordinators will get back to you with availability and customized packages.
+                Fill out the inquiry form below. Our venue coordinators will get back to you with availability and customized packages.
               </p>
             </div>
 
@@ -323,7 +320,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* 9. MODERN RESPONSIVE FOOTER */}
+      {/* ─── FOOTER ─── */}
       <Footer
         phone1={phone1}
         phone2={phone2}

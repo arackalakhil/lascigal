@@ -41,54 +41,47 @@ export default function CouponGenerator() {
   };
 
   return (
-    <div className="coupon-generator-box">
-      <div className="mc4wp-form-fields" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div className="las_coupon_box_inner">
+      <div className="las_coupon_action_row">
         <button
           type="button"
           onClick={handleGenerate}
-          className="emailer_submit"
-          style={{
-            cursor: 'pointer',
-            border: '2px solid #fff',
-            padding: '10px 24px',
-            backgroundColor: '#c5a880',
-            color: '#fff',
-            fontWeight: 600,
-            borderRadius: '4px',
-            transition: 'background-color 0.2s',
-          }}
+          className="las_coupon_gen_btn"
         >
-          Get Coupon
+          <i className="fas fa-magic" />
+          <span>Generate Promo Code</span>
         </button>
 
         {activeCoupon && activeCoupon !== 'CLAIMED' && (
           <button
             type="button"
             onClick={copyToClipboard}
-            style={{
-              cursor: 'pointer',
-              border: '1px solid rgba(255,255,255,0.4)',
-              padding: '10px 16px',
-              backgroundColor: 'rgba(255,255,255,0.15)',
-              color: '#fff',
-              borderRadius: '4px',
-              fontSize: '14px',
-            }}
+            className={`las_coupon_copy_btn ${copied ? 'las_copied' : ''}`}
           >
-            {copied ? '✓ Copied!' : 'Copy Code'}
+            <i className={`fas ${copied ? 'fa-check' : 'fa-copy'}`} />
+            <span>{copied ? 'Copied to Clipboard!' : 'Copy Code'}</span>
           </button>
         )}
       </div>
 
-      <div className="coupon-response" style={{ color: '#fff', marginTop: '14px', fontSize: '18px' }}>
-        {activeCoupon === 'CLAIMED' ? (
-          <p style={{ margin: 0, color: '#ffb3b3' }}>❌ Sorry, all promotional coupons have been claimed!</p>
-        ) : activeCoupon ? (
-          <p style={{ margin: 0 }}>
-            🎉 Your Coupon Code: <strong style={{ letterSpacing: '1.5px', textDecoration: 'underline' }}>{activeCoupon}</strong>
-          </p>
-        ) : null}
-      </div>
+      {activeCoupon && (
+        <div className="las_coupon_result">
+          {activeCoupon === 'CLAIMED' ? (
+            <div className="las_coupon_claimed_notice">
+              <i className="fas fa-info-circle" />
+              <span>All promotional codes for this session have been claimed. Please contact our reception desk for custom offers.</span>
+            </div>
+          ) : (
+            <div className="las_coupon_ticket">
+              <span className="las_coupon_tag_label">YOUR EXCLUSIVE VOUCHER</span>
+              <div className="las_coupon_code_display">{activeCoupon}</div>
+              <p className="las_coupon_hint">
+                Mention this code when inquiring or pasting into the booking form below for privileged event rates.
+              </p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

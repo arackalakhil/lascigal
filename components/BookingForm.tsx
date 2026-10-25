@@ -17,7 +17,7 @@ export default function BookingForm() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -25,16 +25,15 @@ export default function BookingForm() {
     e.preventDefault();
     setStatus(null);
 
-    // Validation
     const { username, email, phone, event_date, event_type, time } = formData;
     if (!username.trim() || !email.trim() || !phone.trim() || !event_date || !event_type.trim() || !time.trim()) {
-      setStatus({ type: 'error', message: '⚠️ Please fill in all required fields (Name, Email, Phone, Date, Event Type, Time).' });
+      setStatus({ type: 'error', message: 'Please fill in all required fields.' });
       return;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-      setStatus({ type: 'error', message: '⚠️ Please enter a valid email address.' });
+      setStatus({ type: 'error', message: 'Please enter a valid email address.' });
       return;
     }
 
@@ -47,28 +46,20 @@ export default function BookingForm() {
       });
 
       const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || 'Failed to submit booking');
-      }
+      if (!res.ok) throw new Error(data.error || 'Failed to submit booking');
 
       setStatus({
         type: 'success',
-        message: '✅ Booking submitted successfully! Our team will contact you shortly.',
+        message: 'Booking submitted successfully! Our team will contact you shortly.',
       });
       setFormData({
-        username: '',
-        email: '',
-        phone: '',
-        event_date: '',
-        event_type: '',
-        time: '',
-        coupon: '',
-        message: '',
+        username: '', email: '', phone: '', event_date: '',
+        event_type: '', time: '', coupon: '', message: '',
       });
     } catch (err: any) {
       setStatus({
         type: 'error',
-        message: err.message || '⚠️ Something went wrong. Please try again or call us directly.',
+        message: err.message || 'Something went wrong. Please try again or call us directly.',
       });
     } finally {
       setLoading(false);
@@ -77,187 +68,152 @@ export default function BookingForm() {
 
   return (
     <form onSubmit={handleSubmit} className="las_booking_form">
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))',
-          gap: '20px',
-          textAlign: 'left',
-          marginBottom: '20px',
-        }}
-      >
+      <div className="las_form_grid">
         {/* Name */}
-        <div>
-          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-            Full Name *
-          </label>
+        <div className="las_form_group">
+          <label className="las_form_label">Full Name <span className="las_required">*</span></label>
           <input
-            id="sc_form_username"
             type="text"
             name="username"
             value={formData.username}
             onChange={handleChange}
-            placeholder="Your Name"
+            placeholder="Your full name"
             required
-            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
+            className="las_form_input"
           />
         </div>
 
         {/* Email */}
-        <div>
-          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-            Email Address *
-          </label>
+        <div className="las_form_group">
+          <label className="las_form_label">Email Address <span className="las_required">*</span></label>
           <input
-            id="sc_form_email"
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="your.email@example.com"
             required
-            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
+            className="las_form_input"
           />
         </div>
 
-        {/* Phone Number */}
-        <div>
-          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-            Phone Number *
-          </label>
+        {/* Phone */}
+        <div className="las_form_group">
+          <label className="las_form_label">Phone Number <span className="las_required">*</span></label>
           <input
-            id="sc_form_phone"
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="Phone / Mobile Number"
+            placeholder="Phone / Mobile number"
             required
-            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
+            className="las_form_input"
           />
         </div>
 
         {/* Event Date */}
-        <div>
-          <label htmlFor="sc_form_date" style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-            Event Date *
-          </label>
+        <div className="las_form_group">
+          <label className="las_form_label">Event Date <span className="las_required">*</span></label>
           <input
-            id="sc_form_date"
             type="date"
             name="event_date"
             value={formData.event_date}
             onChange={handleChange}
             required
-            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
+            className="las_form_input"
           />
         </div>
 
         {/* Event Type */}
-        <div>
-          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-            Event Type *
-          </label>
-          <input
-            id="sc_form_event"
-            type="text"
+        <div className="las_form_group">
+          <label className="las_form_label">Event Type <span className="las_required">*</span></label>
+          <select
             name="event_type"
             value={formData.event_type}
             onChange={handleChange}
-            placeholder="Wedding, Conference, Birthday..."
             required
-            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
-          />
+            className="las_form_input"
+          >
+            <option value="">Select event type...</option>
+            <option value="Wedding">Wedding</option>
+            <option value="Reception">Reception</option>
+            <option value="Engagement">Engagement / Betrothal</option>
+            <option value="Birthday">Birthday Celebration</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Corporate">Corporate Conference</option>
+            <option value="Exhibition">Exhibition / Trade Fair</option>
+            <option value="Cultural">Cultural / Religious Event</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
 
         {/* Event Time */}
-        <div>
-          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-            Event Timing *
-          </label>
+        <div className="las_form_group">
+          <label className="las_form_label">Event Timing <span className="las_required">*</span></label>
           <input
-            id="sc_form_time"
             type="text"
             name="time"
             value={formData.time}
             onChange={handleChange}
             placeholder="e.g. 10:00 AM - 4:00 PM"
             required
-            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
+            className="las_form_input"
           />
         </div>
 
-        {/* Coupon Code */}
-        <div style={{ gridColumn: '1 / -1' }}>
-          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-            Promo / Coupon Code (Optional)
-          </label>
+        {/* Coupon */}
+        <div className="las_form_group las_form_full">
+          <label className="las_form_label">Promo / Coupon Code <span className="las_optional">(Optional)</span></label>
           <input
-            id="sc_form_coupon"
             type="text"
             name="coupon"
             value={formData.coupon}
             onChange={handleChange}
             placeholder="Enter coupon code if you have one"
-            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', boxSizing: 'border-box' }}
+            className="las_form_input"
           />
         </div>
 
         {/* Message */}
-        <div style={{ gridColumn: '1 / -1' }}>
-          <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-            Special Notes or Additional Inquiries
-          </label>
+        <div className="las_form_group las_form_full">
+          <label className="las_form_label">Special Notes <span className="las_optional">(Optional)</span></label>
           <textarea
-            id="sc_form_message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Tell us about expected guest count, stage preferences, or catering questions..."
+            placeholder="Guest count, stage preferences, catering needs..."
             rows={4}
-            style={{ width: '100%', padding: '12px 14px', borderRadius: '6px', border: '1px solid #cbd5e1', fontSize: '14.5px', lineHeight: 1.5, boxSizing: 'border-box' }}
-          ></textarea>
+            className="las_form_input las_form_textarea"
+          />
         </div>
       </div>
 
+      {/* Status Message */}
       {status && (
-        <div
-          style={{
-            margin: '20px auto',
-            padding: '14px 20px',
-            borderRadius: '6px',
-            backgroundColor: status.type === 'success' ? '#dcfce7' : '#fee2e2',
-            color: status.type === 'success' ? '#166534' : '#991b1b',
-            border: `1px solid ${status.type === 'success' ? '#bbf7d0' : '#fecaca'}`,
-            fontSize: '15px',
-            fontWeight: 500,
-            maxWidth: '650px',
-          }}
-        >
+        <div className={`las_form_status ${status.type === 'success' ? 'las_form_success' : 'las_form_error'}`}>
+          {status.type === 'success' ? '✓ ' : '⚠ '}
           {status.message}
         </div>
       )}
 
-      {/* Submit Button */}
-      <div style={{ marginTop: '24px', textAlign: 'center' }}>
+      {/* Submit */}
+      <div className="las_form_submit_row">
         <button
           type="submit"
           disabled={loading}
-          style={{
-            cursor: loading ? 'not-allowed' : 'pointer',
-            opacity: loading ? 0.7 : 1,
-            padding: '14px 44px',
-            fontSize: '16px',
-            fontWeight: 700,
-            backgroundColor: '#c5a880',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '6px',
-            boxShadow: '0 4px 15px rgba(197, 168, 128, 0.4)',
-            transition: 'all 0.2s',
-          }}
+          className="las_form_submit_btn"
         >
-          {loading ? 'Submitting Reservation...' : 'Submit Booking Inquiry'}
+          {loading ? (
+            <>
+              <span className="las_spinner" />
+              <span>Submitting...</span>
+            </>
+          ) : (
+            <>
+              <span>Submit Booking Inquiry</span>
+              <i className="fas fa-paper-plane" />
+            </>
+          )}
         </button>
       </div>
     </form>

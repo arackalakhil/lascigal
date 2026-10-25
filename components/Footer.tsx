@@ -24,13 +24,13 @@ export default function Footer({
 }: FooterProps) {
   return (
     <footer className="las_main_footer">
-      {/* 1. INTERACTIVE GOOGLE MAPS SECTION */}
+      {/* ─── GOOGLE MAPS ─── */}
       {mapsEmbed && (
         <div className="las_footer_map_section">
           <div className="las_footer_map_container">
             <div className="las_footer_map_header">
               <div>
-                <span className="las_map_badge">VISIT US</span>
+                <span className="las_map_badge">Visit Us</span>
                 <h3 className="las_map_title">Prime Location in Kalampoor, Muvattupuzha</h3>
               </div>
               <a
@@ -39,8 +39,8 @@ export default function Footer({
                 rel="noopener noreferrer"
                 className="las_map_directions_btn"
               >
-                <i className="fa-solid fa-location-dot"></i>
-                <span>Get Directions on Google Maps</span>
+                <i className="fas fa-directions" />
+                <span>Get Directions</span>
               </a>
             </div>
 
@@ -48,30 +48,30 @@ export default function Footer({
               <iframe
                 src={mapsEmbed}
                 width="100%"
-                height="380"
+                height="350"
                 style={{ border: 0, display: 'block' }}
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Lascigal Convention Centre Location Map"
-              ></iframe>
+              />
             </div>
           </div>
         </div>
       )}
 
-      {/* 2. FOOTER CONTENT GRID */}
+      {/* ─── FOOTER CONTENT GRID ─── */}
       <div className="las_footer_grid_wrap">
         <div className="las_footer_container">
           <div className="las_footer_columns">
-            {/* Column 1: Brand Info */}
+            {/* Column 1: Brand */}
             <div className="las_footer_col las_footer_brand_col">
               <Link href="/" className="las_footer_logo">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={mediaUrl(logo)}
                   alt="Lascigal Convention Centre Logo"
-                  style={{ height: '75px', width: 'auto', objectFit: 'contain' }}
+                  style={{ height: '68px', width: 'auto', objectFit: 'contain' }}
                 />
               </Link>
               <p className="las_footer_about">
@@ -80,13 +80,13 @@ export default function Footer({
               </p>
               <div className="las_footer_socials">
                 <a href="#" aria-label="Facebook" className="las_social_btn">
-                  <i className="fab fa-facebook-f"></i>
+                  <i className="fab fa-facebook-f" />
                 </a>
                 <a href="#" aria-label="Instagram" className="las_social_btn">
-                  <i className="fab fa-instagram"></i>
+                  <i className="fab fa-instagram" />
                 </a>
                 <a href="#" aria-label="YouTube" className="las_social_btn">
-                  <i className="fab fa-youtube"></i>
+                  <i className="fab fa-youtube" />
                 </a>
                 <a
                   href={`https://wa.me/91${phone1}?text=Hello%20Lascigal`}
@@ -95,21 +95,21 @@ export default function Footer({
                   aria-label="WhatsApp"
                   className="las_social_btn las_social_wa"
                 >
-                  <i className="fab fa-whatsapp"></i>
+                  <i className="fab fa-whatsapp" />
                 </a>
               </div>
             </div>
 
-            {/* Column 2: Navigation Links */}
+            {/* Column 2: Navigation */}
             <div className="las_footer_col">
               <h4 className="las_footer_heading">Explore</h4>
               <ul className="las_footer_links">
-                <li><Link href="/">Home Page</Link></li>
-                <li><Link href="/aboutus">About Our Venue</Link></li>
-                <li><Link href="/#facilities">Venue Facilities</Link></li>
-                <li><Link href="/portfolio">Events & Portfolios</Link></li>
-                <li><Link href="/gallery">Photo Gallery</Link></li>
-                <li><Link href="/contactus">Contact & Reservations</Link></li>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/aboutus">About Us</Link></li>
+                <li><Link href="/#facilities">Facilities</Link></li>
+                <li><Link href="/portfolio">Portfolio</Link></li>
+                <li><Link href="/gallery">Gallery</Link></li>
+                <li><Link href="/contactus">Contact Us</Link></li>
               </ul>
             </div>
 
@@ -118,20 +118,20 @@ export default function Footer({
               <h4 className="las_footer_heading">Celebrations</h4>
               <ul className="las_footer_links">
                 <li><Link href="/events/weddings-receptions">Grand Weddings</Link></li>
-                <li><Link href="/events/engagement-betrothal">Engagements & Betrothals</Link></li>
+                <li><Link href="/events/engagement-betrothal">Engagements</Link></li>
                 <li><Link href="/events/corporate-conferences">Corporate Conferences</Link></li>
-                <li><Link href="/events/birthdays-anniversaries">Birthdays & Anniversaries</Link></li>
-                <li><Link href="/events/exhibitions-trade-fairs">Trade Expos & Exhibitions</Link></li>
-                <li><Link href="/events/award-ceremonies-galas">Award Shows & Galas</Link></li>
+                <li><Link href="/events/birthdays-anniversaries">Birthdays &amp; Anniversaries</Link></li>
+                <li><Link href="/events/exhibitions-trade-fairs">Trade Expos</Link></li>
+                <li><Link href="/events/award-ceremonies-galas">Award Ceremonies</Link></li>
               </ul>
             </div>
 
-            {/* Column 4: Direct Contact */}
+            {/* Column 4: Contact */}
             <div className="las_footer_col">
-              <h4 className="las_footer_heading">Contact & Booking</h4>
+              <h4 className="las_footer_heading">Contact &amp; Booking</h4>
               <div className="las_footer_contact_list">
                 <div className="las_footer_contact_item">
-                  <i className="fa-solid fa-location-dot" style={{ color: '#c5a880' }}></i>
+                  <i className="fas fa-map-marker-alt" style={{ color: '#c5a880', marginTop: '3px' }} />
                   <div>
                     <span>{addressLine1}</span>
                     <br />
@@ -140,28 +140,28 @@ export default function Footer({
                 </div>
 
                 <div className="las_footer_contact_item">
-                  <i className="fas fa-phone" style={{ color: '#c5a880' }}></i>
+                  <i className="fas fa-phone-alt" style={{ color: '#c5a880' }} />
                   <div>
                     <a href={`tel:${phone1}`}>{phone1}</a>
-                    <span style={{ margin: '0 6px', color: '#666' }}>/</span>
+                    <span style={{ margin: '0 6px', color: '#475569' }}>/</span>
                     <a href={`tel:${phone2}`}>{phone2}</a>
                   </div>
                 </div>
 
                 <div className="las_footer_contact_item">
-                  <i className="fas fa-envelope" style={{ color: '#c5a880' }}></i>
+                  <i className="fas fa-envelope" style={{ color: '#c5a880' }} />
                   <a href={`mailto:${email}`}>{email}</a>
                 </div>
 
                 <div className="las_footer_contact_item">
-                  <i className="fab fa-whatsapp" style={{ color: '#25D366' }}></i>
+                  <i className="fab fa-whatsapp" style={{ color: '#25D366' }} />
                   <a
                     href={`https://wa.me/91${phone1}?text=Hello%20Lascigal%20Convention%20Centre`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{ color: '#25D366', fontWeight: 600 }}
                   >
-                    Direct WhatsApp Support
+                    Direct WhatsApp
                   </a>
                 </div>
               </div>
@@ -170,7 +170,7 @@ export default function Footer({
         </div>
       </div>
 
-      {/* 3. COPYRIGHT BAR */}
+      {/* ─── COPYRIGHT ─── */}
       <div className="las_footer_bottom">
         <div className="las_footer_container las_footer_bottom_inner">
           <p className="las_copyright_text">

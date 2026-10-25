@@ -1,171 +1,233 @@
-/* ==========================================================================
-   Lascigal Convention Centre - Modern Responsive Theme & Layout
-   ========================================================================== */
+/* ============================================================
+   LASCIGAL CONVENTION CENTRE — Homepage Stylesheet
+   Brand Palette:
+     Gold Accent   : #c5a880
+     Dark BG       : #111318 / #12141a
+     Light BG      : #f8fafc
+     Text Primary  : #0f172a
+     Text Secondary: #64748b
+     White Text    : #f8fafc
+   Fonts:
+     Body    : 'Raleway', sans-serif
+     Heading : 'Playfair Display', serif
+   ============================================================ */
 
-/* Container */
+/* -----------------------------------------------------------
+   1. CONTAINER & GLOBAL SECTION STYLES
+   ----------------------------------------------------------- */
+
 .las_container {
-  max-width: 1240px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
+  width: 100%;
 }
 
-/* Global Section Styles */
 .las_section {
-  padding: 80px 0;
+  padding: 100px 0;
+  position: relative;
 }
 
 .las_eyebrow {
   display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
   color: #c5a880;
-  letter-spacing: 2.5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 14px;
 }
 
 .las_section_header {
   text-align: center;
-  max-width: 780px;
-  margin: 0 auto 50px;
+  max-width: 720px;
+  margin: 0 auto 60px;
 }
 
 .las_section_title {
-  font-size: clamp(24px, 3.5vw, 38px);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 40px);
   font-weight: 700;
-  color: #111827;
-  margin: 0 0 14px;
-  line-height: 1.25;
-  font-family: 'PT Serif', serif;
+  color: #0f172a;
+  line-height: 1.2;
+  margin: 0 0 16px;
 }
 
 .las_section_subtitle {
   color: #64748b;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 15.5px;
+  line-height: 1.7;
   margin: 0;
 }
 
-/* 1. TOP UTILITY BAR */
+/* -----------------------------------------------------------
+   2. TOP UTILITY BAR
+   ----------------------------------------------------------- */
+
 .las_top_utility_bar {
-  background-color: #12141a;
-  color: #94a3b8;
-  font-size: 13px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 8px 0;
+  background: #0c0e12;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.08);
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+  z-index: 100;
 }
 
 .las_utility_inner {
   display: flex;
   align-items: center;
-  justifyContent: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  min-height: 40px;
 }
 
 .las_utility_left {
   display: flex;
   align-items: center;
-  gap: 20px;
-}
-
-.las_utility_item {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.las_utility_item a {
-  color: #cbd5e1;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.las_utility_item a:hover {
-  color: #c5a880;
-}
-
-.las_sep {
-  margin: 0 4px;
-  color: #475569;
+  gap: 6px;
 }
 
 .las_utility_right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+}
+
+.las_utility_item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #94a3b8;
+  font-size: 12.5px;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: color 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+
+.las_utility_item:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.las_utility_item svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.las_sep {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0 2px;
+  flex-shrink: 0;
 }
 
 .las_utility_whatsapp {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: #25D366;
-  font-weight: 600;
-  text-decoration: none;
+  gap: 7px;
+  background: rgba(37, 211, 102, 0.1);
+  color: #25d366;
   font-size: 12.5px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 1px solid rgba(37, 211, 102, 0.2);
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.las_utility_whatsapp:hover {
+  background: rgba(37, 211, 102, 0.18);
+  transform: translateY(-1px);
+}
+
+.las_utility_whatsapp svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .las_utility_admin_pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: #64748b;
-  text-decoration: none;
   font-size: 11px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .las_utility_admin_pill:hover {
-  opacity: 1;
   color: #c5a880;
+  border-color: rgba(197, 168, 128, 0.25);
 }
 
-/* 2. STICKY NAVBAR */
+/* -----------------------------------------------------------
+   3. STICKY NAVBAR
+   ----------------------------------------------------------- */
+
 .las_navbar_wrap {
   position: sticky;
   top: 0;
-  z-index: 999;
-  background: rgba(22, 24, 30, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(197, 168, 128, 0.25);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 90;
+  background: rgba(17, 19, 24, 0.88);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.12);
+  transition: padding 0.35s ease, background 0.35s ease;
 }
 
 .las_navbar_scrolled {
-  background: rgba(15, 17, 21, 0.98);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  padding-top: 0;
+  padding-bottom: 0;
+  background: rgba(12, 14, 18, 0.96);
+  border-bottom-color: rgba(197, 168, 128, 0.18);
+}
+
+.las_navbar_scrolled .las_navbar_inner {
+  height: 64px;
+}
+
+.las_navbar_scrolled .las_logo_img {
+  height: 46px;
 }
 
 .las_navbar_inner {
   display: flex;
   align-items: center;
-  justifyContent: space-between;
-  height: 80px;
-  transition: height 0.3s ease;
-}
-
-.las_navbar_scrolled .las_navbar_inner {
-  height: 68px;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 78px;
+  transition: height 0.35s ease;
 }
 
 .las_brand_logo {
   display: flex;
   align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .las_logo_img {
-  height: 62px;
+  height: 58px;
   width: auto;
-  object-fit: contain;
-  transition: height 0.3s ease;
+  transition: height 0.35s ease;
 }
 
-.las_navbar_scrolled .las_logo_img {
-  height: 52px;
-}
-
+/* Desktop Nav */
 .las_desktop_nav {
   display: flex;
   align-items: center;
@@ -174,129 +236,203 @@
 .las_nav_list {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 6px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .las_nav_link {
-  color: #e2e8f0;
-  text-decoration: none;
-  font-size: 14.5px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
   position: relative;
-  padding: 6px 0;
-  transition: color 0.2s;
-}
-
-.las_nav_link:hover,
-.las_nav_active {
-  color: #c5a880;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: color 0.25s ease, background 0.25s ease;
 }
 
 .las_nav_link::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
+  bottom: 2px;
+  left: 14px;
+  right: 14px;
   height: 2px;
-  background-color: #c5a880;
-  transition: width 0.25s ease;
+  background: #c5a880;
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
 }
 
-.las_nav_link:hover::after,
+.las_nav_link:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.las_nav_link:hover::after {
+  transform: scaleX(1);
+}
+
+.las_nav_active {
+  color: #c5a880;
+}
+
 .las_nav_active::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
+/* Nav Actions */
 .las_nav_actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  margin-left: 20px;
 }
 
 .las_btn_book_cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #c5a880;
-  color: #fff;
-  font-weight: 600;
-  font-size: 13.5px;
-  padding: 10px 20px;
-  border-radius: 4px;
+  background: linear-gradient(135deg, #c5a880, #b08d5f);
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
-  transition: background-color 0.2s, transform 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 10px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 16px rgba(197, 168, 128, 0.2);
 }
 
 .las_btn_book_cta:hover {
-  background-color: #b09166;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(197, 168, 128, 0.35);
 }
 
+.las_btn_book_cta svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Mobile Action Buttons (hidden on desktop) */
 .las_mobile_action_btn {
   display: none;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
   align-items: center;
   justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
   text-decoration: none;
-  font-size: 15px;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.las_mobile_action_btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.las_mobile_action_btn svg {
+  width: 18px;
+  height: 18px;
 }
 
 .las_mobile_whatsapp {
-  color: #25D366;
+  border-color: rgba(37, 211, 102, 0.25);
+  color: #25d366;
 }
 
+.las_mobile_whatsapp:hover {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.4);
+}
+
+/* Hamburger */
 .las_hamburger_btn {
   display: none;
   flex-direction: column;
-  justifyContent: space-between;
-  width: 30px;
-  height: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
   background: transparent;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
   cursor: pointer;
   padding: 0;
+  transition: background 0.25s ease;
+}
+
+.las_hamburger_btn:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .las_bar {
-  width: 100%;
-  height: 2.5px;
-  background-color: #fff;
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #e2e8f0;
   border-radius: 2px;
-  transition: all 0.2s;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* 3. MOBILE DRAWER */
+/* -----------------------------------------------------------
+   4. MOBILE DRAWER
+   ----------------------------------------------------------- */
+
 .las_mobile_drawer_backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  z-index: 9999;
-  display: flex;
-  justify-content: flex-end;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.las_mobile_drawer_backdrop.open {
+  opacity: 1;
+  visibility: visible;
 }
 
 .las_mobile_drawer_content {
-  width: 300px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 320px;
   max-width: 85vw;
   height: 100%;
-  background-color: #15171e;
+  background: #12141a;
   display: flex;
   flex-direction: column;
-  justifyContent: space-between;
-  padding: 24px;
-  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
-  animation: slideInRight 0.3s ease;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  border-left: 1px solid rgba(197, 168, 128, 0.1);
+}
+
+.las_mobile_drawer_backdrop.open .las_mobile_drawer_content {
+  transform: translateX(0);
+  animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes slideInRight {
@@ -312,341 +448,476 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 18px;
-  margin-bottom: 20px;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .las_drawer_close_btn {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e2e8f0;
   cursor: pointer;
-  padding: 4px;
+  transition: background 0.25s ease;
+}
+
+.las_drawer_close_btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.las_drawer_close_btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.las_drawer_nav {
+  flex: 1;
+  padding: 16px 0;
 }
 
 .las_drawer_nav ul {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .las_drawer_nav li {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin: 0;
 }
 
 .las_drawer_nav a {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-  color: #f1f5f9;
-  text-decoration: none;
-  font-size: 16px;
+  gap: 12px;
+  color: #cbd5e1;
+  font-size: 15px;
   font-weight: 500;
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-left: 3px solid transparent;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.las_drawer_nav a:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.03);
+  border-left-color: rgba(197, 168, 128, 0.3);
 }
 
 .las_drawer_nav a.active,
-.las_drawer_nav a:hover {
+.las_drawer_nav li.active a {
   color: #c5a880;
+  border-left-color: #c5a880;
+  background: rgba(197, 168, 128, 0.06);
 }
 
-.las_drawer_nav i {
-  font-size: 12px;
-  color: #64748b;
+.las_drawer_nav a svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
 }
 
 .las_drawer_footer {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .las_drawer_cta {
-  display: block;
-  text-align: center;
-  background-color: #c5a880;
-  color: #fff;
-  padding: 12px;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: linear-gradient(135deg, #c5a880, #b08d5f);
+  color: #0f172a;
   font-size: 14px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.las_drawer_cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(197, 168, 128, 0.3);
 }
 
 .las_drawer_contact_box {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 13.5px;
 }
 
 .las_drawer_contact_row {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #cbd5e1;
-}
-
-.las_drawer_contact_row a {
-  color: #cbd5e1;
+  color: #94a3b8;
+  font-size: 13px;
   text-decoration: none;
+  transition: color 0.25s ease;
 }
 
-/* 4. HERO SECTION */
+.las_drawer_contact_row:hover {
+  color: #c5a880;
+}
+
+.las_drawer_contact_row svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* -----------------------------------------------------------
+   5. HERO SECTION
+   ----------------------------------------------------------- */
+
 .las_hero_section {
   position: relative;
-  min-height: 82vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #111318;
-  color: #fff;
-  padding: 80px 20px;
   overflow: hidden;
+  text-align: center;
+  padding: 60px 24px;
 }
 
 .las_hero_bg_wrap {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
+}
+
+.las_hero_bg_wrap img,
+.las_hero_bg_wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .las_hero_overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(17, 19, 24, 0.45) 0%, rgba(17, 19, 24, 0.82) 80%, rgba(17, 19, 24, 0.95) 100%);
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 19, 24, 0.25) 0%,
+    rgba(17, 19, 24, 0.4) 40%,
+    rgba(17, 19, 24, 0.75) 80%,
+    rgba(17, 19, 24, 0.92) 100%
+  );
 }
 
 .las_hero_content {
   position: relative;
   z-index: 2;
-  max-width: 950px;
+  max-width: 880px;
   margin: 0 auto;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 22px;
 }
 
 .las_hero_badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(197, 168, 128, 0.18);
-  border: 1px solid rgba(197, 168, 128, 0.45);
-  color: #dfc6a3;
-  padding: 6px 18px;
-  border-radius: 30px;
-  font-size: 13.5px;
+  background: rgba(197, 168, 128, 0.12);
+  color: #c5a880;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
-  margin-bottom: 22px;
+  letter-spacing: 2px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.las_hero_badge svg {
+  width: 14px;
+  height: 14px;
 }
 
 .las_hero_title {
-  font-size: clamp(30px, 5.5vw, 56px);
-  font-family: 'PT Serif', serif;
-  color: #ffffff;
-  line-height: 1.2;
-  margin: 0 0 20px;
-  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.6);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5.5vw, 58px);
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .las_hero_description {
-  font-size: clamp(15px, 2vw, 18px);
+  max-width: 680px;
   color: #e2e8f0;
-  line-height: 1.6;
-  max-width: 760px;
-  margin: 0 auto 35px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  font-size: 16.5px;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .las_hero_btn_group {
   display: flex;
-  align-items: center;
-  justifyContent: center;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 45px;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 8px;
 }
 
 .las_hero_btn_primary {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background-color: #c5a880;
-  color: #fff;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 14px 34px;
-  border-radius: 6px;
+  gap: 8px;
+  background: linear-gradient(135deg, #c5a880, #b08d5f);
+  color: #0f172a;
+  font-size: 14.5px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(197, 168, 128, 0.4);
-  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 15px 34px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(197, 168, 128, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .las_hero_btn_primary:hover {
-  background-color: #b09166;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px rgba(197, 168, 128, 0.4);
+}
+
+.las_hero_btn_primary svg {
+  width: 16px;
+  height: 16px;
 }
 
 .las_hero_btn_secondary {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f8fafc;
+  font-size: 14.5px;
   font-weight: 600;
-  font-size: 15px;
-  padding: 13px 30px;
-  border-radius: 6px;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
-  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 15px 34px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .las_hero_btn_secondary:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
   transform: translateY(-2px);
+}
+
+.las_hero_btn_secondary svg {
+  width: 16px;
+  height: 16px;
 }
 
 .las_hero_btn_wa {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #25D366;
+  background: #25d366;
   color: #fff;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 13px 26px;
-  border-radius: 6px;
+  font-size: 14.5px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .las_hero_btn_wa:hover {
-  background: #20ba59;
-  transform: translateY(-2px);
+  background: #20c05c;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+}
+
+.las_hero_btn_wa svg {
+  width: 18px;
+  height: 18px;
 }
 
 .las_hero_pills_strip {
   display: flex;
-  align-items: center;
-  justifyContent: center;
   flex-wrap: wrap;
-  gap: 12px;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .las_hero_pill_item {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(17, 19, 24, 0.65);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 8px 16px;
-  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
   font-size: 13px;
-  color: #cbd5e1;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
-.las_hero_pill_item i {
+.las_hero_pill_item svg {
+  width: 15px;
+  height: 15px;
   color: #c5a880;
+  flex-shrink: 0;
 }
 
-/* 5. OFFER RIBBON */
+/* -----------------------------------------------------------
+   6. OFFER RIBBON
+   ----------------------------------------------------------- */
+
 .las_offer_ribbon {
-  background: linear-gradient(135deg, #c5a880 0%, #d4bb98 50%, #b39166 100%);
-  padding: 20px 0;
-  color: #fff;
+  background: linear-gradient(135deg, #c5a880 0%, #b08d5f 50%, #c5a880 100%);
+  padding: 18px 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .las_offer_inner {
   display: flex;
   align-items: center;
-  justifyContent: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  gap: 20px;
 }
 
 .las_offer_icon_badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  width: 48px;
+  height: 48px;
+  background: rgba(15, 23, 42, 0.12);
+  border-radius: 14px;
   flex-shrink: 0;
+}
+
+.las_offer_icon_badge svg {
+  width: 24px;
+  height: 24px;
+  color: #0f172a;
 }
 
 .las_offer_text_wrap {
   flex: 1;
-  min-width: 260px;
+  min-width: 0;
 }
 
 .las_offer_text {
-  margin: 0;
-  font-size: clamp(16px, 2.2vw, 21px);
+  color: #0f172a;
+  font-size: 15px;
   font-weight: 600;
-  color: #1a150e;
-  line-height: 1.4;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .las_offer_btn {
-  background-color: #111318;
-  color: #dfc6a3;
-  padding: 10px 22px;
-  border-radius: 5px;
-  font-size: 13.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0f172a;
+  color: #c5a880;
+  font-size: 13px;
   font-weight: 700;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
-  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 11px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
   white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .las_offer_btn:hover {
-  background-color: #000;
-  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* 6. FACILITIES GRID */
+.las_offer_btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* -----------------------------------------------------------
+   7. FACILITIES GRID
+   ----------------------------------------------------------- */
+
 .las_section_facilities {
-  background-color: #f8fafc;
+  background: #f8fafc;
 }
 
 .las_facilities_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
 .las_facility_card {
-  background-color: #fff;
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .las_facility_card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
 }
 
 .las_facility_img_wrap {
   position: relative;
-  height: 220px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
 }
 
@@ -654,237 +925,279 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .las_facility_card:hover .las_facility_img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .las_facility_num_badge {
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(17, 19, 24, 0.75);
-  backdrop-filter: blur(4px);
-  color: #dfc6a3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  background: rgba(17, 19, 24, 0.7);
+  color: #f8fafc;
   font-size: 12px;
   font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .las_facility_content {
-  padding: 26px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  padding: 24px;
 }
 
 .las_facility_title_row {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .las_facility_icon_circle {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background-color: rgba(197, 168, 128, 0.15);
-  color: #c5a880;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  background: rgba(197, 168, 128, 0.1);
+  border-radius: 10px;
+  color: #c5a880;
   flex-shrink: 0;
 }
 
+.las_facility_icon_circle svg {
+  width: 20px;
+  height: 20px;
+}
+
 .las_facility_title {
-  margin: 0;
-  font-size: 1.25rem;
-  color: #0f172a;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
   font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.3;
 }
 
 .las_facility_desc {
   color: #64748b;
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.6;
   margin: 0;
 }
 
-/* 7. ABOUT SECTION */
+/* -----------------------------------------------------------
+   8. ABOUT SECTION
+   ----------------------------------------------------------- */
+
 .las_section_about {
-  background-color: #ffffff;
+  background: #fff;
 }
 
 .las_about_grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 50px;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
   align-items: center;
 }
 
 .las_about_title {
+  font-family: 'Playfair Display', serif;
   font-size: clamp(26px, 3.5vw, 38px);
   font-weight: 700;
   color: #0f172a;
-  line-height: 1.25;
+  line-height: 1.2;
   margin: 0 0 20px;
-  font-family: 'PT Serif', serif;
 }
 
 .las_about_p {
-  color: #475569;
-  font-size: 16px;
-  line-height: 1.8;
-  margin: 0 0 25px;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.75;
+  margin: 0 0 18px;
 }
 
 .las_about_checks {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 30px;
+  gap: 10px;
+  margin-bottom: 28px;
 }
 
 .las_check_item {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #334155;
   font-size: 14.5px;
   font-weight: 500;
-  color: #1e293b;
 }
 
-.las_check_item i {
+.las_check_item svg {
+  width: 18px;
+  height: 18px;
   color: #c5a880;
-  font-size: 16px;
+  flex-shrink: 0;
 }
 
 .las_about_actions {
   display: flex;
-  align-items: center;
-  gap: 15px;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
 .las_btn_gold {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #c5a880;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14.5px;
-  padding: 12px 26px;
-  border-radius: 6px;
+  background: linear-gradient(135deg, #c5a880, #b08d5f);
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
-  transition: background-color 0.2s, transform 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 13px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 16px rgba(197, 168, 128, 0.2);
 }
 
 .las_btn_gold:hover {
-  background-color: #b09166;
   transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(197, 168, 128, 0.35);
+}
+
+.las_btn_gold svg {
+  width: 16px;
+  height: 16px;
 }
 
 .las_btn_outline {
   display: inline-flex;
   align-items: center;
-  padding: 11px 24px;
-  border: 1px solid #cbd5e1;
-  color: #334155;
+  gap: 8px;
+  background: transparent;
+  color: #0f172a;
+  font-size: 14px;
   font-weight: 600;
-  font-size: 14.5px;
-  border-radius: 6px;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
-  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 13px 28px;
+  border-radius: 50px;
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
 .las_btn_outline:hover {
-  border-color: #0f172a;
-  color: #0f172a;
+  border-color: #c5a880;
+  color: #c5a880;
+  transform: translateY(-2px);
+}
+
+.las_btn_outline svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* About Image Column */
+.las_about_img_col {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .las_about_img_card {
   position: relative;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
 }
 
 .las_about_img {
   width: 100%;
-  height: 420px;
-  object-fit: cover;
+  height: auto;
   display: block;
+  border-radius: 20px;
 }
 
 .las_about_img_badge {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  right: 20px;
-  background: rgba(17, 19, 24, 0.88);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(197, 168, 128, 0.4);
-  border-radius: 10px;
-  padding: 14px 20px;
   display: flex;
   align-items: center;
-  gap: 14px;
-  color: #fff;
+  gap: 10px;
+  background: rgba(17, 19, 24, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(197, 168, 128, 0.15);
 }
 
 .las_badge_num {
-  font-size: 24px;
-  font-weight: 800;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
   color: #c5a880;
-  font-family: 'PT Serif', serif;
+  line-height: 1;
 }
 
 .las_badge_text {
-  font-size: 13.5px;
-  color: #e2e8f0;
+  font-size: 12px;
   font-weight: 500;
+  color: #94a3b8;
+  line-height: 1.3;
 }
 
-/* 8. EVENTS GRID */
+/* -----------------------------------------------------------
+   9. EVENTS GRID
+   ----------------------------------------------------------- */
+
 .las_section_events {
-  background-color: #f8fafc;
+  background: #f8fafc;
 }
 
 .las_events_grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 25px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
 }
 
 .las_event_card {
-  background-color: #fff;
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .las_event_card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.1);
 }
 
 .las_event_img_wrap {
   position: relative;
-  height: 200px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
 }
 
@@ -892,7 +1205,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s ease;
 }
 
 .las_event_card:hover .las_event_img {
@@ -901,39 +1214,42 @@
 
 .las_event_cat_badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(17, 19, 24, 0.85);
-  backdrop-filter: blur(4px);
-  color: #c5a880;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(17, 19, 24, 0.7);
+  color: #f8fafc;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  border-radius: 4px;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .las_event_body {
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justifyContent: space-between;
+  padding: 24px;
 }
 
 .las_event_title {
-  font-size: 1.15rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
   color: #0f172a;
   margin: 0 0 8px;
-  font-weight: 700;
+  line-height: 1.3;
 }
 
 .las_event_summary {
-  font-size: 13.5px;
   color: #64748b;
-  line-height: 1.5;
-  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 16px;
 }
 
 .las_event_link_arrow {
@@ -943,167 +1259,515 @@
   color: #c5a880;
   font-size: 13px;
   font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.las_event_link_arrow:hover {
+  gap: 10px;
+  color: #b08d5f;
+}
+
+.las_event_link_arrow svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;
+}
+
+.las_event_link_arrow:hover svg {
+  transform: translateX(3px);
 }
 
 .las_events_footer_btn {
   text-align: center;
+  margin-top: 48px;
 }
 
 .las_btn_dark_lg {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background-color: #0f172a;
-  color: #fff;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 14px 34px;
-  border-radius: 6px;
+  gap: 8px;
+  background: #0f172a;
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Raleway', sans-serif;
   text-decoration: none;
-  transition: all 0.25s;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 15px 36px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
 }
 
 .las_btn_dark_lg:hover {
-  background-color: #1e293b;
+  background: #1e293b;
   transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.25);
 }
 
-/* 9. COUPON SECTION */
+.las_btn_dark_lg svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* -----------------------------------------------------------
+   10. COUPON SECTION
+   ----------------------------------------------------------- */
+
 .las_section_coupon {
-  background-color: #111318;
-  color: #fff;
-  padding: 70px 0;
+  background: #111318;
 }
 
 .las_coupon_card {
-  max-width: 840px;
+  max-width: 780px;
   margin: 0 auto;
   text-align: center;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(197, 168, 128, 0.3);
-  border-radius: 16px;
-  padding: 45px 30px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  padding: 56px 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(197, 168, 128, 0.12);
+  border-radius: 24px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .las_coupon_badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  background: rgba(197, 168, 128, 0.1);
   color: #c5a880;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(197, 168, 128, 0.15);
+  margin-bottom: 20px;
+}
+
+.las_coupon_badge svg {
+  width: 14px;
+  height: 14px;
 }
 
 .las_coupon_title {
-  font-size: clamp(22px, 3vw, 32px);
-  color: #ffffff;
-  margin: 0 0 12px;
-  font-family: 'PT Serif', serif;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.2;
+  margin: 0 0 14px;
 }
 
 .las_coupon_desc {
   color: #94a3b8;
   font-size: 15px;
-  max-width: 600px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
+  line-height: 1.7;
+  margin: 0 0 30px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .las_coupon_generator_box {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
 }
 
-/* 10. BOOKING FORM SECTION */
+.las_coupon_box_inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.las_coupon_action_row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.las_coupon_gen_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  background: linear-gradient(135deg, #c5a880 0%, #b39166 100%);
+  color: #0b0c10;
+  font-weight: 700;
+  font-size: 14.5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(197, 168, 128, 0.35);
+  transition: all 0.2s ease;
+}
+
+.las_coupon_gen_btn:hover {
+  background: linear-gradient(135deg, #d3b791 0%, #c4a173 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(197, 168, 128, 0.5);
+}
+
+.las_coupon_copy_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.las_coupon_copy_btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.las_coupon_copy_btn.las_copied {
+  background: #059669;
+  border-color: #059669;
+  color: #fff;
+}
+
+.las_coupon_result {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 8px;
+}
+
+.las_coupon_ticket {
+  background: rgba(197, 168, 128, 0.08);
+  border: 1.5px dashed rgba(197, 168, 128, 0.5);
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+  animation: lasFadeIn 0.3s ease;
+}
+
+.las_coupon_tag_label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #c5a880;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.las_coupon_code_display {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 10px rgba(197, 168, 128, 0.4);
+  margin-bottom: 8px;
+}
+
+.las_coupon_hint {
+  font-size: 12.5px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.las_coupon_claimed_notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 13.5px;
+}
+
+/* -----------------------------------------------------------
+   11. BOOKING SECTION
+   ----------------------------------------------------------- */
+
 .las_section_booking {
-  background-color: #f1f5f9;
+  background: #f1f5f9;
 }
 
 .las_booking_card {
-  max-width: 900px;
+  max-width: 860px;
   margin: 0 auto;
-  background-color: #fff;
-  border-radius: 16px;
-  padding: 45px 35px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  background: #fff;
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
-/* 11. FOOTER STYLES */
-.las_main_footer {
-  background-color: #12141a;
+/* Booking Form Elements */
+.las_booking_form {
+  width: 100%;
+}
+
+.las_form_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 24px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.las_form_group {
+  display: flex;
+  flex-direction: column;
+}
+
+.las_form_full {
+  grid-column: 1 / -1;
+}
+
+.las_form_label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 7px;
+  letter-spacing: 0.2px;
+}
+
+.las_required {
+  color: #e11d48;
+  font-weight: 700;
+}
+
+.las_optional {
   color: #94a3b8;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: normal;
 }
 
+.las_form_input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-family: inherit;
+  color: #0f172a;
+  background-color: #f8fafc;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.las_form_input:focus {
+  background-color: #fff;
+  border-color: #c5a880;
+  box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.18);
+}
+
+.las_form_input::placeholder {
+  color: #94a3b8;
+}
+
+.las_form_textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+.las_form_status {
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.las_form_success {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.las_form_error {
+  background-color: #fff1f2;
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+}
+
+.las_form_submit_row {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.las_form_submit_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 44px;
+  background: linear-gradient(135deg, #c5a880 0%, #b39166 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(197, 168, 128, 0.35);
+  transition: all 0.25s ease;
+}
+
+.las_form_submit_btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #d3b791 0%, #be9b6f 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(197, 168, 128, 0.45);
+}
+
+.las_form_submit_btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.las_spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: las_spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes las_spin {
+  to { transform: rotate(360deg); }
+}
+
+/* -----------------------------------------------------------
+   12. FOOTER
+   ----------------------------------------------------------- */
+
+.las_main_footer {
+  background: #0c0e12;
+  color: #94a3b8;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Footer Map */
 .las_footer_map_section {
-  padding: 40px 0 20px;
-  background-color: #171922;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .las_footer_map_container {
-  max-width: 1240px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 48px 24px 0;
 }
 
 .las_footer_map_header {
   display: flex;
   align-items: center;
-  justifyContent: space-between;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .las_map_badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(197, 168, 128, 0.08);
   color: #c5a880;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 4px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  border: 1px solid rgba(197, 168, 128, 0.12);
+}
+
+.las_map_badge svg {
+  width: 14px;
+  height: 14px;
 }
 
 .las_map_title {
-  font-size: 1.3rem;
-  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #f8fafc;
   margin: 0;
-  font-weight: 600;
 }
 
 .las_map_directions_btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background-color: #c5a880;
-  color: #fff;
-  padding: 9px 18px;
-  border-radius: 5px;
-  font-weight: 600;
+  gap: 6px;
+  color: #c5a880;
   font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.2s;
+  padding: 8px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(197, 168, 128, 0.2);
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .las_map_directions_btn:hover {
-  background-color: #b09166;
+  background: rgba(197, 168, 128, 0.08);
+  border-color: rgba(197, 168, 128, 0.4);
+}
+
+.las_map_directions_btn svg {
+  width: 14px;
+  height: 14px;
 }
 
 .las_footer_iframe_wrap {
-  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+.las_footer_iframe_wrap iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  display: block;
+  filter: grayscale(0.3) brightness(0.85);
+}
+
+/* Footer Grid */
 .las_footer_grid_wrap {
-  padding: 60px 0 40px;
+  padding: 64px 0 0;
+}
+
+.las_footer_container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .las_footer_columns {
@@ -1113,20 +1777,25 @@
 }
 
 .las_footer_col {
-  display: flex;
-  flex-direction: column;
+  min-width: 0;
+}
+
+.las_footer_brand_col {
+  min-width: 0;
 }
 
 .las_footer_logo {
-  display: inline-block;
-  margin-bottom: 16px;
+  height: 48px;
+  width: auto;
+  margin-bottom: 18px;
+  display: block;
 }
 
 .las_footer_about {
-  line-height: 1.6;
   color: #94a3b8;
-  font-size: 13.5px;
-  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 24px;
 }
 
 .las_footer_socials {
@@ -1135,36 +1804,52 @@
 }
 
 .las_social_btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
   text-decoration: none;
-  font-size: 14px;
-  transition: all 0.2s;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .las_social_btn:hover {
-  background-color: #c5a880;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.16);
   transform: translateY(-2px);
 }
 
+.las_social_btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.las_social_wa {
+  border-color: rgba(37, 211, 102, 0.2);
+  color: #25d366;
+}
+
 .las_social_wa:hover {
-  background-color: #25D366;
+  background: rgba(37, 211, 102, 0.1);
+  color: #25d366;
+  border-color: rgba(37, 211, 102, 0.4);
 }
 
 .las_footer_heading {
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.5px;
-  margin: 0 0 18px;
   position: relative;
-  padding-bottom: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f8fafc;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0 0 24px;
+  padding-bottom: 14px;
 }
 
 .las_footer_heading::after {
@@ -1172,34 +1857,52 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 25px;
+  width: 32px;
   height: 2px;
-  background-color: #c5a880;
+  background: #c5a880;
+  border-radius: 2px;
 }
 
 .las_footer_links {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
-.las_footer_links a {
+.las_footer_links li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: #94a3b8;
+  font-size: 14px;
   text-decoration: none;
-  font-size: 13.5px;
-  transition: color 0.2s, transform 0.2s;
-  display: inline-block;
+  padding: 4px 0;
+  transition: color 0.25s ease, padding-left 0.25s ease;
 }
 
-.las_footer_links a:hover {
+.las_footer_links li a:hover {
   color: #c5a880;
-  transform: translateX(4px);
+  padding-left: 6px;
+}
+
+.las_footer_links li a svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.las_footer_links li a:hover svg {
+  opacity: 1;
 }
 
 .las_footer_contact_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -1207,135 +1910,277 @@
 
 .las_footer_contact_item {
   display: flex;
-  gap: 12px;
   align-items: flex-start;
-  font-size: 13.5px;
-  line-height: 1.5;
-}
-
-.las_footer_contact_item a {
-  color: #cbd5e1;
+  gap: 12px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.6;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.25s ease;
 }
 
-.las_footer_contact_item a:hover {
+a.las_footer_contact_item:hover {
   color: #c5a880;
 }
 
+.las_footer_contact_item svg {
+  width: 18px;
+  height: 18px;
+  color: #c5a880;
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+/* Footer Bottom */
 .las_footer_bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 20px 0;
-  background-color: #0d0f14;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 48px;
 }
 
 .las_footer_bottom_inner {
   display: flex;
   align-items: center;
-  justifyContent: space-between;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 22px 24px;
+  gap: 16px;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
 .las_copyright_text {
-  margin: 0;
-  font-size: 12.5px;
   color: #64748b;
+  font-size: 13px;
+  margin: 0;
 }
 
 .las_admin_link {
   color: #475569;
   font-size: 12px;
   text-decoration: none;
-  transition: color 0.2s;
+  padding: 4px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .las_admin_link:hover {
   color: #c5a880;
+  border-color: rgba(197, 168, 128, 0.2);
 }
 
-/* 12. RESPONSIVE BREAKPOINTS */
+/* -----------------------------------------------------------
+   13. RESPONSIVE BREAKPOINTS
+   ----------------------------------------------------------- */
+
+/* ---- Tablet / Small Desktop ---- */
 @media (max-width: 1024px) {
-  .las_desktop_nav {
-    display: none !important;
-  }
+  /* Hide desktop nav, keep mobile actions and toggle visible */
+  .las_desktop_nav,
   .las_btn_book_cta {
     display: none !important;
   }
-  .las_hamburger_btn {
+
+  .las_nav_actions {
     display: flex !important;
+    align-items: center;
+    gap: 10px;
   }
+
+  .las_hamburger_btn,
   .las_mobile_action_btn {
     display: flex !important;
   }
+
+  /* About → single column */
   .las_about_grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .las_about_img {
-    height: 340px;
+
+  .las_about_img_col {
+    order: -1;
+    max-width: 480px;
+    margin: 0 auto;
   }
+
+  /* Footer → 2 columns */
   .las_footer_columns {
     grid-template-columns: 1fr 1fr;
-    gap: 35px;
+    gap: 36px;
+  }
+
+  /* Facilities → 2 columns */
+  .las_facilities_grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* ---- Mobile Landscape / Tablets Portrait ---- */
 @media (max-width: 768px) {
+  /* Section padding */
   .las_section {
-    padding: 60px 0;
+    padding: 70px 0;
   }
+
+  /* Hero */
   .las_hero_section {
-    min-height: 70vh;
-    padding: 60px 15px;
+    min-height: 75vh;
+    padding: 50px 16px;
   }
+
   .las_hero_btn_group {
     flex-direction: column;
+    align-items: stretch;
     width: 100%;
-    gap: 12px;
+    max-width: 380px;
   }
+
   .las_hero_btn_primary,
   .las_hero_btn_secondary,
   .las_hero_btn_wa {
     width: 100%;
-    box-sizing: border-box;
+    max-width: 100%;
     justify-content: center;
   }
+
+  .las_hero_pills_strip {
+    gap: 8px;
+  }
+
+  /* Offer ribbon */
   .las_offer_inner {
     flex-direction: column;
     text-align: center;
-    justify-content: center;
+    gap: 14px;
   }
+
+  .las_offer_text {
+    font-size: 14px;
+  }
+
+  /* Facilities → 1 column */
   .las_facilities_grid {
     grid-template-columns: 1fr;
   }
+
+  /* Events → 1 column */
   .las_events_grid {
     grid-template-columns: 1fr;
   }
+
+  /* Booking Form Responsive */
   .las_booking_card {
-    padding: 30px 20px;
+    padding: 32px 20px;
   }
+
+  .las_form_grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .las_form_submit_btn {
+    width: 100%;
+  }
+
+  /* Coupon Responsive */
   .las_coupon_card {
-    padding: 30px 20px;
+    padding: 40px 20px;
   }
+
+  .las_coupon_action_row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .las_coupon_gen_btn,
+  .las_coupon_copy_btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Footer → 1 column */
   .las_footer_columns {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 32px;
   }
+
+  .las_footer_grid_wrap {
+    padding: 48px 0 0;
+  }
+
   .las_footer_map_header {
     flex-direction: column;
     align-items: flex-start;
   }
 }
 
+/* ---- Small Mobile ---- */
 @media (max-width: 640px) {
   .las_hide_sm {
     display: none !important;
   }
+
   .las_navbar_inner {
-    height: 68px;
+    height: 64px;
   }
+
   .las_logo_img {
-    height: 48px;
+    height: 44px;
+  }
+
+  .las_navbar_scrolled .las_navbar_inner {
+    height: 58px;
+  }
+
+  .las_navbar_scrolled .las_logo_img {
+    height: 40px;
+  }
+
+  .las_hero_title {
+    font-size: clamp(28px, 8vw, 42px);
+  }
+
+  .las_hero_description {
+    font-size: 15px;
+  }
+
+  .las_section {
+    padding: 56px 0;
+  }
+
+  .las_section_header {
+    margin-bottom: 40px;
+  }
+
+  .las_section_title {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+
+  .las_about_title {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+
+  .las_container {
+    padding: 0 16px;
+  }
+
+  .las_utility_inner {
+    padding: 0 16px;
+  }
+
+  .las_navbar_inner {
+    padding: 0 16px;
+  }
+
+  .las_footer_container {
+    padding: 0 16px;
+  }
+
+  .las_footer_bottom_inner {
+    padding: 18px 16px;
+    flex-direction: column;
+    text-align: center;
   }
 }
