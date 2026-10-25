@@ -56,22 +56,37 @@ export default function Header({
 
   return (
     <>
-      {/* ─── TOP UTILITY BAR ─── */}
+      {/* ─── TOP LUXURY UTILITY BAR ─── */}
       <div className="las_top_utility_bar">
         <div className="las_container las_utility_inner">
           <div className="las_utility_left">
-            <span className="las_utility_item">
-              <i className="fas fa-phone-alt" />
-              <a href={`tel:${phone1}`}>{phone1}</a>
-              <span className="las_sep">|</span>
-              <a href={`tel:${phone2}`}>{phone2}</a>
-            </span>
-            <span className="las_utility_item las_hide_sm">
-              <i className="fas fa-map-marker-alt" style={{ color: '#c5a880' }} />
-              <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
+            {/* Phone Group */}
+            <div className="las_utility_item">
+              <span className="las_utility_icon">
+                <i className="fas fa-phone-alt" />
+              </span>
+              <a href={`tel:${phone1}`} className="las_utility_link">{phone1}</a>
+              <span className="las_utility_divider" />
+              <a href={`tel:${phone2}`} className="las_utility_link">{phone2}</a>
+            </div>
+
+            {/* Location */}
+            <div className="las_utility_item las_hide_sm">
+              <span className="las_utility_icon">
+                <i className="fas fa-map-marker-alt" />
+              </span>
+              <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="las_utility_link">
                 Kalampoor, Muvattupuzha
               </a>
-            </span>
+            </div>
+
+            {/* Booking Notice Badge */}
+            <div className="las_utility_item las_hide_md">
+              <span className="las_utility_badge">
+                <i className="fas fa-calendar-alt" style={{ fontSize: '10px' }} />
+                <span>Bookings Open 2026–2027</span>
+              </span>
+            </div>
           </div>
 
           <div className="las_utility_right">
@@ -84,8 +99,9 @@ export default function Header({
               <i className="fab fa-whatsapp" />
               <span>WhatsApp Us</span>
             </a>
-            <Link href="/admin" className="las_utility_admin_pill">
-              Admin
+            <Link href="/admin" className="las_utility_admin_pill" title="Admin Portal">
+              <i className="fas fa-lock" style={{ fontSize: '9px' }} />
+              <span>Admin</span>
             </Link>
           </div>
         </div>

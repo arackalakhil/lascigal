@@ -66,12 +66,13 @@
    ----------------------------------------------------------- */
 
 .las_top_utility_bar {
-  background: #0c0e12;
-  border-bottom: 1px solid rgba(197, 168, 128, 0.08);
+  background: #0d0f14;
+  background: linear-gradient(90deg, #090a0d 0%, #13151c 50%, #090a0d 100%);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.16);
   padding: 0;
   font-family: 'Raleway', sans-serif;
   position: relative;
-  z-index: 100;
+  z-index: 1001;
 }
 
 .las_utility_inner {
@@ -81,91 +82,126 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
-  min-height: 40px;
+  min-height: 42px;
+  gap: 16px;
 }
 
 .las_utility_left {
   display: flex;
   align-items: center;
-  gap: 6px;
-}
-
-.las_utility_right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  gap: 18px;
 }
 
 .las_utility_item {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  color: #94a3b8;
-  font-size: 12.5px;
-  text-decoration: none;
-  padding: 6px 8px;
-  border-radius: 6px;
-  transition: color 0.25s ease, background 0.25s ease;
+  gap: 8px;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
   white-space: nowrap;
 }
 
-.las_utility_item:hover {
-  color: #f8fafc;
-  background: rgba(255, 255, 255, 0.04);
+.las_utility_icon {
+  color: #c5a880;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.las_utility_item svg {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-  opacity: 0.7;
+.las_utility_link {
+  color: #cbd5e1 !important;
+  text-decoration: none !important;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.2s ease;
 }
 
-.las_sep {
+.las_utility_link:hover {
+  color: #c5a880 !important;
+  text-decoration: none !important;
+}
+
+.las_utility_divider {
+  display: inline-block;
   width: 1px;
-  height: 16px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 0 2px;
-  flex-shrink: 0;
+  height: 14px;
+  background: rgba(197, 168, 128, 0.28);
+  margin: 0 6px;
+  vertical-align: middle;
+}
+
+.las_utility_badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(197, 168, 128, 0.1);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  color: #e5cfb3;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.las_utility_right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .las_utility_whatsapp {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: rgba(37, 211, 102, 0.1);
-  color: #25d366;
-  font-size: 12.5px;
+  background: rgba(37, 211, 102, 0.12);
+  color: #25d366 !important;
+  font-size: 12px;
   font-weight: 600;
   padding: 5px 14px;
   border-radius: 50px;
-  text-decoration: none;
-  border: 1px solid rgba(37, 211, 102, 0.2);
-  transition: background 0.25s ease, transform 0.2s ease;
+  text-decoration: none !important;
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
 }
 
 .las_utility_whatsapp:hover {
-  background: rgba(37, 211, 102, 0.18);
+  background: #25d366;
+  color: #ffffff !important;
+  border-color: #25d366;
+  box-shadow: 0 2px 14px rgba(37, 211, 102, 0.35);
   transform: translateY(-1px);
 }
 
-.las_utility_whatsapp svg {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
+.las_utility_whatsapp i {
+  font-size: 14px;
 }
 
 .las_utility_admin_pill {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  color: #64748b;
-  font-size: 11px;
-  text-decoration: none;
-  padding: 4px 10px;
+  gap: 6px;
+  color: #94a3b8 !important;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-decoration: none !important;
+  padding: 4px 12px;
   border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: color 0.25s ease, border-color 0.25s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.las_utility_admin_pill:hover {
+  color: #ffffff !important;
+  background: rgba(197, 168, 128, 0.18);
+  border-color: rgba(197, 168, 128, 0.35);
 }
 
 .las_utility_admin_pill:hover {
@@ -1978,7 +2014,8 @@ a.las_footer_contact_item:hover {
 @media (max-width: 1024px) {
   /* Hide desktop nav, keep mobile actions and toggle visible */
   .las_desktop_nav,
-  .las_btn_book_cta {
+  .las_btn_book_cta,
+  .las_hide_md {
     display: none !important;
   }
 
@@ -2120,6 +2157,36 @@ a.las_footer_contact_item:hover {
 @media (max-width: 640px) {
   .las_hide_sm {
     display: none !important;
+  }
+
+  .las_top_utility_bar {
+    font-size: 11.5px;
+  }
+
+  .las_utility_inner {
+    padding: 0 12px;
+    min-height: 38px;
+    gap: 8px;
+  }
+
+  .las_utility_left {
+    gap: 10px;
+  }
+
+  .las_utility_item {
+    font-size: 11.5px;
+    gap: 5px;
+  }
+
+  .las_utility_whatsapp {
+    padding: 3px 10px;
+    font-size: 11px;
+    gap: 5px;
+  }
+
+  .las_utility_admin_pill {
+    padding: 3px 8px;
+    font-size: 10.5px;
   }
 
   .las_navbar_inner {
