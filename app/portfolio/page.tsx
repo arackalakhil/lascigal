@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import MarqueeCarousel from '@/components/MarqueeCarousel';
 import prisma from '@/lib/prisma';
+import '@/app/homepage.css';
 
 export const revalidate = 60;
 
@@ -44,63 +45,47 @@ export default async function PortfolioPage() {
     <>
       <Header phone1={phone1} phone2={phone2} whatsapp={whatsapp} mapsUrl={mapsUrl} logo={logo} />
 
-      {/* Top Banner Breadcrumbs */}
-      <div className="top_panel_title title_present">
-        <div
-          className="top_panel_title_inner title_present"
-          style={{
-            backgroundColor: '#262626',
-            padding: '50px 0',
-            textAlign: 'center',
-            color: '#fff',
-          }}
-        >
-          <div className="content_wrap">
-            <h1 className="page_title" style={{ color: '#fff', margin: '0 0 10px', fontSize: '2.5rem' }}>
-              Our Portfolio
-            </h1>
-            <div className="breadcrumbs" style={{ color: '#bbb', fontSize: '14px' }}>
-              <Link href="/" className="breadcrumbs_item home" style={{ color: '#c5a880', textDecoration: 'none' }}>
-                Home
-              </Link>
-              <span className="breadcrumbs_delimiter" style={{ margin: '0 8px' }}>
-                /
-              </span>
-              <span className="breadcrumbs_item current">Portfolio</span>
+      {/* ─── LUXURY HERO BANNER ─── */}
+      <section className="las_page_hero">
+        <div className="las_page_hero_inner">
+          <span className="las_page_badge">Event Categories</span>
+          <h1 className="las_page_title">Our Event Portfolio</h1>
+          <nav className="las_breadcrumbs" aria-label="Breadcrumbs">
+            <Link href="/">Home</Link>
+            <span className="las_breadcrumbs_sep">/</span>
+            <span className="las_breadcrumbs_current">Portfolio</span>
+          </nav>
+        </div>
+      </section>
+
+      {/* ─── CATEGORIES SHOWCASE ─── */}
+      <section className="las_section" style={{ backgroundColor: '#ffffff', padding: '70px 0' }}>
+        <div className="las_container">
+          {/* Category 1: Life's Celebrations */}
+          <div style={{ marginBottom: '70px' }}>
+            <div className="las_section_header" style={{ marginBottom: '35px' }}>
+              <span className="las_eyebrow">Personal Milestones</span>
+              <h2 className="las_section_title">Life&apos;s Celebrations</h2>
+              <p className="las_section_subtitle">
+                Weddings, engagements, betrothals, and joyous family celebrations crafted with traditional grandeur and modern luxury.
+              </p>
             </div>
+            <MarqueeCarousel items={celebrations} />
+          </div>
+
+          {/* Category 2: Conferences & Conventions */}
+          <div>
+            <div className="las_section_header" style={{ marginBottom: '35px' }}>
+              <span className="las_eyebrow">Corporate &amp; Commercial</span>
+              <h2 className="las_section_title">Conferences &amp; Conventions</h2>
+              <p className="las_section_subtitle">
+                State-of-the-art infrastructure for global corporate summits, product launches, trade exhibitions, and award ceremonies.
+              </p>
+            </div>
+            <MarqueeCarousel items={conventions} />
           </div>
         </div>
-      </div>
-
-      <div style={{ padding: '60px 0' }}>
-        {/* Category 1: Life's Celebrations */}
-        <div style={{ marginBottom: '60px' }}>
-          <h2
-            className="sc_section_title sc_item_title sc_item_title_without_descr"
-            style={{ textAlign: 'center', fontSize: '2.3rem', marginBottom: '10px' }}
-          >
-            Life&apos;s Celebrations
-          </h2>
-          <p style={{ textAlign: 'center', color: '#777', maxWidth: '600px', margin: '0 auto 25px' }}>
-            Weddings, engagements, betrothals, and joyous family celebrations crafted with grandeur.
-          </p>
-          <MarqueeCarousel items={celebrations} />
-        </div>
-
-        {/* Category 2: Conferences & Conventions */}
-        <div>
-          <h2
-            className="sc_section_title sc_item_title sc_item_title_without_descr"
-            style={{ textAlign: 'center', fontSize: '2.3rem', marginBottom: '10px' }}
-          >
-            Conferences & Conventions
-          </h2>
-          <p style={{ textAlign: 'center', color: '#777', maxWidth: '600px', margin: '0 auto 25px' }}>
-            State-of-the-art infrastructure for global corporate summits, exhibitions, and award galas.
-          </p>
-          <MarqueeCarousel items={conventions} />
-        </div>
-      </div>
+      </section>
 
       <Footer
         phone1={phone1}

@@ -177,7 +177,7 @@ export default function Header({
 
       {/* ─── MOBILE DRAWER ─── */}
       {mobileMenuOpen && (
-        <div className="las_mobile_drawer_backdrop" onClick={() => setMobileMenuOpen(false)}>
+        <div className="las_mobile_drawer_backdrop open" onClick={() => setMobileMenuOpen(false)}>
           <div
             className="las_mobile_drawer_content"
             onClick={(e) => e.stopPropagation()}

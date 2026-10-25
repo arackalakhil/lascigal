@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import GalleryLightbox from '@/components/GalleryLightbox';
 import prisma from '@/lib/prisma';
+import '@/app/homepage.css';
 
 export const revalidate = 60;
 
@@ -27,48 +28,33 @@ export default async function GalleryPage() {
     <>
       <Header phone1={phone1} phone2={phone2} whatsapp={whatsapp} mapsUrl={mapsUrl} logo={logo} />
 
-      {/* Top Banner Breadcrumbs */}
-      <div className="top_panel_title title_present">
-        <div
-          className="top_panel_title_inner title_present"
-          style={{
-            backgroundColor: '#262626',
-            padding: '50px 0',
-            textAlign: 'center',
-            color: '#fff',
-          }}
-        >
-          <div className="content_wrap">
-            <h1 className="page_title" style={{ color: '#fff', margin: '0 0 10px', fontSize: '2.5rem' }}>
-              Gallery Cobbles
-            </h1>
-            <div className="breadcrumbs" style={{ color: '#bbb', fontSize: '14px' }}>
-              <Link href="/" className="breadcrumbs_item home" style={{ color: '#c5a880', textDecoration: 'none' }}>
-                Home
-              </Link>
-              <span className="breadcrumbs_delimiter" style={{ margin: '0 8px' }}>
-                /
-              </span>
-              <span className="breadcrumbs_item current">Gallery</span>
-            </div>
+      {/* ─── LUXURY HERO BANNER ─── */}
+      <section className="las_page_hero">
+        <div className="las_page_hero_inner">
+          <span className="las_page_badge">Visual Journey</span>
+          <h1 className="las_page_title">Photo &amp; Media Gallery</h1>
+          <nav className="las_breadcrumbs" aria-label="Breadcrumbs">
+            <Link href="/">Home</Link>
+            <span className="las_breadcrumbs_sep">/</span>
+            <span className="las_breadcrumbs_current">Gallery</span>
+          </nav>
+        </div>
+      </section>
+
+      {/* ─── MAIN GALLERY SECTION ─── */}
+      <section className="las_section" style={{ backgroundColor: '#ffffff', padding: '70px 0' }}>
+        <div className="las_container">
+          <div className="las_section_header">
+            <span className="las_eyebrow">Portfolio &amp; Captures</span>
+            <h2 className="las_section_title">Moments of Grandeur</h2>
+            <p className="las_section_subtitle">
+              Browse through memorable moments captured at Lascigal Convention Centre — showcasing our grand halls, stage decor, banquet feasts, and evening celebrations.
+            </p>
           </div>
-        </div>
-      </div>
 
-      {/* Main Gallery Section */}
-      <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '60px 20px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-          <h6 style={{ color: '#c5a880', textTransform: 'uppercase', letterSpacing: '2px', margin: 0 }}>
-            portfolio & captures
-          </h6>
-          <h2 style={{ fontSize: '2.3rem', margin: '8px 0 20px' }}>Our Latest Projects</h2>
-          <p style={{ color: '#666', maxWidth: '650px', margin: '0 auto', lineHeight: 1.6 }}>
-            Browse through moments captured at Lascigal Convention Centre — showcasing our auditoriums, stage styling, banquet feasts, and evening illuminations.
-          </p>
+          <GalleryLightbox items={galleryItems} />
         </div>
-
-        <GalleryLightbox items={galleryItems} />
-      </div>
+      </section>
 
       <Footer
         phone1={phone1}

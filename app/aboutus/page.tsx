@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import prisma from '@/lib/prisma';
+import '@/app/homepage.css';
 
 export const revalidate = 60;
 
@@ -20,124 +21,168 @@ export default async function AboutUsPage() {
   const directorTitle = settings['director_title'] || 'Lascigal – Creating Spaces That Tell Your Story';
   const directorMessage =
     settings['director_message'] ||
-    'At Lascigal Convention Center, we believe every event is more than just a gathering—it’s a memory in the making. Our vision has always been to create a space where elegance meets excellence, and where your special moments are celebrated with the care, warmth, and sophistication they truly deserve.\n\nFrom weddings and corporate events to grand celebrations, we provide world-class facilities, seamless service, and an atmosphere that inspires joy. As the Director, it is my honor to ensure that each guest experiences not only the grandeur of our venue but also the personal touch that makes every occasion unforgettable.';
+    'At Lascigal Convention Center, we believe every event is more than just a gathering—it\u2019s a memory in the making. Our vision has always been to create a space where elegance meets excellence, and where your special moments are celebrated with the care, warmth, and sophistication they truly deserve.\n\nFrom weddings and corporate events to grand celebrations, we provide world-class facilities, seamless service, and an atmosphere that inspires joy. As the Director, it is my honor to ensure that each guest experiences not only the grandeur of our venue but also the personal touch that makes every occasion unforgettable.';
   const videoUrl = settings['director_video_url'] || 'https://www.youtube.com/embed/dANtb6anAWI?start=21&end=305';
 
   return (
     <>
       <Header phone1={phone1} phone2={phone2} whatsapp={whatsapp} mapsUrl={mapsUrl} logo={logo} />
 
-      {/* Top Banner Breadcrumbs */}
-      <div className="top_panel_title title_present">
-        <div
-          className="top_panel_title_inner title_present"
-          style={{
-            backgroundColor: '#262626',
-            padding: '50px 0',
-            textAlign: 'center',
-            color: '#fff',
-          }}
-        >
-          <div className="content_wrap">
-            <h1 className="page_title" style={{ color: '#fff', margin: '0 0 10px', fontSize: '2.5rem' }}>
-              About Us
-            </h1>
-            <div className="breadcrumbs" style={{ color: '#bbb', fontSize: '14px' }}>
-              <Link href="/" className="breadcrumbs_item home" style={{ color: '#c5a880', textDecoration: 'none' }}>
-                Home
-              </Link>
-              <span className="breadcrumbs_delimiter" style={{ margin: '0 8px' }}>
-                /
-              </span>
-              <span className="breadcrumbs_item current">About us</span>
+      {/* ─── LUXURY HERO BANNER ─── */}
+      <section className="las_page_hero">
+        <div className="las_page_hero_inner">
+          <span className="las_page_badge">Our Vision &amp; Heritage</span>
+          <h1 className="las_page_title">About Lascigal</h1>
+          <nav className="las_breadcrumbs" aria-label="Breadcrumbs">
+            <Link href="/">Home</Link>
+            <span className="las_breadcrumbs_sep">/</span>
+            <span className="las_breadcrumbs_current">About Us</span>
+          </nav>
+        </div>
+      </section>
+
+      {/* ─── DIRECTOR'S MESSAGE SECTION ─── */}
+      <section className="las_section" style={{ backgroundColor: '#ffffff' }}>
+        <div className="las_container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))',
+              gap: '50px',
+              alignItems: 'center',
+            }}
+          >
+            {/* Left Column: Message */}
+            <div>
+              <span className="las_eyebrow">Director&apos;s Word</span>
+              <h2
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: 'clamp(24px, 3.5vw, 36px)',
+                  lineHeight: 1.3,
+                  color: '#0f172a',
+                  margin: '10px 0 24px',
+                }}
+              >
+                {directorTitle}
+              </h2>
+
+              <div style={{ color: '#475569', lineHeight: 1.8, fontSize: '15.5px' }}>
+                {directorMessage.split('\n\n').map((para, i) => (
+                  <p key={i} style={{ marginBottom: '18px' }}>
+                    {para}
+                  </p>
+                ))}
+              </div>
+
+              {/* Social Channels */}
+              <div style={{ marginTop: '28px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '50%',
+                    backgroundColor: '#f1f5f9',
+                    color: '#334155',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  <i className="fab fa-facebook-f" />
+                </a>
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '50%',
+                    backgroundColor: '#f1f5f9',
+                    color: '#334155',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  <i className="fab fa-instagram" />
+                </a>
+                <a
+                  href="#"
+                  aria-label="YouTube"
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '50%',
+                    backgroundColor: '#f1f5f9',
+                    color: '#334155',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  <i className="fab fa-youtube" />
+                </a>
+                <a
+                  href={`https://wa.me/${whatsapp}?text=Hello%20Lascigal`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(37, 211, 102, 0.15)',
+                    color: '#25D366',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  <i className="fab fa-whatsapp" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Video Embed */}
+            <div>
+              <div
+                style={{
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 16px 40px rgba(0, 0, 0, 0.12)',
+                  position: 'relative',
+                  width: '100%',
+                  aspectRatio: '16 / 9',
+                  backgroundColor: '#0c0e12',
+                  border: '1px solid rgba(197, 168, 128, 0.25)',
+                }}
+              >
+                <iframe
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    border: 0,
+                  }}
+                  src={videoUrl}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                  title="Lascigal Showcase Video"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Page Content */}
-      <div className="page_content_wrap page_paddings_no" style={{ padding: '60px 0' }}>
-        <div className="content">
-          <article className="post_item post_item_single page type-page">
-            <div className="post_content">
-              <section className="no-col-padding">
-                <div className="container-fluid">
-                  <div className="content_container" style={{ maxWidth: '1140px', margin: '0 auto', padding: '0 20px' }}>
-                    <div className="columns_wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '40px', alignItems: 'center' }}>
-                      {/* Left: Message */}
-                      <div style={{ flex: '1 1 500px' }}>
-                        <h6
-                          className="sc_title sc_title_regular"
-                          style={{ color: '#c5a880', textTransform: 'uppercase', letterSpacing: '2px', margin: '0 0 10px' }}
-                        >
-                          director&apos;s word
-                        </h6>
-                        <h2 className="sc_title" style={{ fontSize: '2.3rem', lineHeight: 1.3, marginBottom: '25px' }}>
-                          <strong style={{ color: '#c5a880' }}>L</strong>ascigal – Creating Spaces That Tell Your Story
-                        </h2>
-                        <div style={{ color: '#555', lineHeight: 1.8, fontSize: '16px' }}>
-                          {directorMessage.split('\n\n').map((para, i) => (
-                            <p key={i} style={{ marginBottom: '16px' }}>
-                              {para}
-                            </p>
-                          ))}
-                        </div>
-
-                        <div
-                          className="sc_socials sc_socials_type_icons sc_socials_shape_round sc_socials_size_tiny"
-                          style={{ marginTop: '25px', display: 'flex', gap: '10px' }}
-                        >
-                          <div className="sc_socials_item">
-                            <a href="#" className="social_icons" aria-label="Facebook">
-                              <span className="fa-brands fa-facebook"></span>
-                            </a>
-                          </div>
-                          <div className="sc_socials_item">
-                            <a href="#" className="social_icons social_twitter" aria-label="Twitter">
-                              <span className="fa-brands fa-x-twitter"></span>
-                            </a>
-                          </div>
-                          <div className="sc_socials_item">
-                            <a href="#" className="social_icons social_instagramm" aria-label="Instagram">
-                              <span className="fa-brands fa-instagram"></span>
-                            </a>
-                          </div>
-                          <div className="sc_socials_item">
-                            <a href="#" className="social_icons social_gplus" aria-label="YouTube">
-                              <span className="fa-brands fa-youtube"></span>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Right: Video */}
-                      <div style={{ flex: '1 1 450px' }}>
-                        <div
-                          style={{
-                            borderRadius: '12px',
-                            overflow: 'hidden',
-                            boxShadow: '0 12px 36px rgba(0,0,0,0.15)',
-                            position: 'relative',
-                            paddingTop: '56.25%',
-                          }}
-                        >
-                          <iframe
-                            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
-                            src={videoUrl}
-                            allow="autoplay; encrypted-media"
-                            allowFullScreen
-                            title="Lascigal Showcase Video"
-                          ></iframe>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </article>
-        </div>
-      </div>
+      </section>
 
       <Footer
         phone1={phone1}
