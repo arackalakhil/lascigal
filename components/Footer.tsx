@@ -176,11 +176,6 @@ export default function Footer({
           <p className="las_copyright_text">
             &copy; {new Date().getFullYear()} Lascigal Convention Centre. All rights reserved.
           </p>
-          <div className="las_footer_bottom_links">
-            <Link href="/admin" className="las_admin_link">
-              Admin Portal
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

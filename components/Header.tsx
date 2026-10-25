@@ -99,10 +99,6 @@ export default function Header({
               <i className="fab fa-whatsapp" />
               <span>WhatsApp Us</span>
             </a>
-            <Link href="/admin" className="las_utility_admin_pill" title="Admin Portal">
-              <i className="fas fa-lock" style={{ fontSize: '9px' }} />
-              <span>Admin</span>
-            </Link>
           </div>
         </div>
       </div>
