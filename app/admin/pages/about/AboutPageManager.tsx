@@ -29,8 +29,20 @@ export default function AboutPageManager({ initialSettings }: { initialSettings:
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ settings: payload }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to save About Us settings');
+
+      let data: any = null;
+      try {
+        data = await res.json();
+      } catch {
+        // Response was not JSON
+      }
+
+      if (!res.ok) {
+        if (res.status === 401) {
+          throw new Error('Your admin session has expired. Please refresh the page and log in again.');
+        }
+        throw new Error(data?.error || `Failed to save About Us settings (Status: ${res.status})`);
+      }
 
       setSaved(true);
       setTimeout(() => setSaved(false), 3500);
