@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET() {
   try {
     const list = await prisma.siteSetting.findMany();
@@ -16,7 +19,7 @@ export async function GET() {
   }
 }
 
-export async function PUT(req: Request) {
+async function handleSave(req: Request) {
   const session = await getServerSession(authOptions);
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized. Please log in again.' }, { status: 401 });
@@ -52,4 +55,16 @@ export async function PUT(req: Request) {
     console.error('Settings update error:', err);
     return NextResponse.json({ error: err.message || 'Database error saving settings' }, { status: 500 });
   }
+}
+
+export async function POST(req: Request) {
+  return handleSave(req);
+}
+
+export async function PUT(req: Request) {
+  return handleSave(req);
+}
+
+export async function PATCH(req: Request) {
+  return handleSave(req);
 }

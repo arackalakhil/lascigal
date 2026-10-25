@@ -25,7 +25,7 @@ export default function AboutPageManager({ initialSettings }: { initialSettings:
         director_video_url: settings['director_video_url'] || '',
       };
       const res = await fetch('/api/settings', {
-        method: 'PUT',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ settings: payload }),
       });

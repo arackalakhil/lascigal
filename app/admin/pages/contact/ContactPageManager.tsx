@@ -31,7 +31,7 @@ export default function ContactPageManager({ initialSettings }: { initialSetting
       };
 
       const res = await fetch('/api/settings', {
-        method: 'PUT',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ settings: contactSettings }),
       });

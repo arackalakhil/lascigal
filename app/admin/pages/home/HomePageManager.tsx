@@ -80,7 +80,7 @@ export default function HomePageManager({ initialSettings }: { initialSettings: 
       };
 
       const res = await fetch('/api/settings', {
-        method: 'PUT',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ settings: homeSettings }),
       });
