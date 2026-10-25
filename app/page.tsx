@@ -159,7 +159,7 @@ export default async function HomePage() {
                     className="las_facility_img"
                     loading="lazy"
                   />
-                  <div className="las_facility_num_badge">0{idx + 1}</div>
+                  <div className="las_facility_num_badge">{idx < 9 ? `0${idx + 1}` : idx + 1}</div>
                 </div>
 
                 <div className="las_facility_content">

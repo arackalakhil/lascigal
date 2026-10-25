@@ -53,7 +53,7 @@ export default function AdminSidebar({
         { label: 'Home Page', href: '/admin/pages/home', icon: 'fa-house' },
         { label: 'About Us', href: '/admin/pages/about', icon: 'fa-circle-info' },
         { label: 'Contact Us', href: '/admin/pages/contact', icon: 'fa-phone' },
-        { label: '6 Venue Facilities', href: '/admin/facilities', icon: 'fa-building-columns' },
+        { label: 'Facilities & Amenities', href: '/admin/facilities', icon: 'fa-building-columns' },
         { label: 'Events & Portfolio', href: '/admin/events', icon: 'fa-calendar-days' },
         { label: 'Photo Gallery', href: '/admin/gallery', icon: 'fa-images' },
       ],

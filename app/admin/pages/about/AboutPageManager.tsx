@@ -19,12 +19,18 @@ export default function AboutPageManager({ initialSettings }: { initialSettings:
     e.preventDefault();
     setSaving(true);
     try {
+      const payload = {
+        director_title: settings['director_title'] || '',
+        director_message: settings['director_message'] || '',
+        director_video_url: settings['director_video_url'] || '',
+      };
       const res = await fetch('/api/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ settings }),
+        body: JSON.stringify({ settings: payload }),
       });
-      if (!res.ok) throw new Error('Failed to save About Us settings');
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to save About Us settings');
 
       setSaved(true);
       setTimeout(() => setSaved(false), 3500);

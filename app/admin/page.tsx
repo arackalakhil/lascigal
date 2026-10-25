@@ -58,10 +58,10 @@ export default async function AdminDashboardPage() {
       color: '#f59e0b',
     },
     {
-      title: '6 Venue Facilities',
-      description: 'Grand AC Hall, parking, catering dining, VIP green rooms, and advanced AV systems.',
+      title: 'Facilities & Amenities',
+      description: 'Grand AC Hall, dining, parking, suite rooms, power backup, and modern amenities.',
       href: '/admin/facilities',
-      viewHref: '/',
+      viewHref: '/#facilities',
       icon: 'fa-building-columns',
       color: '#8b5cf6',
     },

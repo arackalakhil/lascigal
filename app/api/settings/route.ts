@@ -19,26 +19,32 @@ export async function GET() {
 export async function PUT(req: Request) {
   const session = await getServerSession(authOptions);
   if (!session) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    return NextResponse.json({ error: 'Unauthorized. Please log in again.' }, { status: 401 });
   }
 
   try {
-    const { settings } = await req.json();
+    const body = await req.json();
+    const settings = body.settings;
     if (!settings || typeof settings !== 'object') {
       return NextResponse.json({ error: 'Settings object required' }, { status: 400 });
     }
 
-    const updates = Object.entries(settings).map(([key, value]) =>
-      prisma.siteSetting.upsert({
-        where: { key },
-        update: { value: String(value) },
-        create: { key, value: String(value) },
-      })
-    );
+    const entries = Object.entries(settings);
+    // Process in batches of 2 to ensure we never exhaust Supabase PgBouncer pooler limits
+    for (let i = 0; i < entries.length; i += 2) {
+      const batch = entries.slice(i, i + 2).map(([key, value]) =>
+        prisma.siteSetting.upsert({
+          where: { key },
+          update: { value: String(value ?? '') },
+          create: { key, value: String(value ?? '') },
+        })
+      );
+      await Promise.all(batch);
+    }
 
-    await Promise.all(updates);
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, count: entries.length });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error('Settings update error:', err);
+    return NextResponse.json({ error: err.message || 'Database error saving settings' }, { status: 500 });
   }
 }

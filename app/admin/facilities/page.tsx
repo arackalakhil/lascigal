@@ -17,9 +17,9 @@ export default async function AdminFacilitiesPage() {
   return (
     <div>
       <div style={{ marginBottom: '25px' }}>
-        <h1 style={{ fontSize: '24px', margin: 0, fontWeight: 700 }}>Homepage Facilities & Amenities</h1>
+        <h1 style={{ fontSize: '24px', margin: 0, fontWeight: 700 }}>Homepage Facilities &amp; Amenities</h1>
         <p style={{ color: '#666', margin: '4px 0 0', fontSize: '14px' }}>
-          Edit the 6 venue highlights displayed on the homepage, update their descriptions, and upload new photos to Cloudflare R2.
+          Add, reorder, edit, or remove the venue highlights and amenities displayed on the homepage. Upload high-res photos to Cloudflare R2.
         </p>
       </div>
 

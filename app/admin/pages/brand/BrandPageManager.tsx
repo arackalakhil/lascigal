@@ -67,12 +67,20 @@ export default function BrandPageManager({ initialSettings }: { initialSettings:
     e.preventDefault();
     setSaving(true);
     try {
+      const brandSettings = {
+        site_logo: settings.site_logo || '',
+        site_favicon: settings.site_favicon || '',
+        site_title: settings.site_title || '',
+        site_description: settings.site_description || '',
+      };
+
       const res = await fetch('/api/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ settings }),
+        body: JSON.stringify({ settings: brandSettings }),
       });
-      if (!res.ok) throw new Error('Failed to update brand settings');
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to update brand settings');
 
       setSaved(true);
       setTimeout(() => setSaved(false), 3500);

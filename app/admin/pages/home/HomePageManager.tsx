@@ -68,12 +68,24 @@ export default function HomePageManager({ initialSettings }: { initialSettings: 
     e.preventDefault();
     setSaving(true);
     try {
+      // Isolate only home page settings to keep the payload minimal & fast
+      const homeSettings = {
+        hero_heading: settings.hero_heading || '',
+        hero_subheading: settings.hero_subheading || '',
+        hero_image: settings.hero_image || '',
+        offer_banner_text: settings.offer_banner_text || '',
+        about_heading: settings.about_heading || '',
+        about_text: settings.about_text || '',
+        about_image: settings.about_image || '',
+      };
+
       const res = await fetch('/api/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ settings }),
+        body: JSON.stringify({ settings: homeSettings }),
       });
-      if (!res.ok) throw new Error('Failed to save Home Page settings');
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to save Home Page settings');
 
       setSaved(true);
       setTimeout(() => setSaved(false), 3500);
@@ -298,28 +310,62 @@ export default function HomePageManager({ initialSettings }: { initialSettings: 
         </div>
       </div>
 
-      {/* 4. SHORTCUTS TO OTHER HOMEPAGE MODULES */}
+      {/* 4. HOMEPAGE FACILITIES & AMENITIES (World-Class Infrastructure) */}
+      <div style={{ backgroundColor: '#fff', borderRadius: '10px', padding: '25px', border: '1px solid #e5e7eb', marginBottom: '25px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+              <span style={{ backgroundColor: '#fef3c7', color: '#92400e', fontSize: '11px', fontWeight: 700, padding: '3px 8px', borderRadius: '4px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Homepage Section
+              </span>
+              <h3 style={{ fontSize: '18px', fontWeight: 700, margin: 0, color: '#111827' }}>
+                🏛 Facilities &amp; Amenities (World-Class Infrastructure)
+              </h3>
+            </div>
+            <p style={{ margin: 0, fontSize: '13.5px', color: '#6b7280', maxWidth: '640px' }}>
+              Add new facility cards, update titles, upload photos to Cloudflare R2, customize icons, change display order, or remove amenities.
+            </p>
+          </div>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Link
+              href="/admin/facilities"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 18px',
+                backgroundColor: '#1e293b',
+                color: '#fff',
+                borderRadius: '6px',
+                fontSize: '13.5px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+              }}
+            >
+              <span>+ Add &amp; Manage Facilities</span>
+              <span>→</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* 5. SHORTCUTS TO OTHER HOMEPAGE MODULES */}
       <div style={{ backgroundColor: '#f0f4f8', borderRadius: '10px', padding: '20px 25px', marginBottom: '30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '15px' }}>
         <div>
           <h4 style={{ margin: '0 0 4px', fontSize: '15px', fontWeight: 600, color: '#1e293b' }}>
-            Looking to edit the 6 Venue Highlights or Featured Events on the Homepage?
+            Featured Events &amp; Services on the Homepage
           </h4>
           <p style={{ margin: 0, fontSize: '13px', color: '#64748b' }}>
-            The 6 Venue Cards (Air-conditioned halls, parking, dining...) and Event Services have dedicated managers.
+            Weddings, Receptions, Corporate Summits, Banquets, and Cultural Celebrations.
           </p>
         </div>
         <div style={{ display: 'flex', gap: '10px' }}>
           <Link
-            href="/admin/facilities"
-            style={{ padding: '8px 14px', backgroundColor: '#fff', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', fontWeight: 600, color: '#334155', textDecoration: 'none' }}
-          >
-            🏛 Edit 6 Facilities
-          </Link>
-          <Link
             href="/admin/events"
             style={{ padding: '8px 14px', backgroundColor: '#fff', border: '1px solid #cbd5e1', borderRadius: '6px', fontSize: '13px', fontWeight: 600, color: '#334155', textDecoration: 'none' }}
           >
-            📅 Edit Events
+            📅 Edit Event Services
           </Link>
         </div>
       </div>

@@ -19,12 +19,24 @@ export default function ContactPageManager({ initialSettings }: { initialSetting
     e.preventDefault();
     setSaving(true);
     try {
+      const contactSettings = {
+        phone_primary: settings.phone_primary || '',
+        phone_secondary: settings.phone_secondary || '',
+        whatsapp_number: settings.whatsapp_number || '',
+        email_address: settings.email_address || '',
+        address_line1: settings.address_line1 || '',
+        address_pincode: settings.address_pincode || '',
+        google_maps_url: settings.google_maps_url || '',
+        google_maps_embed: settings.google_maps_embed || '',
+      };
+
       const res = await fetch('/api/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ settings }),
+        body: JSON.stringify({ settings: contactSettings }),
       });
-      if (!res.ok) throw new Error('Failed to save Contact settings');
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to save Contact settings');
 
       setSaved(true);
       setTimeout(() => setSaved(false), 3500);
