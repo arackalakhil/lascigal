@@ -219,13 +219,14 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
               {/* Inquiry CTA Card */}
               <div
                 style={{
-                  backgroundColor: '#111318',
+                  backgroundColor: '#be9f76',
+                  backgroundImage: 'linear-gradient(135deg, #be9f76 0%, #b29165 100%)',
                   color: '#fff',
                   borderRadius: '16px',
                   padding: '32px 28px',
                   textAlign: 'center',
-                  border: '1px solid rgba(197, 168, 128, 0.25)',
-                  boxShadow: '0 12px 35px rgba(0, 0, 0, 0.25)',
+                  border: '1.5px solid rgba(255, 255, 255, 0.35)',
+                  boxShadow: '0 12px 35px rgba(190, 159, 118, 0.3)',
                 }}
               >
                 <div
@@ -233,8 +234,8 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                     width: '46px',
                     height: '46px',
                     borderRadius: '50%',
-                    backgroundColor: 'rgba(197, 168, 128, 0.15)',
-                    color: '#c5a880',
+                    backgroundColor: 'rgba(255, 255, 255, 0.22)',
+                    color: '#ffffff',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -255,23 +256,23 @@ export default async function EventDetailPage({ params }: EventDetailPageProps) 
                 >
                   Plan Your {event.title}
                 </h3>
-                <p style={{ color: '#94a3b8', fontSize: '14px', lineHeight: 1.6, marginBottom: '22px' }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '14px', lineHeight: 1.6, marginBottom: '22px' }}>
                   Reserve your date with our event coordination team. Inquire now for hall availability and custom packages.
                 </p>
                 <Link
                   href="/contactus"
                   style={{
                     display: 'block',
-                    backgroundColor: '#c5a880',
-                    color: '#0b0c10',
+                    backgroundColor: '#ffffff',
+                    color: '#b29165',
                     padding: '13px 24px',
-                    borderRadius: '8px',
+                    borderRadius: '50px',
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.6px',
                     fontSize: '13.5px',
                     textDecoration: 'none',
-                    boxShadow: '0 4px 15px rgba(197, 168, 128, 0.35)',
+                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.12)',
                     transition: 'all 0.2s',
                   }}
                 >

@@ -160,8 +160,8 @@ export default async function AboutUsPage() {
                   position: 'relative',
                   width: '100%',
                   aspectRatio: '16 / 9',
-                  backgroundColor: '#0c0e12',
-                  border: '1px solid rgba(197, 168, 128, 0.25)',
+                  backgroundColor: '#be9f76',
+                  border: '1.5px solid rgba(190, 159, 118, 0.4)',
                 }}
               >
                 <iframe
